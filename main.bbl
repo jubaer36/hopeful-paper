@@ -7,93 +7,195 @@
 Alpher, F.: Frobnication. IEEE TPAMI  \textbf{12}(1),  234--778 (2002)
 
 \bibitem{Alpher03}
-Alpher, F., Fotheringham-Smythe, F.: Frobnication revisited. Journal of Foo  \textbf{13}(1),  234--778 (2003)
+Alpher, F., Fotheringham-Smythe, F.: Frobnication revisited. Journal of Foo
+  \textbf{13}(1),  234--778 (2003)
 
 \bibitem{Alpher04}
-Alpher, F., Fotheringham-Smythe, F., Gamow, F.: Can a machine frobnicate? Journal of Foo  \textbf{14}(1),  234--778 (2004)
+Alpher, F., Fotheringham-Smythe, F., Gamow, F.: Can a machine frobnicate?
+  Journal of Foo  \textbf{14}(1),  234--778 (2004)
 
 \bibitem{Alpher05}
 Alpher, F., Gamow, F.: Can a computer frobnicate? In: CVPR. pp. 234--778 (2005)
 
 \bibitem{Anonymous24}
-Anonymous: The frobnicatable foo filter (2024), {ECCV} submission ID 00324, supplied as supplemental material {\tt 00324.pdf}
+Anonymous: The frobnicatable foo filter (2024), {ECCV} submission ID 00324,
+  supplied as supplemental material {\tt 00324.pdf}
 
 \bibitem{Anonymous24b}
-Anonymous: Frobnication tutorial (2024), supplied as supplemental material {\tt tr.pdf}
+Anonymous: Frobnication tutorial (2024), supplied as supplemental material {\tt
+  tr.pdf}
 
 \bibitem{ECCV2022}
-Avidan, S., Brostow, G., Cissé, M., Farinella, G.M., Hassner, T. (eds.): Computer Vision -- ECCV 2022. Springer (2022). \doi{10.1007/978-3-031-19769-7}
+Avidan, S., Brostow, G., Cissé, M., Farinella, G.M., Hassner, T. (eds.):
+  Computer Vision -- ECCV 2022. Springer (2022).
+  \doi{10.1007/978-3-031-19769-7}
 
 \bibitem{qwen2_5_vl}
-Bai, S., Chen, K., Liu, X., Wang, J., Ge, W., Song, S., Dang, K., Wang, P., Wang, S., Tang, J., Zhong, H., Zhu, Y., Yang, M., Li, Z., Wan, J., Wang, P., Ding, W., Fu, Z., Xu, Y., Ye, J., Zhang, X., Xie, T., Cheng, Z., Zhang, H., Yang, Z., Xu, H., Lin, J.: Qwen2.5-vl technical report. arXiv preprint  \textbf{abs/2502.13923} (2025). \doi{10.48550/arXiv.2502.13923}
+Bai, S., Chen, K., Liu, X., Wang, J., Ge, W., Song, S., Dang, K., Wang, P.,
+  Wang, S., Tang, J., Zhong, H., Zhu, Y., Yang, M., Li, Z., Wan, J., Wang, P.,
+  Ding, W., Fu, Z., Xu, Y., Ye, J., Zhang, X., Xie, T., Cheng, Z., Zhang, H.,
+  Yang, Z., Xu, H., Lin, J.: Qwen2.5-vl technical report. arXiv preprint
+  \textbf{abs/2502.13923} (2025). \doi{10.48550/arXiv.2502.13923}
 
 \bibitem{baltrusaitis2018openface}
-Baltru{\v{s}}aitis, T., Zadeh, A., Lim, Y.C., Morency, L.P.: Openface 2.0: Facial behavior analysis toolkit. In: 2018 13th IEEE International Conference on Automatic Face \& Gesture Recognition (FG 2018). pp. 59--66 (2018). \doi{10.1109/FG.2018.00019}
+Baltru{\v{s}}aitis, T., Zadeh, A., Lim, Y.C., Morency, L.P.: Openface 2.0:
+  Facial behavior analysis toolkit. In: 2018 13th IEEE International Conference
+  on Automatic Face \& Gesture Recognition (FG 2018). pp. 59--66 (2018).
+  \doi{10.1109/FG.2018.00019}
 
 \bibitem{busso2008iemocap}
-Busso, C., Bulut, M., Lee, C.C., Kazemzadeh, A., Mower, E., Kim, S., Chang, J.N., Lee, S., Narayanan, S.S.: {IEMOCAP}: Interactive emotional dyadic motion capture database. vol.~42, pp. 335--359 (2008). \doi{10.1007/s10579-008-9076-6}
+Busso, C., Bulut, M., Lee, C.C., Kazemzadeh, A., Mower, E., Kim, S., Chang,
+  J.N., Lee, S., Narayanan, S.S.: {IEMOCAP}: Interactive emotional dyadic
+  motion capture database. vol.~42, pp. 335--359 (2008).
+  \doi{10.1007/s10579-008-9076-6}
 
 \bibitem{calvo2010affect}
-Calvo, R.A., D'Mello, S.K.: Affect detection: An interdisciplinary review of models, methods, and their applications. IEEE Transactions on Affective Computing  \textbf{1}(1),  18--37 (2010). \doi{10.1109/T-AFFC.2010.1}
+Calvo, R.A., D'Mello, S.K.: Affect detection: An interdisciplinary review of
+  models, methods, and their applications. IEEE Transactions on Affective
+  Computing  \textbf{1}(1),  18--37 (2010). \doi{10.1109/T-AFFC.2010.1}
 
 \bibitem{devlin2019bert}
-Devlin, J., Chang, M.W., Lee, K., Toutanova, K.: Bert: Pre-training of deep bidirectional transformers for language understanding. In: Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL). pp. 4171--4186. Association for Computational Linguistics (2019). \doi{10.18653/v1/N19-1423}
+Devlin, J., Chang, M.W., Lee, K., Toutanova, K.: Bert: Pre-training of deep
+  bidirectional transformers for language understanding. In: Proceedings of the
+  2019 Conference of the North American Chapter of the Association for
+  Computational Linguistics (NAACL). pp. 4171--4186. Association for
+  Computational Linguistics (2019). \doi{10.18653/v1/N19-1423}
 
 \bibitem{dosovitskiy2021vit}
-Dosovitskiy, A., Beyer, L., Kolesnikov, A., et~al.: An image is worth 16x16 words: Transformers for image recognition at scale. In: International Conference on Learning Representations (ICLR) (2021)
+Dosovitskiy, A., Beyer, L., Kolesnikov, A., et~al.: An image is worth 16x16
+  words: Transformers for image recognition at scale. In: International
+  Conference on Learning Representations (ICLR) (2021)
 
 \bibitem{eyben2010opensmile}
-Eyben, F., W{\"o}llmer, M., Schuller, B.: opensmile -- the munich versatile and fast open-source audio feature extractor. In: Proceedings of the 18th ACM International Conference on Multimedia. pp. 1459--1462 (2010). \doi{10.1145/1873951.1874246}
+Eyben, F., W{\"o}llmer, M., Schuller, B.: opensmile -- the munich versatile and
+  fast open-source audio feature extractor. In: Proceedings of the 18th ACM
+  International Conference on Multimedia. pp. 1459--1462 (2010).
+  \doi{10.1145/1873951.1874246}
 
 \bibitem{ghosal2019dialoguegcn}
-Ghosal, D., Majumder, N., Poria, S., Chhaya, N., Gelbukh, A.: Dialoguegcn: A graph convolutional neural network for emotion recognition in conversation. In: Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP). pp. 154--164. Association for Computational Linguistics (2019). \doi{10.18653/v1/D19-1015}
+Ghosal, D., Majumder, N., Poria, S., Chhaya, N., Gelbukh, A.: Dialoguegcn: A
+  graph convolutional neural network for emotion recognition in conversation.
+  In: Proceedings of the 2019 Conference on Empirical Methods in Natural
+  Language Processing and the 9th International Joint Conference on Natural
+  Language Processing (EMNLP-IJCNLP). pp. 154--164. Association for
+  Computational Linguistics (2019). \doi{10.18653/v1/D19-1015}
 
 \bibitem{hazarika2018icon}
-Hazarika, D., Poria, S., Mihalcea, R., Cambria, E., Zimmermann, R.: Icon: Interactive conversational memory network for multimodal emotion detection. In: Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing (EMNLP). pp. 2594--2604. Association for Computational Linguistics (2018). \doi{10.18653/v1/D18-1280}
+Hazarika, D., Poria, S., Mihalcea, R., Cambria, E., Zimmermann, R.: Icon:
+  Interactive conversational memory network for multimodal emotion detection.
+  In: Proceedings of the 2018 Conference on Empirical Methods in Natural
+  Language Processing (EMNLP). pp. 2594--2604. Association for Computational
+  Linguistics (2018). \doi{10.18653/v1/D18-1280}
 
 \bibitem{he2016resnet}
-He, K., Zhang, X., Ren, S., Sun, J.: Deep residual learning for image recognition. In: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). pp. 770--778 (2016). \doi{10.1109/CVPR.2016.90}
+He, K., Zhang, X., Ren, S., Sun, J.: Deep residual learning for image
+  recognition. In: Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR). pp. 770--778 (2016). \doi{10.1109/CVPR.2016.90}
 
 \bibitem{hu2021mmgcn}
-Hu, J., Liu, Y., Zhao, J., Jin, Q.: Mmgcn: Multimodal fusion via deep graph convolution network for emotion recognition in conversation. In: Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics (ACL). pp. 5666--5675. Association for Computational Linguistics (2021). \doi{10.18653/v1/2021.acl-long.440}
+Hu, J., Liu, Y., Zhao, J., Jin, Q.: Mmgcn: Multimodal fusion via deep graph
+  convolution network for emotion recognition in conversation. In: Proceedings
+  of the 59th Annual Meeting of the Association for Computational Linguistics
+  (ACL). pp. 5666--5675. Association for Computational Linguistics (2021).
+  \doi{10.18653/v1/2021.acl-long.440}
 
 \bibitem{huang2017densely}
-Huang, G., Liu, Z., van~der Maaten, L., Weinberger, K.Q.: Densely connected convolutional networks. In: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). pp. 2261--2269 (2017). \doi{10.1109/CVPR.2017.243}
+Huang, G., Liu, Z., van~der Maaten, L., Weinberger, K.Q.: Densely connected
+  convolutional networks. In: Proceedings of the IEEE Conference on Computer
+  Vision and Pattern Recognition (CVPR). pp. 2261--2269 (2017).
+  \doi{10.1109/CVPR.2017.243}
 
 \bibitem{kipf2017gcn}
-Kipf, T.N., Welling, M.: Semi-supervised classification with graph convolutional networks. In: International Conference on Learning Representations (ICLR) (2017)
+Kipf, T.N., Welling, M.: Semi-supervised classification with graph
+  convolutional networks. In: International Conference on Learning
+  Representations (ICLR) (2017)
 
 \bibitem{li2024graphsmile}
-Li, J., Wang, X., Zeng, Z.: Tracing intricate cues in dialogue: Joint graph structure and sentiment dynamics for multimodal emotion recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence  \textbf{47}(10),  8786--8803 (2025). \doi{10.1109/TPAMI.2025.3581236}
+Li, J., Wang, X., Zeng, Z.: Tracing intricate cues in dialogue: Joint graph
+  structure and sentiment dynamics for multimodal emotion recognition. IEEE
+  Transactions on Pattern Analysis and Machine Intelligence  \textbf{47}(10),
+  8786--8803 (2025). \doi{10.1109/TPAMI.2025.3581236}
 
 \bibitem{li2018self}
-Li, Y., Zeng, J., Shan, S., Chen, X.: Occlusion aware facial expression recognition using cnn with attention mechanism. IEEE Transactions on Image Processing  \textbf{28}(5),  2439--2450 (2019). \doi{10.1109/TIP.2018.2886767}
+Li, Y., Zeng, J., Shan, S., Chen, X.: Occlusion aware facial expression
+  recognition using cnn with attention mechanism. IEEE Transactions on Image
+  Processing  \textbf{28}(5),  2439--2450 (2019).
+  \doi{10.1109/TIP.2018.2886767}
 
 \bibitem{liu2019roberta}
-Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Zettlemoyer, L., Stoyanov, V.: {RoBERTa}: A robustly optimized {BERT} pretraining approach. arXiv preprint  \textbf{abs/1907.11692} (2019). \doi{10.48550/arXiv.1907.11692}
+Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M.,
+  Zettlemoyer, L., Stoyanov, V.: {RoBERTa}: A robustly optimized {BERT}
+  pretraining approach. arXiv preprint  \textbf{abs/1907.11692} (2019).
+  \doi{10.48550/arXiv.1907.11692}
+
+\bibitem{maas2013rectifier}
+Maas, A.L., Hannun, A.Y., Ng, A.Y.: Rectifier nonlinearities improve neural
+  network acoustic models. In: Proc. icml. vol.~30, p.~3. Citeseer (2013)
 
 \bibitem{majumder2019dialoguernn}
-Majumder, N., Poria, S., Hazarika, D., Mihalcea, R., Gelbukh, A., Cambria, E.: Dialoguernn: An attentive rnn for emotion detection in conversations. In: Proceedings of the AAAI Conference on Artificial Intelligence. vol.~33, pp. 6818--6825 (2019). \doi{10.1609/aaai.v33i01.33016818}
+Majumder, N., Poria, S., Hazarika, D., Mihalcea, R., Gelbukh, A., Cambria, E.:
+  Dialoguernn: An attentive rnn for emotion detection in conversations. In:
+  Proceedings of the AAAI Conference on Artificial Intelligence. vol.~33, pp.
+  6818--6825 (2019). \doi{10.1609/aaai.v33i01.33016818}
 
 \bibitem{poria2019meld}
-Poria, S., Hazarika, D., Majumder, N., Mihalcea, R.: Meld: A multimodal multi-party dataset for emotion recognition in conversations. In: Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL). pp. 527--536. Association for Computational Linguistics (2019). \doi{10.18653/v1/P19-1050}
+Poria, S., Hazarika, D., Majumder, N., Mihalcea, R.: Meld: A multimodal
+  multi-party dataset for emotion recognition in conversations. In: Proceedings
+  of the 57th Annual Meeting of the Association for Computational Linguistics
+  (ACL). pp. 527--536. Association for Computational Linguistics (2019).
+  \doi{10.18653/v1/P19-1050}
 
 \bibitem{radford2021clip}
-Radford, A., Kim, J.W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., Sastry, G., Askell, A., Mishkin, P., Clark, J., Krueger, G., Sutskever, I.: Learning transferable visual models from natural language supervision. In: Proceedings of the 38th International Conference on Machine Learning (ICML). pp. 8748--8763. PMLR (2021)
+Radford, A., Kim, J.W., Hallacy, C., Ramesh, A., Goh, G., Agarwal, S., Sastry,
+  G., Askell, A., Mishkin, P., Clark, J., Krueger, G., Sutskever, I.: Learning
+  transferable visual models from natural language supervision. In: Proceedings
+  of the 38th International Conference on Machine Learning (ICML). pp.
+  8748--8763. PMLR (2021)
+
+\bibitem{scarselli2008graph}
+Scarselli, F., Gori, M., Tsoi, A.C., Hagenbuchner, M., Monfardini, G.: The
+  graph neural network model. IEEE transactions on neural networks
+  \textbf{20}(1),  61--80 (2008)
 
 \bibitem{schuller2011recognising}
-Schuller, B., Steidl, S., Batliner, A., et~al.: Recognising realistic emotions and affect in speech: State of the art and lessons learnt from the first challenge. In: Proceedings of INTERSPEECH. pp. 149--152 (2011)
+Schuller, B., Steidl, S., Batliner, A., et~al.: Recognising realistic emotions
+  and affect in speech: State of the art and lessons learnt from the first
+  challenge. In: Proceedings of INTERSPEECH. pp. 149--152 (2011)
 
 \bibitem{shou2025comprehensivesurveymultimodalconversational}
-Shou, Y., Meng, T., Ai, W., Fu, F., Yin, N., Li, K.: A comprehensive survey on multi-modal conversational emotion recognition with deep learning (2023), \url{https://arxiv.org/abs/2312.05735}
+Shou, Y., Meng, T., Ai, W., Fu, F., Yin, N., Li, K.: A comprehensive survey on
+  multi-modal conversational emotion recognition with deep learning (2023),
+  \url{https://arxiv.org/abs/2312.05735}
+
+\bibitem{srivastava2014dropout}
+Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., Salakhutdinov, R.:
+  Dropout: a simple way to prevent neural networks from overfitting. The
+  journal of machine learning research  \textbf{15}(1),  1929--1958 (2014)
 
 \bibitem{tsai2019mult}
-Tsai, Y.H.H., Bai, S., Liang, P.P., Kolter, J.Z., Morency, L.P., Salakhutdinov, R.: Multimodal transformer for unaligned multimodal language sequences. In: Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL). pp. 6558--6569. Association for Computational Linguistics (2019). \doi{10.18653/v1/P19-1656}
+Tsai, Y.H.H., Bai, S., Liang, P.P., Kolter, J.Z., Morency, L.P., Salakhutdinov,
+  R.: Multimodal transformer for unaligned multimodal language sequences. In:
+  Proceedings of the 57th Annual Meeting of the Association for Computational
+  Linguistics (ACL). pp. 6558--6569. Association for Computational Linguistics
+  (2019). \doi{10.18653/v1/P19-1656}
 
 \bibitem{zadeh2017tfn}
-Zadeh, A., Chen, M., Poria, S., Cambria, E., Morency, L.P.: Tensor fusion network for multimodal sentiment analysis. In: Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing (EMNLP). pp. 1103--1114. Association for Computational Linguistics (2017). \doi{10.18653/v1/D17-1115}
+Zadeh, A., Chen, M., Poria, S., Cambria, E., Morency, L.P.: Tensor fusion
+  network for multimodal sentiment analysis. In: Proceedings of the 2017
+  Conference on Empirical Methods in Natural Language Processing (EMNLP). pp.
+  1103--1114. Association for Computational Linguistics (2017).
+  \doi{10.18653/v1/D17-1115}
 
 \bibitem{zadeh2018multimodal}
-Zadeh, A., Liang, P.P., Poria, S., Cambria, E., Morency, L.P.: Multimodal language analysis in the wild: Cmu-mosei dataset and interpretable dynamic fusion graph. In: Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (ACL). pp. 2236--2246. Association for Computational Linguistics (2018). \doi{10.18653/v1/P18-1208}
+Zadeh, A., Liang, P.P., Poria, S., Cambria, E., Morency, L.P.: Multimodal
+  language analysis in the wild: Cmu-mosei dataset and interpretable dynamic
+  fusion graph. In: Proceedings of the 56th Annual Meeting of the Association
+  for Computational Linguistics (ACL). pp. 2236--2246. Association for
+  Computational Linguistics (2018). \doi{10.18653/v1/P18-1208}
+
+\bibitem{videmo}
+Zhang, Z., Wang, W., Zhu, Y., et~al.: Videmo: Affective-tree reasoning for
+  emotion-centric video foundation models (2025),
+  \url{https://arxiv.org/abs/2511.02712}
 
 \end{thebibliography}

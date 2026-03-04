@@ -6,45 +6,46 @@ Database file #1: citations.bib
 Database file #2: main.bib
 Warning--empty booktitle in busso2008iemocap
 Warning--can't use both volume and number fields in busso2008iemocap
-You've used 31 entries,
+Warning--can't use both volume and number fields in maas2013rectifier
+You've used 35 entries,
             2850 wiz_defined-function locations,
-            875 strings with 13164 characters,
-and the built_in function-call counts, 21919 in all, are:
-= -- 1843
-> -- 848
-< -- 33
-+ -- 348
-- -- 314
-* -- 1442
-:= -- 2793
-add.period$ -- 73
-call.type$ -- 31
-change.case$ -- 284
+            901 strings with 13946 characters,
+and the built_in function-call counts, 24381 in all, are:
+= -- 2037
+> -- 941
+< -- 39
++ -- 387
+- -- 348
+* -- 1611
+:= -- 3102
+add.period$ -- 78
+call.type$ -- 35
+change.case$ -- 314
 chr.to.int$ -- 0
-cite$ -- 33
-duplicate$ -- 1798
-empty$ -- 1824
-format.name$ -- 342
-if$ -- 4784
+cite$ -- 38
+duplicate$ -- 2012
+empty$ -- 2034
+format.name$ -- 380
+if$ -- 5315
 int.to.chr$ -- 0
-int.to.str$ -- 31
-missing$ -- 382
-newline$ -- 99
-num.names$ -- 63
-pop$ -- 767
+int.to.str$ -- 35
+missing$ -- 428
+newline$ -- 111
+num.names$ -- 71
+pop$ -- 854
 preamble$ -- 1
-purify$ -- 217
+purify$ -- 241
 quote$ -- 0
-skip$ -- 594
+skip$ -- 657
 stack$ -- 0
-substring$ -- 1226
-swap$ -- 1041
-text.length$ -- 33
+substring$ -- 1345
+swap$ -- 1173
+text.length$ -- 39
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 122
-warning$ -- 2
-while$ -- 162
-width$ -- 33
-write$ -- 356
-(There were 2 warnings)
+type$ -- 138
+warning$ -- 3
+while$ -- 181
+width$ -- 37
+write$ -- 396
+(There were 3 warnings)
