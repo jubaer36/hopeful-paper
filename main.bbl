@@ -31,7 +31,7 @@ Bai, S., Chen, K., Liu, X., Wang, J., Ge, W., Song, S., Dang, K., Wang, P., Wang
 Baltru{\v{s}}aitis, T., Zadeh, A., Lim, Y.C., Morency, L.P.: Openface 2.0: Facial behavior analysis toolkit. In: 2018 13th IEEE International Conference on Automatic Face \& Gesture Recognition (FG 2018). pp. 59--66 (2018). \doi{10.1109/FG.2018.00019}
 
 \bibitem{busso2008iemocap}
-Busso, C., Bulut, M., Lee, C.C., Kazemzadeh, A., Mower, E., Kim, S., Chang, J.N., Lee, S., Narayanan, S.S.: {IEMOCAP}: Interactive emotional dyadic motion capture database. vol.~42, pp. 335--359 (2008). \doi{10.1007/s10579-008-9076-6}
+Busso, C., Bulut, M., Lee, C.C., Kazemzadeh, A., Mower, E., Kim, S., Chang, J.N., Lee, S., Narayanan, S.S.: {IEMOCAP}: Interactive emotional dyadic motion capture database. Language Resources and Evaluation  \textbf{42}(4),  335--359 (2008). \doi{10.1007/s10579-008-9076-6}
 
 \bibitem{calvo2010affect}
 Calvo, R.A., D'Mello, S.K.: Affect detection: An interdisciplinary review of models, methods, and their applications. IEEE Transactions on Affective Computing  \textbf{1}(1),  18--37 (2010). \doi{10.1109/T-AFFC.2010.1}
@@ -45,11 +45,17 @@ Dosovitskiy, A., Beyer, L., Kolesnikov, A., et~al.: An image is worth 16x16 word
 \bibitem{eyben2010opensmile}
 Eyben, F., W{\"o}llmer, M., Schuller, B.: opensmile -- the munich versatile and fast open-source audio feature extractor. In: Proceedings of the 18th ACM International Conference on Multimedia. pp. 1459--1462 (2010). \doi{10.1145/1873951.1874246}
 
+\bibitem{fu2025bemerc}
+Fu, Y., Wu, J., et~al.: Bemerc: Behavior-aware mllm-based framework for multimodal emotion recognition in conversation. arXiv preprint arXiv:2503.23990  (2025)
+
 \bibitem{ghosal2019dialoguegcn}
 Ghosal, D., Majumder, N., Poria, S., Chhaya, N., Gelbukh, A.: Dialoguegcn: A graph convolutional neural network for emotion recognition in conversation. In: Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP). pp. 154--164. Association for Computational Linguistics (2019). \doi{10.18653/v1/D19-1015}
 
 \bibitem{hazarika2018icon}
 Hazarika, D., Poria, S., Mihalcea, R., Cambria, E., Zimmermann, R.: Icon: Interactive conversational memory network for multimodal emotion detection. In: Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing (EMNLP). pp. 2594--2604. Association for Computational Linguistics (2018). \doi{10.18653/v1/D18-1280}
+
+\bibitem{hazarika2020misa}
+Hazarika, D., Zimmermann, R., Poria, S.: {MISA}: Modality-invariant and -specific representations for multimodal sentiment analysis. In: Proceedings of the 28th ACM International Conference on Multimedia. pp. 1122--1131. ACM (2020). \doi{10.1145/3394171.3413678}
 
 \bibitem{he2016resnet}
 He, K., Zhang, X., Ren, S., Sun, J.: Deep residual learning for image recognition. In: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). pp. 770--778 (2016). \doi{10.1109/CVPR.2016.90}
@@ -57,11 +63,17 @@ He, K., Zhang, X., Ren, S., Sun, J.: Deep residual learning for image recognitio
 \bibitem{hu2021mmgcn}
 Hu, J., Liu, Y., Zhao, J., Jin, Q.: Mmgcn: Multimodal fusion via deep graph convolution network for emotion recognition in conversation. In: Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics (ACL). pp. 5666--5675. Association for Computational Linguistics (2021). \doi{10.18653/v1/2021.acl-long.440}
 
+\bibitem{huang2025emotionqwen}
+Huang, D., Li, Q., Yan, C., Cheng, Z., Han, Z., Huang, Y., Li, X., Li, B., Wang, X., Lian, Z., Cheng, Z.Q., Peng, X.: Emotion-qwen: Training hybrid experts for unified emotion and general vision-language understanding. arXiv preprint arXiv:2505.06685  (2025)
+
 \bibitem{huang2017densely}
 Huang, G., Liu, Z., van~der Maaten, L., Weinberger, K.Q.: Densely connected convolutional networks. In: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). pp. 2261--2269 (2017). \doi{10.1109/CVPR.2017.243}
 
 \bibitem{kipf2017gcn}
 Kipf, T.N., Welling, M.: Semi-supervised classification with graph convolutional networks. In: International Conference on Learning Representations (ICLR) (2017)
+
+\bibitem{li-etal-2023-joyful}
+Li, D., Wang, Y., Funakoshi, K., Okumura, M.: {J}oyful: Joint modality fusion and graph contrastive learning for multimodal emotion recognition. In: Bouamor, H., Pino, J., Bali, K. (eds.) Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing. pp. 16051--16069. Association for Computational Linguistics, Singapore (Dec 2023). \doi{10.18653/v1/2023.emnlp-main.996}, \url{https://aclanthology.org/2023.emnlp-main.996/}
 
 \bibitem{li2024graphsmile}
 Li, J., Wang, X., Zeng, Z.: Tracing intricate cues in dialogue: Joint graph structure and sentiment dynamics for multimodal emotion recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence  \textbf{47}(10),  8786--8803 (2025). \doi{10.1109/TPAMI.2025.3581236}
@@ -77,6 +89,15 @@ Maas, A.L., Hannun, A.Y., Ng, A.Y.: Rectifier nonlinearities improve neural netw
 
 \bibitem{majumder2019dialoguernn}
 Majumder, N., Poria, S., Hazarika, D., Mihalcea, R., Gelbukh, A., Cambria, E.: Dialoguernn: An attentive rnn for emotion detection in conversations. In: Proceedings of the AAAI Conference on Artificial Intelligence. vol.~33, pp. 6818--6825 (2019). \doi{10.1609/aaai.v33i01.33016818}
+
+\bibitem{morency2011multimodal}
+Morency, L.P., Mihalcea, R., Doshi, P.: Towards multimodal sentiment analysis: Harvesting opinions from the web. In: Proceedings of the 13th International Conference on Multimodal Interfaces (ICMI). pp. 169--176. ACM (2011). \doi{10.1145/2070481.2070509}
+
+\bibitem{perezrosas2013utterance}
+P{\'e}rez-Rosas, V., Mihalcea, R., Morency, L.P.: Utterance-level multimodal sentiment analysis. In: Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics (ACL). pp. 973--982. Association for Computational Linguistics (2013)
+
+\bibitem{poria2016fusing}
+Poria, S., Cambria, E., Howard, N., Huang, G.B., Hussain, A.: Fusing audio, visual and textual clues for sentiment analysis from multimodal content. Neurocomputing  \textbf{174},  50--59 (2016). \doi{10.1016/j.neucom.2015.01.095}
 
 \bibitem{poria2019meld}
 Poria, S., Hazarika, D., Majumder, N., Mihalcea, R.: Meld: A multimodal multi-party dataset for emotion recognition in conversations. In: Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL). pp. 527--536. Association for Computational Linguistics (2019). \doi{10.18653/v1/P19-1050}
@@ -104,6 +125,9 @@ Zadeh, A., Chen, M., Poria, S., Cambria, E., Morency, L.P.: Tensor fusion networ
 
 \bibitem{zadeh2018multimodal}
 Zadeh, A., Liang, P.P., Poria, S., Cambria, E., Morency, L.P.: Multimodal language analysis in the wild: Cmu-mosei dataset and interpretable dynamic fusion graph. In: Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (ACL). pp. 2236--2246. Association for Computational Linguistics (2018). \doi{10.18653/v1/P18-1208}
+
+\bibitem{zadeh2016mosi}
+Zadeh, A., Zellers, R., Pincus, E., Morency, L.P.: {MOSI}: Multimodal corpus of sentiment intensity and subjectivity analysis in online opinion videos. arXiv preprint arXiv:1606.06259  (2016)
 
 \bibitem{videmo}
 Zhang, Z., Wang, W., Zhu, Y., et~al.: Videmo: Affective-tree reasoning for emotion-centric video foundation models (2025), \url{https://arxiv.org/abs/2511.02712}
