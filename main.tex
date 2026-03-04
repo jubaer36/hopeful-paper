@@ -123,6 +123,13 @@ In summary, this work makes the following contributions:
 
 By bridging the gap between visual perception and semantic understanding, our approach offers a new direction for enhancing the role of visual information in multimodal conversational emotion recognition.
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{VLMtemporal.pdf}
+  \caption{Overview of the proposed semantic visual preprocessing pipeline.}
+  \label{fig:preprocessing}
+\end{figure}
+
 \section{Related Work}
 
 \subsection{Emotion Recognition in Conversations and Multimodal Extensions}
@@ -207,6 +214,12 @@ For the textual modality, utterance transcripts are encoded uniformly across bot
 The acoustic features, $X^a$, capture paralinguistic speech characteristics including fundamental frequency (F0), energy, spectral properties, and temporal statistical functionals that reflect prosody and pitch dynamics. For both the IEMOCAP (6-way)~\cite{busso2008iemocap} and MELD~\cite{poria2019meld} datasets, these utterance level features are extracted using the openSMILE toolkit with the IS10 configuration~\cite{eyben2010opensmile}.
 
 \subsubsection{Semantic Visual Feature Extraction.}
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{Preprocessing.pdf}
+  \caption{The multimodal preprocessing pipeline for extracting utterance-level textual, acoustic, and visual features.}
+  \label{fig:preprocessing}
+\end{figure}
 Traditional visual encoders often fail to fully harness conversational cues because they are restricted to extracting context blind spatial features or isolated facial mechanics, creating a semantic gap between raw physical movements and complex emotional states. The core methodological contribution addresses this by redefining the visual feature extraction process through a three stage semantic preprocessing pipeline.
 
 \noindent\textbf{Stage 1: Dataset Specific Video Preprocessing.}
@@ -254,6 +267,13 @@ The fully connected layer $\text{FC}(\cdot)$ includes a linear transformation, a
 $$\text{FC}(X) = \text{Dropout}(\text{LeakyReLU}(X\Theta_f + b_f))$$
 
 This setup serves two purposes: it lets the network dynamically choose which layer's information is most useful, and it boosts the overall expressive power of the GSF module.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{NodesGNN.pdf}
+  \caption{The GraphSmile~\cite{li2024graphsmile} architecture: bipartite multimodal dialogue graphs connecting utterance nodes across modality pairs, propagated through the Graph Structure Fusion (GSF) module.}
+  \label{fig:nodesgnn}
+\end{figure}
 
 \subsubsection{Multimodal Integration}
 After processing the textual-visual ($\mathcal{G}^{tv}$), textual-acoustic ($\mathcal{G}^{ta}$), and visual-acoustic ($\mathcal{G}^{va}$) graphs through their own separate GSF modules, we get three distinct outputs: $X^{tv}$, $X^{ta}$, and $X^{va}$. We add these together to create a final, unified feature representation:
