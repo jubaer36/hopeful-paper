@@ -123,6 +123,63 @@ In summary, this work makes the following contributions:
 
 By bridging the gap between visual perception and semantic understanding, our approach offers a new direction for enhancing the role of visual information in multimodal conversational emotion recognition.
 
+\section{Related Work}
+
+\subsection{Emotion Recognition in Conversations and Multimodal Extensions}
+
+Emotion Recognition in Conversations (ERC) seeks to identify the emotional state expressed in each utterance by considering the context of preceding dialogue turns and speaker interactions~\cite{shou2025comprehensivesurveymultimodalconversational}. Early sequence-based methods relied on recurrent architectures such as RNNs and GRUs to capture temporal dependencies and track speaker states throughout a dialogue~\cite{majumder2019dialoguernn,hazarika2018icon}. While effective for short-range context modeling, these approaches often struggle with long-range dependencies and complex inter-speaker influences.
+
+Multimodal Emotion Recognition in Conversations (MERC) extends ERC by incorporating multiple modalities --- typically text, acoustic, and visual --- to better reflect how humans convey emotions~\cite{poria2019meld,zadeh2018multimodal}. Textual information captures lexical and semantic content, acoustic signals encode prosodic and paralinguistic cues~\cite{schuller2011recognising}, and visual data contributes facial expressions and body language~\cite{li2018self}. MERC's multimodal nature poses additional challenges, including modality alignment, noise handling (especially in the visual and acoustic channels), and effective cross-modal fusion~\cite{shou2025comprehensivesurveymultimodalconversational}.
+
+\subsection{Approaches to MERC}
+
+To address these challenges, several modeling strategies have been proposed:
+
+\subsubsection{Sequence and Context-Based Methods.}
+Sequence models prioritize temporal dependencies and contextual flow. Early works such as DialogueRNN~\cite{majumder2019dialoguernn} process dialog turns sequentially, learning conversational context and speaker interactions through recurrent structures. While these approaches improve performance over context-agnostic classifiers, they lack explicit mechanisms for relational reasoning between speakers or across modalities.
+
+\subsubsection{Fusion-Based Methods.}
+Fusion approaches aim to integrate multimodal information through strategies such as early concatenation, late decision fusion, cross-modal attention, and transformer-based fusion blocks~\cite{zadeh2017tfn,tsai2019mult}.
+
+\begin{itemize}
+  \item \textbf{Early / Late Fusion:} Simple combination of modality features at feature or decision level~\cite{zadeh2017tfn}.
+  \item \textbf{Attention-Based Fusion:} Mechanisms that dynamically emphasize salient modality cues~\cite{tsai2019mult}.
+  \item \textbf{Transformer-Based Fusion:} Joint self- and cross-attention layers for richer modality interaction~\cite{tsai2019mult}.
+  \item \textbf{Emotion-Shift-Aware Fusion:} Explicitly models sentiment changes across turns~\cite{li2024graphsmile}.
+\end{itemize}
+
+While fusion strategies enhance cross-modal interaction, they typically do not explicitly capture conversational structure or speaker relationships, which are crucial for nuanced emotional understanding in dialogue.
+
+\subsection{Graph-Based MERC Approaches}
+
+Graph-based approaches have emerged as one of the most powerful and widely adopted strategies for MERC because they directly encode conversational structure and relational dependencies into the learning process~\cite{hu2021mmgcn,li2024graphsmile}. In this paradigm, utterances are represented as nodes, and edges encode speaker interactions, temporal continuity, and cross-modal links~\cite{kipf2017gcn}, enabling structured graph propagation across the dialogue.
+
+DialogueGCN~\cite{ghosal2019dialoguegcn} first formalized ERC as graph reasoning by modeling both intra-speaker and inter-speaker relations using graph convolution, showing superior performance over sequential models. This method laid the groundwork for structural reasoning in conversational emotion tasks, highlighting the importance of relational context.
+
+Subsequent graph extensions to MERC expanded the graph structure to include multimodal interactions. For example, MMGCN~\cite{hu2021mmgcn} and its variants build modality-aware graphs to learn cross-modal relationships jointly, and hypergraph-based models capture higher-order interactions among modalities and speakers.
+
+A more recent line of work incorporates auxiliary objectives and enhanced graph learning. \textbf{Joyful} integrates modality fusion with contrastive learning within a graph framework, constructing multimodal interaction graphs and employing contrastive objectives to encourage discriminative representations across modalities, addressing traditional issues such as over-smoothing in graph embeddings and improving cross-modal alignment.
+
+\textbf{GraphSmile}~\cite{li2024graphsmile} represents a state-of-the-art graph-centric MERC architecture introducing two key components: \textit{Graph Structure Fusion (GSF)}, which constructs bipartite dialogue graphs between every pair of modalities and alternates information propagation across these graphs to prevent any single structural path from dominating; and \textit{Sentiment Dynamics Perception (SDP)}, an auxiliary task that explicitly predicts whether sentiment shifts occur between consecutive utterances to guide the model toward emotional transitions.
+
+Despite its strong performance, GraphSmile --- like most existing graph-based MERC methods --- depends on conventional visual encoders (\eg, CNN backbones~\cite{he2016resnet} or handcrafted facial features~\cite{baltrusaitis2018openface}) that produce static, low-level visual embeddings. These embeddings are typically mean-pooled over frames, collapsing intra-utterance temporal dynamics and limiting the visual modality's contribution to emotional reasoning. Graph-based approaches excel at structurally modeling dialogues and multimodal interactions, but their effectiveness is often constrained by the quality of unimodal representations feeding into the graph.
+
+\subsection{Vision--Language and LLM-Based Approaches for Emotion Recognition}
+
+To overcome limitations of low-level visual features, recent research has explored Vision--Language Models (VLMs) and multimodal Large Language Models (LLMs) for emotion recognition tasks. VLMs pretrained on large image/video--text datasets~\cite{radford2021clip} produce semantically meaningful representations of visual content: they generate textual or semantic descriptions from visual inputs, capturing behaviors, expressions, and dynamics that are difficult for CNN~\cite{he2016resnet} or ViT~\cite{dosovitskiy2021vit} features to represent, and these descriptions are inherently aligned with language modalities~\cite{devlin2019bert}, facilitating cross-modal fusion and multimodal reasoning.
+
+Recent works demonstrate that VLMs can capture emotionally relevant visual cues. Models such as VidEmo-3B~\cite{videmo} leverage video--language pretraining to describe visual affective cues over time, producing semantically grounded visual narratives. Task-specific adaptations like Emotion-Qwen build hybrid frameworks that integrate emotion reasoning into general vision--language understanding by combining specialized emotion experts with general VL backbones. Evaluation studies of general VLMs show that, with appropriate prompting or fine-tuning, vision--language models can recognize nuanced emotional expressions and behaviors that traditional encoders miss.
+
+Multimodal LLM integrations extend this idea further. Works like BeMERC propose behavior-aware MLLM frameworks for MERC, using multimodal LLMs tuned to behavior features (\eg, facial motion, body language) to directly predict conversational emotions, showing that LLMs can leverage both visual and linguistic context effectively. Prompt-based or zero-shot methods demonstrate that general large vision-language systems such as CLIP~\cite{radford2021clip} or Qwen2.5-VL~\cite{qwen2_5_vl} can be prompted to interpret emotional cues in video or images without explicit retraining, offering flexible emotion inference.
+
+These VLM/LLM approaches address two key limitations in traditional MERC: visual modality underutilization, by generating high-level semantic visual descriptions rather than low-level features~\cite{li2018self}; and cross-modal alignment challenges, by inherently aligning visual and language modalities through shared semantic outputs~\cite{radford2021clip}. Integrating semantic VLM representations into structured MERC frameworks --- especially graph-based methods --- emerges as an important frontier for multimodal emotion recognition.
+
+\subsection{Positioning of Our Work}
+
+Our work builds upon the strengths of graph-based MERC, particularly GraphSmile~\cite{li2024graphsmile}, while addressing the under-utilization of visual information. Instead of using static, low-level visual embeddings~\cite{he2016resnet,baltrusaitis2018openface}, we introduce a VLM-based semantic visual preprocessing stage~\cite{videmo,qwen2_5_vl} that converts raw video segments into temporally structured textual narratives capturing facial expressions, gaze shifts, and body language evolution within an utterance.
+
+These semantic visual descriptions are encoded into dense vectors~\cite{devlin2019bert} and integrated into the Graph Structure Fusion (GSF) pipeline~\cite{li2024graphsmile}. This design preserves intra-utterance temporal dynamics, improves cross-modal alignment, reduces reliance on noisy visual appearance features, and enhances the model's ability to leverage visual cues in relational reasoning across conversation turns. By combining high-level semantic visual reasoning from VLMs with structured graph propagation, our approach advances MERC beyond existing graph-based and VLM-based methods.
+
 \section{Methodology}
 \label{sec:methodology}
 
