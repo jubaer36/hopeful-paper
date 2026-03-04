@@ -4,44 +4,44 @@ The top-level auxiliary file: main.aux
 The style file: splncs04.bst
 Database file #1: citations.bib
 Database file #2: main.bib
-You've used 43 entries,
+You've used 37 entries,
             2850 wiz_defined-function locations,
-            948 strings with 16112 characters,
-and the built_in function-call counts, 29774 in all, are:
-= -- 2486
-> -- 1152
-< -- 45
-+ -- 472
-- -- 425
-* -- 1965
-:= -- 3804
-add.period$ -- 98
-call.type$ -- 43
-change.case$ -- 382
+            911 strings with 15514 characters,
+and the built_in function-call counts, 26625 in all, are:
+= -- 2221
+> -- 1079
+< -- 38
++ -- 441
+- -- 401
+* -- 1775
+:= -- 3425
+add.period$ -- 92
+call.type$ -- 37
+change.case$ -- 352
 chr.to.int$ -- 0
-cite$ -- 43
-duplicate$ -- 2473
-empty$ -- 2485
-format.name$ -- 466
-if$ -- 6485
+cite$ -- 37
+duplicate$ -- 2190
+empty$ -- 2181
+format.name$ -- 439
+if$ -- 5782
 int.to.chr$ -- 0
-int.to.str$ -- 43
-missing$ -- 526
-newline$ -- 135
-num.names$ -- 89
-pop$ -- 1044
+int.to.str$ -- 37
+missing$ -- 474
+newline$ -- 117
+num.names$ -- 76
+pop$ -- 943
 preamble$ -- 1
-purify$ -- 293
+purify$ -- 269
 quote$ -- 0
-skip$ -- 788
+skip$ -- 687
 stack$ -- 0
-substring$ -- 1635
-swap$ -- 1429
-text.length$ -- 45
+substring$ -- 1424
+swap$ -- 1262
+text.length$ -- 38
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 170
+type$ -- 148
 warning$ -- 0
-while$ -- 221
-width$ -- 45
-write$ -- 486
+while$ -- 191
+width$ -- 39
+write$ -- 429

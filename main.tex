@@ -5,7 +5,7 @@
  
 % TODO REVIEW: Insert your submission number below by replacing '*****'
 % TODO FINAL: Comment out the following line for the camera-ready version
-\usepackage[review,year=2026,ID=*****]{eccv}
+\usepackage[review,year=2026,ID=14677]{eccv}
 % TODO FINAL: Un-comment the following line for the camera-ready version
 %\usepackage{eccv}
 
@@ -222,9 +222,11 @@ The acoustic features, $X^a$, capture paralinguistic speech characteristics incl
 \end{figure}
 Traditional visual encoders often fail to fully harness conversational cues because they are restricted to extracting context blind spatial features or isolated facial mechanics, creating a semantic gap between raw physical movements and complex emotional states. The core methodological contribution addresses this by redefining the visual feature extraction process through a three stage semantic preprocessing pipeline.
 
+\smallskip
 \noindent\textbf{Stage 1: Dataset Specific Video Preprocessing.}
 To ensure the VLM accurately analyzes the correct subject, we apply tailored preprocessing strategies based on the native format of each dataset. The IEMOCAP dataset~\cite{busso2008iemocap}, which consists of continuous, multi speaker dialogue recordings, undergoes two explicit preprocessing steps. First, the sessions are temporally segmented into discrete, utterance level clips using provided timestamp annotations; second, each frame is spatially cropped to physically isolate the active speaker and eliminate visual interference. In contrast, the MELD dataset~\cite{poria2019meld} inherently provides presegmented utterance level clips, bypassing the need for physical cropping. Instead, spatial isolation for MELD is achieved entirely through zero shot prompting, wherein the VLM is explicitly instructed to autonomously identify and focus exclusively on the active speaker within the uncropped, multi person frame.
 
+\smallskip
 \noindent\textbf{Stage 2: VLM Temporal Analysis.}
 Each utterance clip is processed by VidEmo-3B~\cite{videmo} (built on the Qwen2.5-VL-3B backbone~\cite{qwen2_5_vl}). The model is driven by a highly structured prompt instructing it to focus exclusively on the active speaker and ignore any other visible participants. The VLM maps the speaker's emotional evolution by dividing the clip into a temporal progression (beginning, middle, and end). For each segment, the model grounds its analysis in specific visible signals across four dimensions:
 \begin{itemize}
@@ -235,6 +237,7 @@ Each utterance clip is processed by VidEmo-3B~\cite{videmo} (built on the Qwen2.
 \end{itemize}
 The temporal analysis concludes with a one sentence summary of the overall emotional arc (\eg, \emph{starts neutral $\rightarrow$ builds frustration $\rightarrow$ brief smile at end}). By enforcing that every observation is grounded in a specific visible signal from the speaker, this stage generates a semantically dense, temporally aware description of affective behavior, bypassing the noise of traditional frame averaging encoders.
 
+\smallskip
 \noindent\textbf{Stage 3: Text Encoding of VLM Output.}
 To bridge the symbolic output of the VLM with the continuous feature space expected by the graph network, the free text description is encoded using a pretrained BERT model~\cite{devlin2019bert}. The resulting fixed dimensional dense vector serves as the new visual modality feature, $X^v$. Encoding visual behavior in the same semantic space as the transcript fosters superior cross modal alignment within the GSF module~\cite{li2024graphsmile}.
 
@@ -334,9 +337,125 @@ $$
 $$
 where $\mathcal{L}_e$ is the primary emotion classification loss, $\lambda_s$ and $\lambda_o$ are trade-off hyperparameters balancing the auxiliary tasks, $\beta$ is the $L_2$ regularization weight, and $\Theta_{total}$ represents all trainable parameters in the model.
 
+\section{Experimental Details}
 
+\subsection{Datasets Overview}
 
-\section{Initial Submission}
+\noindent\textbf{IEMOCAP}~\cite{busso2008iemocap}\textbf{.} The dataset consists of continuous, dyadic conversational sessions recorded with a dual-camera setup, presenting both actors side-by-side in a single unsegmented video frame. The accompanying audio is recorded in stereo, capturing each speaker on a dedicated independent microphone channel.
+
+\smallskip
+\noindent\textbf{MELD}~\cite{poria2019meld}\textbf{.} This dataset is constructed from episodes of the television series \textit{Friends}, representing a multi-party conversational environment. The video data is inherently provided as pre-segmented, utterance-level clips.
+
+\begin{table}[h!]
+  \centering
+  \caption{Dataset statistics for IEMOCAP and MELD.}
+  \label{tab:datasets}
+  \begin{tabular}{lcccc}
+    \hline
+    \textbf{Dataset} & \textbf{Dialogues} & \textbf{Utterances} & \textbf{Classes} & \textbf{Train / Val / Test}     \\
+    \hline
+    IEMOCAP          & 151                & 7,433               & 6                & 5,810 / \textemdash / 1,623$^*$ \\
+    MELD             & 1,432              & 13,708              & 7                & 9,989 / 1,108 / 2,611           \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{Utterance-Level Video Preparation}
+
+\noindent\textbf{IEMOCAP.}
+Since IEMOCAP provides continuous dual-speaker recordings, the following preparation steps are applied:
+\begin{itemize}
+  \item Each conversation video is segmented into utterance-level clips using official timestamps.
+  \item Spatial cropping is applied to isolate the active speaker from the side-by-side frame.
+  \item The stereo audio stream is separated so that only the corresponding speaker's channel is retained.
+  \item The output is a speaker-focused, utterance-level video clip.
+\end{itemize}
+This ensures that the visual modality represents only the speaking individual at each dialogue turn.
+
+\smallskip
+\noindent\textbf{MELD.}
+MELD already provides pre-segmented utterance-level clips:
+\begin{itemize}
+  \item No spatial cropping is required.
+  \item Each clip corresponds directly to a single speaker utterance.
+  \item Speaker focus is handled during prompting rather than preprocessing.
+\end{itemize}
+
+\subsection{Semantic Visual Feature Extraction}
+
+\noindent\textbf{Video-to-Text Generation.}
+Vision Language Models (VLMs) are utilized to generate descriptive text for each utterance. The VidEmo-3B model~\cite{videmo}, built upon the Qwen2.5-VL backbone~\cite{qwen2_5_vl}, is applied to both datasets.
+
+\smallskip
+\noindent\textbf{Frame Sampling.} IEMOCAP videos are sampled at a fixed rate of 1 frame per second (FPS). MELD videos use an adaptive strategy of 1 FPS for clips under 15 seconds, capped at a maximum of 16 frames for longer clips.
+
+\smallskip
+\noindent\textbf{Prompt Structure.} The prompt requests a temporal progression (beginning, middle, and end) detailing facial expressions, head and gaze, body language, and instantaneous emotion, concluding with a one-sentence emotional arc summary. For MELD, zero-shot instructions are included to focus exclusively on the active speaker.
+
+\smallskip
+\noindent\textbf{Batching and Computation.} For IEMOCAP, inference was executed with a batch size of 4, requiring over 7 hours. For MELD, inference was executed with a batch size of 2, requiring over 10 hours.
+
+\smallskip
+\noindent\textbf{Text-to-Vector Encoding.}
+The generated descriptions are encoded using two models evaluated in separate experimental conditions:
+\begin{itemize}
+  \item \textbf{Longformer}~\cite{beltagy2020longformer} (\texttt{allenai/longformer-base-4096}): inputs are processed without truncation; a 768-dimensional embedding is extracted from the \texttt{[CLS]} token.
+  \item \textbf{BERT}~\cite{devlin2019bert} (\texttt{bert-base-uncased}): inputs are truncated to a maximum of 512 tokens; a 768-dimensional embedding is extracted from the \texttt{[CLS]} token.
+\end{itemize}
+
+\subsection{Implementation Details}
+
+\noindent\textbf{Hardware and Environment.}
+All experiments are conducted on an NVIDIA GeForce RTX 3060 (12\,GB VRAM) using a Conda environment with PyTorch 2.8.0+cu126.
+
+\begin{table}[h!]
+  \centering
+  \caption{Hyperparameter settings for IEMOCAP and MELD.}
+  \label{tab:hyperparams}
+  \begin{tabular}{lcc}
+    \hline
+    \textbf{Hyperparameter}    & \textbf{IEMOCAP} & \textbf{MELD}    \\
+    \hline
+    Epochs                     & 120              & 50               \\
+    Batch Size                 & 16               & 16               \\
+    Learning Rate              & $1\times10^{-4}$ & $7\times10^{-5}$ \\
+    Hidden Dimension           & 512              & 384              \\
+    Sliding Window             & 17               & 3                \\
+    Shift Window               & 19               & 3                \\
+    Heterogeneous Graph Layers & 7                & 4                \\
+    Dropout Rate               & 0.2              & 0.2              \\
+    Loss Weights               & 1.0,~1.0,~0.7    & 0.0,~0.5,~0.2    \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{Integration into Graph Based MERC Framework}
+
+\noindent\textbf{Feature Substitution and Dimensionality.}
+The 768-dimensional visual embeddings generated via the VLM and subsequent text encoding are substituted for the original 342-dimensional handcrafted visual descriptors in the dataset manifest. A linear projection layer is implemented at the input of the visual processing stream to map the 768-dimensional vectors into the hidden dimension space of the graph architecture. Textual and acoustic features remain identical to the GraphSmile baseline~\cite{li2024graphsmile}, with dimensions of 1024 (RoBERTa) and 1582 (openSMILE IS10) for IEMOCAP, and 1024 and 300 respectively for MELD.
+
+\smallskip
+\noindent\textbf{Evaluation Metrics.}
+Accuracy (ACC) and Weighted F1-score (WF1) serve as the primary evaluation metrics for overall model performance. The F1-score is further utilized to evaluate classification performance for each individual emotion category.
+
+\smallskip
+\noindent\textbf{Training and Optimization Strategy.}
+The model follows the multi-task optimization strategy of GraphSmile~\cite{li2024graphsmile}, jointly learning the primary emotion recognition task alongside sentiment and sentiment-shift classification. All structural components of the Graph Structure Fusion (GSF) module and the Sentiment Dynamics Perception (SDP) module are maintained as per the original implementation to ensure a controlled comparison of visual feature effectiveness.
+
+\section{Conclusion}
+The paper ends with a conclusion.
+
+\section*{Acknowledgements}
+Please insert your acknowledgments here.
+
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+\bibliographystyle{splncs04}
+\bibliography{citations,main}
+\end{document}
 
 \subsection{Language}
 All manuscripts must be in English.

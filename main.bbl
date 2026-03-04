@@ -3,32 +3,14 @@
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
 
-\bibitem{Alpher02}
-Alpher, F.: Frobnication. IEEE TPAMI  \textbf{12}(1),  234--778 (2002)
-
-\bibitem{Alpher03}
-Alpher, F., Fotheringham-Smythe, F.: Frobnication revisited. Journal of Foo  \textbf{13}(1),  234--778 (2003)
-
-\bibitem{Alpher04}
-Alpher, F., Fotheringham-Smythe, F., Gamow, F.: Can a machine frobnicate? Journal of Foo  \textbf{14}(1),  234--778 (2004)
-
-\bibitem{Alpher05}
-Alpher, F., Gamow, F.: Can a computer frobnicate? In: CVPR. pp. 234--778 (2005)
-
-\bibitem{Anonymous24}
-Anonymous: The frobnicatable foo filter (2024), {ECCV} submission ID 00324, supplied as supplemental material {\tt 00324.pdf}
-
-\bibitem{Anonymous24b}
-Anonymous: Frobnication tutorial (2024), supplied as supplemental material {\tt tr.pdf}
-
-\bibitem{ECCV2022}
-Avidan, S., Brostow, G., Cissé, M., Farinella, G.M., Hassner, T. (eds.): Computer Vision -- ECCV 2022. Springer (2022). \doi{10.1007/978-3-031-19769-7}
-
 \bibitem{qwen2_5_vl}
 Bai, S., Chen, K., Liu, X., Wang, J., Ge, W., Song, S., Dang, K., Wang, P., Wang, S., Tang, J., Zhong, H., Zhu, Y., Yang, M., Li, Z., Wan, J., Wang, P., Ding, W., Fu, Z., Xu, Y., Ye, J., Zhang, X., Xie, T., Cheng, Z., Zhang, H., Yang, Z., Xu, H., Lin, J.: Qwen2.5-vl technical report. arXiv preprint  \textbf{abs/2502.13923} (2025). \doi{10.48550/arXiv.2502.13923}
 
 \bibitem{baltrusaitis2018openface}
 Baltru{\v{s}}aitis, T., Zadeh, A., Lim, Y.C., Morency, L.P.: Openface 2.0: Facial behavior analysis toolkit. In: 2018 13th IEEE International Conference on Automatic Face \& Gesture Recognition (FG 2018). pp. 59--66 (2018). \doi{10.1109/FG.2018.00019}
+
+\bibitem{beltagy2020longformer}
+Beltagy, I., Peters, M.E., Cohan, A.: Longformer: The long-document transformer. In: arXiv preprint arXiv:2004.05150 (2020), \url{https://arxiv.org/abs/2004.05150}
 
 \bibitem{busso2008iemocap}
 Busso, C., Bulut, M., Lee, C.C., Kazemzadeh, A., Mower, E., Kim, S., Chang, J.N., Lee, S., Narayanan, S.S.: {IEMOCAP}: Interactive emotional dyadic motion capture database. Language Resources and Evaluation  \textbf{42}(4),  335--359 (2008). \doi{10.1007/s10579-008-9076-6}
