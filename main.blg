@@ -4,44 +4,47 @@ The top-level auxiliary file: main.aux
 The style file: splncs04.bst
 Database file #1: citations.bib
 Database file #2: main.bib
-You've used 26 entries,
+Warning--empty booktitle in busso2008iemocap
+Warning--can't use both volume and number fields in busso2008iemocap
+You've used 31 entries,
             2850 wiz_defined-function locations,
-            844 strings with 11699 characters,
-and the built_in function-call counts, 17838 in all, are:
-= -- 1512
-> -- 648
-< -- 27
-+ -- 267
-- -- 238
-* -- 1156
-:= -- 2259
-add.period$ -- 60
-call.type$ -- 26
-change.case$ -- 224
+            875 strings with 13164 characters,
+and the built_in function-call counts, 21919 in all, are:
+= -- 1843
+> -- 848
+< -- 33
++ -- 348
+- -- 314
+* -- 1442
+:= -- 2793
+add.period$ -- 73
+call.type$ -- 31
+change.case$ -- 284
 chr.to.int$ -- 0
-cite$ -- 26
-duplicate$ -- 1481
-empty$ -- 1521
-format.name$ -- 261
-if$ -- 3917
+cite$ -- 33
+duplicate$ -- 1798
+empty$ -- 1824
+format.name$ -- 342
+if$ -- 4784
 int.to.chr$ -- 0
-int.to.str$ -- 26
-missing$ -- 307
-newline$ -- 84
-num.names$ -- 53
-pop$ -- 615
+int.to.str$ -- 31
+missing$ -- 382
+newline$ -- 99
+num.names$ -- 63
+pop$ -- 767
 preamble$ -- 1
-purify$ -- 168
+purify$ -- 217
 quote$ -- 0
-skip$ -- 495
+skip$ -- 594
 stack$ -- 0
-substring$ -- 1025
-swap$ -- 853
-text.length$ -- 27
+substring$ -- 1226
+swap$ -- 1041
+text.length$ -- 33
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 102
-warning$ -- 0
-while$ -- 135
-width$ -- 28
-write$ -- 296
+type$ -- 122
+warning$ -- 2
+while$ -- 162
+width$ -- 33
+write$ -- 356
+(There were 2 warnings)
