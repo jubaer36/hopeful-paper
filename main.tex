@@ -115,12 +115,6 @@ In summary, this work makes the following contributions:
 \end{enumerate}
 
 By bridging the gap between visual perception and semantic understanding, our approach offers a new direction for enhancing the role of visual information in multimodal conversational emotion recognition.
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.92\linewidth]{VLMtemporal.pdf}
-  \caption{Overview of the proposed semantic visual preprocessing pipeline.}
-  \label{fig:preprocessing}
-\end{figure}
 
 \section{Related Works}
 
@@ -131,15 +125,11 @@ Emotion Recognition in Conversations (ERC) aims to identify the emotional state 
 Multimodal ERC (MERC) incorporates text, acoustic, and visual cues to better reflect human emotion expression~\cite{poria2019meld,zadeh2018multimodal}. Text provides lexical and semantic content, acoustic features convey speech patterns~\cite{schuller2011recognising}, and visual data encodes facial expressions and gestures~\cite{li2018self}. MERC introduces additional challenges, including modality alignment, noise handling, and effective cross-modal fusion~\cite{shou2025comprehensivesurveymultimodalconversational}.
 \subsection{Approaches to MERC}
 
-To address these challenges, several modeling strategies have been proposed.
+Multimodal Emotion Recognition in Conversations (MERC) has been addressed using several modeling strategies, ranging from sequence based methods to multimodal fusion and graph based approaches.
 
-\subsubsection{Sequence and Context Based Methods.}
-Sequence models capture temporal dependencies and speaker states in conversations. DialogueRNN~\cite{majumder2019dialoguernn} uses recurrent structures to leverage dialog history for emotion prediction but has limited ability to model complex speaker or cross-modal interactions.
-\subsubsection{Fusion Based Methods.}
-Fusion approaches integrate multimodal information using different strategies. Early and late fusion methods combine modality features either at the input level or at the decision stage and are widely used baselines in multimodal sentiment and emotion analysis~\cite{morency2011multimodal,perezrosas2013utterance,poria2016fusing,zadeh2016mosi}. More advanced approaches employ attention mechanisms to model interactions between modalities. Multimodal Transformer architectures use cross modal attention to align textual, acoustic, and visual representations~\cite{tsai2019mult}, while MISA learns modality invariant and modality specific representations for improved multimodal integration~\cite{hazarika2020misa}. Additionally, models such as DialogueRNN and related methods incorporate mechanisms to track speaker states and emotion transitions within conversations~\cite{majumder2019dialoguernn,hazarika2018icon}. 
+Sequence based methods capture temporal dependencies and speaker states in conversations. For example, DialogueRNN~\cite{majumder2019dialoguernn} uses recurrent structures to leverage dialog history for emotion prediction, while also incorporating speaker state tracking. Fusion based methods integrate information across modalities using strategies such as early or late fusion, attention mechanisms, and transformer based cross modal alignment. Early and late fusion combine modality features at the input or decision stage~\cite{morency2011multimodal,perezrosas2013utterance,poria2016fusing,zadeh2016mosi}, whereas attention based and transformer architectures, such as Multimodal Transformer~\cite{tsai2019mult} and MISA~\cite{hazarika2020misa}, model interactions between modalities and learn both shared and modality specific representations. Some methods, like DialogueRNN and its extensions, also incorporate mechanisms for tracking emotion transitions within conversations~\cite{majumder2019dialoguernn,hazarika2018icon}.
 
-Although fusion methods improve multimodal interaction, they often do not explicitly represent conversational structure or relational dependencies between speakers.
-\subsection{Graph Based MERC Approaches}
+While these sequence and fusion approaches capture context and multimodal interactions, they often fail to explicitly model conversational structure or relational dependencies between speakers, a gap addressed by graph based methods~\cite{ghosal2019dialoguegcn,hu2021mmgcn,li2024graphsmile}.\subsection{Graph Based MERC Approaches}
 
 Graph based methods are powerful for MERC as they encode conversational structure and relational dependencies~\cite{hu2021mmgcn,li2024graphsmile}. Utterances are nodes and edges represent speaker interactions, temporal continuity, and cross-modal links~\cite{kipf2017gcn}. DialogueGCN~\cite{ghosal2019dialoguegcn} introduced graph reasoning for ERC, modeling intra- and inter-speaker relations and outperforming sequential models. Extensions like MMGCN~\cite{hu2021mmgcn} and hypergraph models capture multimodal interactions, while \textbf{Joyful}~\cite{li-etal-2023-joyful} combines graph fusion with contrastive learning to improve multimodal representations and address issues like oversmoothing.
 
@@ -154,7 +144,7 @@ VLMs such as VidEmo-3B~\cite{videmo} produce temporally grounded visual narrativ
 
 Multimodal LLMs extend this concept further. Frameworks like BeMERC~\cite{fu2025bemerc} leverage behavior-aware LLMs to integrate visual and linguistic context for conversational emotion prediction. Prompting general VL models such as CLIP~\cite{radford2021clip} or Qwen2.5-VL~\cite{qwen2_5_vl} can enable zero-shot emotion inference from video or images without retraining.
 
-Overall, VLM/LLM approaches address two core MERC challenges: they reduce visual modality underutilization by producing high-level semantic descriptions~\cite{li2018self}, and improve cross-modal alignment by encoding visual and linguistic information in shared semantic spaces~\cite{radford2021clip}. Integrating these semantic visual representations into graph-based MERC frameworks represents a promising direction for enhanced multimodal emotion recognition.
+Overall, VLM/LLM approaches address two core MERC challenges: they reduce visual modality underutilization by producing high-level semantic descriptions~\cite{radford2021clip,shou2025comprehensivesurveymultimodalconversational}, and improve cross-modal alignment by encoding visual and linguistic information in shared semantic spaces~\cite{radford2021clip}. Integrating these semantic visual representations into graph-based MERC frameworks represents a promising direction for enhanced multimodal emotion recognition.
 \subsection{Positioning of Our Work}
 
 Our work builds upon the strengths of graph based MERC frameworks , particularly GraphSmile~\cite{li2024graphsmile}, while addressing the underutilization of visual information. Instead of using static, low level visual embeddings~\cite{he2016resnet,baltrusaitis2018openface}, we introduce a VLM based semantic visual preprocessing stage~\cite{videmo,qwen2_5_vl} that converts raw video segments into temporally structured textual narratives capturing facial expressions, gaze shifts, and body language evolution within an utterance.
@@ -189,7 +179,7 @@ The acoustic features, $X^a$, capture paralinguistic speech characteristics incl
 \subsubsection{Semantic Visual Feature Extraction}
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.92\linewidth]{Preprocessing.pdf}
+  \includegraphics[width=0.85\linewidth]{Preprocessing.pdf}
   \caption{The multimodal preprocessing pipeline for extracting utterance-level textual, acoustic, and visual features.}
   \label{fig:pipeline}
 \end{figure}
@@ -218,6 +208,12 @@ For MELD, BLIP-2~\cite{li2023blip2} is used in a frame-level approach: three fra
 The VLM text is converted to a dense vector via pretrained transformers. BERT~\cite{devlin2019bert} extracts the \texttt{[CLS]} token from truncated inputs, while Longformer~\cite{beltagy2020longformer} processes the full description. Both yield 768-dimensional embeddings representing the visual modality, $X^v$, in the same semantic space as transcripts, improving cross-modal alignment within the GSF module~\cite{li2024graphsmile}.
 
 \subsection{Graph Structure Fusion (GSF) Module}
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.88\linewidth]{VLMtemporal.pdf}
+  \caption{Sample VLM output: given a video separated into frames as input, the VLM produces a structured description capturing facial expressions, behavioral cues, and the progression of emotional state across the utterance.}
+  \label{fig:vlmtemporal}
+\end{figure}
 
 The Graph Structure Fusion (GSF) module processes dialogue graphs layer by layer, alternating between sequential edges for temporal flow and speaker edges for personal consistency. This back-and-forth approach prevents any single relationship from dominating and effectively separates a speaker's internal emotional shifts from the conversation's external influences.
 \subsubsection{Multimodal Dialogue Graphs}
@@ -252,7 +248,7 @@ $$\text{FC}(X) = \text{Dropout}(\text{LeakyReLU}(X\Theta_f + b_f))$$
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.92\linewidth]{NodesGNN.pdf}
+  \includegraphics[width=0.85\linewidth]{NodesGNN.pdf}
   \caption{Multimodal dialogue graph structure used in GraphSmile~\cite{li2024graphsmile}, in which utterance nodes from different modality pairs are connected via bipartite graphs and propagated through the Graph Structure Fusion (GSF) module. Adapted from~\cite{li2024graphsmile}.}
   \label{fig:nodesgnn}
 \end{figure}
@@ -277,7 +273,7 @@ For the primary task of emotion classification, $H$ goes through a linear classi
 $$\hat{Y} = \text{softmax}(H\Theta_y + b_y), \qquad \hat{e}_i = \text{argmax}(\hat{y}_i[\tau])$$
 \vspace{-8pt}
 
-\noindent Here, $\Theta_y$ and $b_y$ are the learned weights and biases. The vector $\hat{y}_i$ holds the emotion probabilities for utterance $u_i$, and $\hat{e}_i$ is the final predicted emotion label. We optimize the network using categorical cross-entropy loss:
+\noindent Here, $\Theta_y$ and $b_y$ are the learned weights and biases. $\tau$ denotes the index over the set of emotion classes. The vector $\hat{y}_i$ holds the emotion probabilities for utterance $u_i$, and $\hat{e}_i$ is the final predicted emotion label. We optimize the network using categorical cross-entropy loss:
 \vspace{-6pt}
 $$\mathcal{L}_e = -\frac{1}{M} \sum_{i=1}^{M} \sum_{j=1}^{C_e} y_{i,j} \log \hat{y}_{i,j}$$
 \vspace{-8pt}
@@ -390,7 +386,7 @@ All experiments are conducted on an NVIDIA GeForce RTX 3060 (12\,GB VRAM) using 
     \hline
     Epochs                     & 120              & 50               \\
     Batch Size                 & 16               & 16               \\
-    Learning Rate              & $1\times10^{-4}$ & $7\times10^{-5}$ \\
+    Learning Rate              & .0001 & .00007 \\
     Hidden Dimension           & 512              & 384              \\
     Sliding Window             & 17               & 3                \\
     Shift Window               & 19               & 3                \\
@@ -427,7 +423,7 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
   \centering
   \caption{\label{tab:main_result_iemocap}Main Results for the MERC Task on the IEMOCAP Dataset.}
   {\renewcommand{\arraystretch}{0.82}\resizebox{\textwidth}{!}{%
-    \begin{tabular}{l @{\hspace{0.8em}} c @{\hspace{0.8em}} c @{\hspace{0.8em}} *{6}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{0.8em}} cc}
+    \begin{tabular}{l @{\hspace{1.5em}} c @{\hspace{1.5em}} c @{\hspace{1.5em}} *{6}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{1.5em}} c @{\hspace{1.5em}} c}
       \toprule
       \multirow{2}{*}{Method} & \multicolumn{10}{c}{IEMOCAP-6}                                                                    \\
       \cmidrule(lr){2-3} \cmidrule(lr){4-9} \cmidrule(lr){10-11}
@@ -450,12 +446,12 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
     \end{tabular}%
   }}
 \end{table}
-
+\vspace{-8pt}
 \begin{table}[H]
   \centering
   \caption{\label{tab:main_result_meld}Main Results for the MERC Task on the MELD Dataset.}
   {\renewcommand{\arraystretch}{0.82}\resizebox{\textwidth}{!}{%
-    \begin{tabular}{l @{\hspace{0.8em}} c @{\hspace{0.8em}} c @{\hspace{0.8em}} *{7}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{0.8em}} cc}
+    \begin{tabular}{l @{\hspace{1.5em}} c @{\hspace{1.5em}} c @{\hspace{1.5em}} *{7}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{1.5em}} c @{\hspace{1.5em}} c}
       \toprule
       \multirow{2}{*}{Method} & \multicolumn{11}{c}{MELD}                                                                            \\
       \cmidrule(lr){2-3} \cmidrule(lr){4-10} \cmidrule(lr){11-12}
@@ -478,7 +474,7 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
   }}
   \begin{minipage}{\textwidth}
     \small
-    The marker $^\dagger$ indicates the results (\%) as replicated by the GraphSmile paper, and the marker $^\ddagger$ indicates the results (\%) replicated by us and no marker indicates results taken from original papers.
+    $^\dagger$~results replicated using the GraphSmile codebase; $^\ddagger$~results independently replicated by us; no marker~results taken directly from the original paper.
   \end{minipage}
 \end{table}
 
