@@ -138,42 +138,24 @@ By bridging the gap between visual perception and semantic understanding, our ap
 
 \subsection{Emotion Recognition in Conversations and Multimodal Extensions}
 
-Emotion Recognition in Conversations (ERC) seeks to identify the emotional state expressed in each utterance by considering the context of preceding dialogue turns and speaker interactions~\cite{shou2025comprehensivesurveymultimodalconversational}. Early sequence based methods relied on recurrent architectures such as RNNs and GRUs to capture temporal dependencies and track speaker states throughout a dialogue~\cite{majumder2019dialoguernn,hazarika2018icon}. While effective for short range context modeling, these approaches often struggle with long range dependencies and complex inter speaker influences.
+Emotion Recognition in Conversations (ERC) aims to identify the emotional state of each utterance by leveraging dialogue context and speaker interactions~\cite{shou2025comprehensivesurveymultimodalconversational}. Early sequence models using RNNs or GRUs capture short-term dependencies and speaker states~\cite{majumder2019dialoguernn,hazarika2018icon}, but often struggle with long-range interactions. 
 
-Multimodal Emotion Recognition in Conversations (MERC) extends ERC by incorporating multiple modalities (typically text, acoustic, and visual) to better reflect how humans convey emotions~\cite{poria2019meld,zadeh2018multimodal}. Textual information captures lexical and semantic content, acoustic signals encode prosodic and paralinguistic cues~\cite{schuller2011recognising}, and visual data contributes facial expressions and body language~\cite{li2018self}. MERC's multimodal nature poses additional challenges, including modality alignment, noise handling (especially in the visual and acoustic channels), and effective cross modal fusion~\cite{shou2025comprehensivesurveymultimodalconversational}.
-
+Multimodal ERC (MERC) incorporates text, acoustic, and visual cues to better reflect human emotion expression~\cite{poria2019meld,zadeh2018multimodal}. Text provides lexical and semantic content, acoustic features convey speech patterns~\cite{schuller2011recognising}, and visual data encodes facial expressions and gestures~\cite{li2018self}. MERC introduces additional challenges, including modality alignment, noise handling, and effective cross-modal fusion~\cite{shou2025comprehensivesurveymultimodalconversational}.
 \subsection{Approaches to MERC}
 
-To address these challenges, several modeling strategies have been proposed:
+To address these challenges, several modeling strategies have been proposed.
 
 \subsubsection{Sequence and Context Based Methods.}
-Sequence models prioritize temporal dependencies and contextual flow. Early works such as DialogueRNN~\cite{majumder2019dialoguernn} process dialog turns sequentially, learning conversational context and speaker interactions through recurrent structures. While these approaches improve performance over context agnostic classifiers, they lack explicit mechanisms for relational reasoning between speakers or across modalities.
-
+Sequence models capture temporal dependencies and speaker states in conversations. DialogueRNN~\cite{majumder2019dialoguernn} uses recurrent structures to leverage dialog history for emotion prediction but has limited ability to model complex speaker or cross-modal interactions.
 \subsubsection{Fusion Based Methods.}
-Fusion approaches aim to integrate multimodal information through strategies such as early concatenation, late decision fusion, cross modal attention, and transformer based fusion blocks.
+Fusion approaches integrate multimodal information using different strategies. Early and late fusion methods combine modality features either at the input level or at the decision stage and are widely used baselines in multimodal sentiment and emotion analysis~\cite{morency2011multimodal,perezrosas2013utterance,poria2016fusing,zadeh2016mosi}. More advanced approaches employ attention mechanisms to model interactions between modalities. Multimodal Transformer architectures use cross modal attention to align textual, acoustic, and visual representations~\cite{tsai2019mult}, while MISA learns modality invariant and modality specific representations for improved multimodal integration~\cite{hazarika2020misa}. Additionally, models such as DialogueRNN and related methods incorporate mechanisms to track speaker states and emotion transitions within conversations~\cite{majumder2019dialoguernn,hazarika2018icon}. 
 
-  {\setlength{\leftskip}{1em}\noindent\textbf{Early / Late Fusion:} Early fusion concatenates modality features at the input level, while late fusion combines modality specific predictions at the decision stage. These strategies are widely used baselines in multimodal sentiment and emotion analysis~\cite{morency2011multimodal,perezrosas2013utterance,poria2016fusing,zadeh2016mosi}.\par}
-
-  {\setlength{\leftskip}{1em}\noindent\textbf{Attention Based Fusion:} Attention mechanisms dynamically weight modality contributions. The Multimodal Transformer~\cite{tsai2019mult} introduces cross modal attention for aligning text, audio, and visual streams, while MISA~\cite{hazarika2020misa} learns modality invariant and modality specific representations through attention based fusion.\par}
-
-  {\setlength{\leftskip}{1em}\noindent\textbf{Transformer Based Fusion:} Transformer architectures jointly model intra and inter modality dependencies using self and cross attention, enabling richer multimodal interaction~\cite{tsai2019mult}.\par}
-
-  {\setlength{\leftskip}{1em}\noindent\textbf{Emotion Shift Aware Fusion:} DialogueRNN~\cite{majumder2019dialoguernn} models emotion dynamics and speaker state tracking, and later multimodal variants incorporate shift aware mechanisms to better capture emotional transitions in dialogue~\cite{hazarika2018icon}.\par}
-
-While fusion strategies enhance cross modal interaction, they typically do not explicitly capture conversational structure or speaker relationships, which are crucial for nuanced emotional understanding in dialogue.
-
+Although fusion methods improve multimodal interaction, they often do not explicitly represent conversational structure or relational dependencies between speakers.
 \subsection{Graph Based MERC Approaches}
 
-Graph based approaches have emerged as one of the most powerful and widely adopted strategies for MERC because they directly encode conversational structure and relational dependencies into the learning process~\cite{hu2021mmgcn,li2024graphsmile}. In this paradigm, utterances are represented as nodes, and edges encode speaker interactions, temporal continuity, and cross modal links~\cite{kipf2017gcn}, enabling structured graph propagation across the dialogue.
+Graph based methods are powerful for MERC as they encode conversational structure and relational dependencies~\cite{hu2021mmgcn,li2024graphsmile}. Utterances are nodes and edges represent speaker interactions, temporal continuity, and cross-modal links~\cite{kipf2017gcn}. DialogueGCN~\cite{ghosal2019dialoguegcn} introduced graph reasoning for ERC, modeling intra- and inter-speaker relations and outperforming sequential models. Extensions like MMGCN~\cite{hu2021mmgcn} and hypergraph models capture multimodal interactions, while \textbf{Joyful}~\cite{li-etal-2023-joyful} combines graph fusion with contrastive learning to improve multimodal representations and address issues like oversmoothing.
 
-DialogueGCN~\cite{ghosal2019dialoguegcn} first formalized ERC as graph reasoning by modeling both intra speaker and inter speaker relations using graph convolution, showing superior performance over sequential models. This method laid the groundwork for structural reasoning in conversational emotion tasks, highlighting the importance of relational context.
-
-Subsequent graph extensions to MERC expanded the graph structure to include multimodal interactions. For example, MMGCN~\cite{hu2021mmgcn} and its variants build modality aware graphs to learn cross modal relationships jointly, and hypergraph based models capture higher order interactions among modalities and speakers.
-
-A more recent line of work incorporates auxiliary objectives and enhanced graph learning. \textbf{Joyful}~\cite{li-etal-2023-joyful} integrates modality fusion with contrastive learning within a graph framework, constructing multimodal interaction graphs and employing contrastive objectives to encourage discriminative representations across modalities, addressing traditional issues such as over smoothing in graph embeddings and improving cross modal alignment.
-
-\textbf{GraphSmile}~\cite{li2024graphsmile} represents a state of the art graph centric MERC architecture introducing two key components: \textit{Graph Structure Fusion (GSF)}~\cite{li2024graphsmile}, which constructs bipartite dialogue graphs~\cite{hu2021mmgcn} between every pair of modalities and alternates information propagation across these graphs to prevent any single structural path from dominating; and \textit{Sentiment Dynamics Perception (SDP)}~\cite{li2024graphsmile}, an auxiliary task that explicitly predicts whether sentiment shifts occur between consecutive utterances to guide the model toward emotional transitions.
-
+\textbf{GraphSmile}~\cite{li2024graphsmile} represents a state-of-the-art graph-centric MERC architecture introducing two key components: \textit{Graph Structure Fusion (GSF)}~\cite{li2024graphsmile}, which constructs bipartite dialogue graphs~\cite{hu2021mmgcn} between every pair of modalities and alternates information propagation across these graphs to prevent any single structural path from dominating; and \textit{Sentiment Dynamics Perception (SDP)}~\cite{li2024graphsmile}, an auxiliary task that explicitly predicts whether sentiment shifts occur between consecutive utterances to guide the model toward emotional transitions.
 Despite its strong performance, GraphSmile, like most existing graph based MERC methods depends on conventional visual encoders (\eg, CNN backbones~\cite{he2016resnet} or handcrafted facial features~\cite{baltrusaitis2018openface}) that produce static, low level visual embeddings. These embeddings are typically mean-pooled over frames, collapsing intra utterance temporal dynamics and limiting the visual modality's contribution to emotional reasoning. Graph based approaches excel at structurally modeling dialogues and multimodal interactions, but their effectiveness is often constrained by the quality of unimodal representations feeding into the graph.
 
 \subsection{Vision Language and LLM Based Approaches for Emotion Recognition}
@@ -369,22 +351,19 @@ where $\mathcal{L}_e$ is the primary emotion classification loss, $\lambda_s$ an
 \subsection{Utterance-Level Video Preparation}
 
 \noindent\textbf{IEMOCAP.}
-Since IEMOCAP provides continuous dual-speaker recordings, the following preparation steps are applied:
 \begin{itemize}
-  \item Each conversation video is segmented into utterance-level clips using official timestamps.
-  \item Spatial cropping is applied to isolate the active speaker from the side-by-side frame.
-  \item The stereo audio stream is separated so that only the corresponding speaker's channel is retained.
-  \item The output is a speaker-focused, utterance-level video clip.
+  \item Segment each conversation into utterance level clips using timestamps.
+  \item Crop frames to isolate the active speaker.
+  \item Retain only the speaker's audio channel from the stereo stream.
+  \item Output speaker focused utterance level video clips.
 \end{itemize}
-This ensures that the visual modality represents only the speaking individual at each dialogue turn.
 
 \smallskip
 \noindent\textbf{MELD.}
-MELD already provides pre-segmented utterance-level clips:
 \begin{itemize}
-  \item No spatial cropping is required.
-  \item Each clip corresponds directly to a single speaker utterance.
-  \item Speaker focus is handled during prompting rather than preprocessing.
+  \item Pre-segmented utterance level clips; no cropping needed.
+  \item Each clip corresponds to a single speaker utterance.
+  \item Speaker focus is handled during prompting.
 \end{itemize}
 
 \subsection{Semantic Visual Feature Extraction}
