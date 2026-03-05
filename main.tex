@@ -416,23 +416,24 @@ All experiments are conducted on an NVIDIA GeForce RTX 3060 (12\,GB VRAM) using 
 
 \noindent\textbf{Feature Substitution and Dimensionality.}
 The 768-dimensional visual embeddings generated via the VLM and subsequent text encoding are substituted for the original 342-dimensional handcrafted visual descriptors in the dataset manifest. A linear projection layer is implemented at the input of the visual processing stream to map the 768-dimensional vectors into the hidden dimension space of the graph architecture. Textual and acoustic features remain identical to the GraphSmile baseline~\cite{li2024graphsmile}, with dimensions of 1024 (RoBERTa) and 1582 (openSMILE IS10) for IEMOCAP, and 1024 and 300 respectively for MELD.
+
+\smallskip
 \noindent\textbf{Evaluation Metrics.}
 Accuracy (ACC) and Weighted F1-score (WF1) serve as the primary evaluation metrics for overall model performance. The F1-score is further utilized to evaluate classification performance for each individual emotion category.
+
+\smallskip
 \noindent\textbf{Training and Optimization Strategy.}
 The model follows the multi-task optimization strategy of GraphSmile~\cite{li2024graphsmile}, jointly learning the primary emotion recognition task alongside sentiment and sentiment-shift classification. All structural components of the Graph Structure Fusion (GSF) module and the Sentiment Dynamics Perception (SDP) module are maintained as per the original implementation to ensure a controlled comparison of visual feature effectiveness.
 
 \section{Results and Observations}
-
-
 \subsection{Results Comparison}
-
 Tables~\ref{tab:main_result_iemocap} and~\ref{tab:main_result_meld} summarize the performance of the proposed semantic visual representation integrated with GraphSmile on the IEMOCAP and MELD datasets. The evaluation includes overall accuracy (ACC), weighted F1 score (WF1), and per-class F1 scores for each emotion category.
 
 On the IEMOCAP dataset, GraphSmile with BERT-based encoding of VLM-generated descriptions achieved the highest performance, with a weighted F1 score of 71.65, slightly improving over the baseline GraphSmile (WF1 71.29). Longformer-based encoding also performed comparably (WF1 71.49), but did not surpass BERT. For individual emotions, BERT-based VLM representations improved recognition for Happy (61.49) and Frustrated (67.51) categories.
 
 On the MELD dataset, the improvements were more modest. GraphSmile integrated with BLIP-2~\cite{li2023blip2} and BERT achieved the best performance among the VLM variants, with ACC 67.47 and WF1 66.35. Qwen-VL-3B with BERT also slightly outperformed Longformer-based encoding (ACC 67.32 vs.\ 67.13; WF1 66.12 vs.\ 65.97). Overall, performance remained close to the GraphSmile baseline (ACC 67.66, WF1 66.67). Individual emotion recognition showed minor variations across Neutral, Joy, Sadness, and other categories.
 
-\begin{table}[H]
+\begin{table}[t]
   \centering
   \caption{\label{tab:main_result_iemocap}Main Results for the MERC Task on the IEMOCAP Dataset.}
   \resizebox{\textwidth}{!}{%
@@ -458,9 +459,10 @@ On the MELD dataset, the improvements were more modest. GraphSmile integrated wi
       \bottomrule
     \end{tabular}%
   }
+\end{table}
 
-  \vspace{1.5em}
-
+\begin{table}[t]
+  \centering
   \caption{\label{tab:main_result_meld}Main Results for the MERC Task on the MELD Dataset.}
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{l @{\hspace{1.5em}} c @{\hspace{1.5em}} c @{\hspace{1.5em}} *{7}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{1.5em}} cc}
@@ -484,15 +486,13 @@ On the MELD dataset, the improvements were more modest. GraphSmile integrated wi
       \bottomrule
     \end{tabular}%
   }
-
-  \vspace{1ex}
   \begin{minipage}{\textwidth}
     \small
     The marker $^\dagger$ indicates the results (\%) as replicated by the GraphSmile paper, and the marker $^\ddagger$ indicates the results (\%) replicated by us and no marker indicates results taken from original papers.
   \end{minipage}
 \end{table}
-\subsection{Observations}
 
+\subsection{Observations}
 
 The results demonstrate that semantic visual representations can effectively replace traditional handcrafted visual descriptors in graph-based MERC frameworks without significant loss in performance. In some cases, modest improvements were observed, particularly on IEMOCAP where the target speaker could be isolated.
 
