@@ -228,7 +228,6 @@ To understand how utterances relate to each other across different sensory input
 
 \subsubsection{Alternate Graph Propagation}
 Graph Neural Networks (GNNs) \cite{kipf2017gcn,scarselli2008graph} are highly effective at uncovering both cross modal and intra modal relationships. In our design, each dialogue graph passes information through multiple simplified convolutional layers. It alternates between extracting inter modal and intra modal features layer by layer, calculated as:
-\vspace{-6pt}
 \begin{equation*}
   X^{(l)} = AX^{(l-1)}\Theta^{(l)}, \quad l = 1, 2, \dots, L
 \end{equation*}
@@ -236,13 +235,11 @@ Graph Neural Networks (GNNs) \cite{kipf2017gcn,scarselli2008graph} are highly ef
 \noindent Here, $A$ is the dialogue graph's adjacency matrix, $X^{(l)}$ is the output feature at layer $l$, and $\Theta^{(l)}$ is the trainable weight matrix for that layer. For the textual-visual graph, the starting input $X^{tv,(0)}$ simply combines the raw textual features $[x^t_1, \dots, x^t_M]$ and visual features $[x^v_1, \dots, x^v_M]$.
 
 Next, we use residual connections \cite{he2016resnet} to sum the feature representations from every layer:
-\vspace{-6pt}
 \begin{equation*}
   X = X^{(0)} + \text{FC}^{(1)}(X^{(1)}) + \dots + \text{FC}^{(L)}(X^{(L)})
 \end{equation*}
 
 \noindent The fully connected layer $\text{FC}(\cdot)$ includes a linear transformation, a LeakyReLU \cite{maas2013rectifier} activation, and dropout \cite{srivastava2014dropout}:
-\vspace{-6pt}
 \begin{equation*}
   \text{FC}(X) = \text{Dropout}(\text{LeakyReLU}(X\Theta_f + b_f))
 \end{equation*}
@@ -258,7 +255,6 @@ Next, we use residual connections \cite{he2016resnet} to sum the feature represe
 
 \subsubsection{Multimodal Integration}
 After processing the textual-visual ($\mathcal{G}^{tv}$), textual-acoustic ($\mathcal{G}^{ta}$), and visual-acoustic ($\mathcal{G}^{va}$) graphs through their own separate GSF modules, we get three distinct outputs: $X^{tv}$, $X^{ta}$, and $X^{va}$. We add these together to create a final, unified feature representation:
-\vspace{-6pt}
 \begin{align}
   H =\; & \sigma\!\left((X^{t \leftarrow v})\Theta_h\right) + \sigma\!\left((X^{v \leftarrow t})\Theta_h\right) \nonumber   \\
         & + \sigma\!\left((X^{t \leftarrow a})\Theta_h\right) + \sigma\!\left((X^{a \leftarrow t})\Theta_h\right) \nonumber \\
@@ -271,13 +267,11 @@ After processing the textual-visual ($\mathcal{G}^{tv}$), textual-acoustic ($\ma
 
 After the graph propagation and integration phase, the resulting feature matrix $H$ is passed into a multitask classification head.
 For the primary task of emotion classification, $H$ goes through a linear classifier and a softmax function to predict the exact emotional category. This is formulated as:
-\vspace{-6pt}
 \begin{equation*}
   \hat{Y} = \text{softmax}(H\Theta_y + b_y), \qquad \hat{e}_i = \text{argmax}(\hat{y}_i[\tau])
 \end{equation*}
 
 \noindent Here, $\Theta_y$ and $b_y$ are the learned weights and biases. $\tau$ denotes the index over the set of emotion classes. The vector $\hat{y}_i$ holds the emotion probabilities for utterance $u_i$, and $\hat{e}_i$ is the final predicted emotion label. We optimize the network using categorical cross-entropy loss:
-\vspace{-6pt}
 \begin{equation*}
   \mathcal{L}_e = -\frac{1}{M} \sum_{i=1}^{M} \sum_{j=1}^{C_e} y_{i,j} \log \hat{y}_{i,j}
 \end{equation*}
@@ -288,7 +282,6 @@ For the primary task of emotion classification, $H$ goes through a linear classi
 To capture inter-utterance sentiment changes overlooked by static context models, we adopt the Sentiment Dynamics Perception (SDP) module \cite{li2024graphsmile} as an auxiliary task. It casts conversation dynamics as pairwise shift prediction, jointly optimizing a shift loss with the main emotion classification loss to improve class separation and align naturally with the temporal descriptions from the VLM stage.
 \subsubsection{Shift Label}
 We define a sentiment shift label $o_{(i,j)}$ for any pair of utterances $u_i$ and $u_j$. If the sentiment changes between the two utterances, the label is 1; if the sentiment remains the same, the label is 0:
-\vspace{-6pt}
 \begin{equation*}
   o_{(i,j)} =
   \begin{cases}
@@ -301,7 +294,6 @@ We define a sentiment shift label $o_{(i,j)}$ for any pair of utterances $u_i$ a
 
 \subsubsection{Shift Classification}
 We construct pairwise shift features $T$ from the fused representations and pass them through a softmax classifier to predict the shift probability $\hat{Z}$:
-\vspace{-6pt}
 \begin{equation*}
   \hat{Z} = \text{softmax}(T\Theta_z + b_z)
 \end{equation*}
@@ -310,7 +302,6 @@ We construct pairwise shift features $T$ from the fused representations and pass
 
 \subsection{Sentiment Classification}
 To extend our model to the Multimodal Sentiment Analysis in Conversation (MSAC) task, we add a sentiment classifier. The fused feature matrix $H$ is processed through a linear layer and a softmax activation:
-\vspace{-6pt}
 \begin{equation*}
   \hat{W} = \text{softmax}(H\Theta_w + b_w)
 \end{equation*}
@@ -319,7 +310,6 @@ To extend our model to the Multimodal Sentiment Analysis in Conversation (MSAC) 
 
 \subsection{Total Training Objective}
 To simultaneously extract both emotional and sentimental cues, the primary emotion recognition task is jointly learned alongside the sentiment and shift classification tasks. The overall network parameters are optimized using a combined loss function:
-\vspace{-6pt}
 \begin{equation*}
   \mathcal{L}_{total} = \mathcal{L}_e + \lambda_s \mathcal{L}_s + \lambda_o \mathcal{L}_o + \beta ||\Theta_{total}||
 \end{equation*}
@@ -446,7 +436,6 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
     \end{tabular}%
   }}
 \end{table}
-\vspace{-8pt}
 \begin{table}[H]
   \centering
   \caption{\label{tab:main_result_meld}Main Results for the MERC Task on the MELD Dataset.}
@@ -494,11 +483,7 @@ Overall, these observations confirm that semantic visual representations are a v
 
 \section{Conclusion}
 
-This work explores an alternative approach to representing visual information in graph based Multimodal Emotion Recognition in Conversations (MERC). Instead of relying on conventional pixel-level visual embeddings, we employ a Vision--Language Model (VLM) to transform utterance-level video segments into structured semantic descriptions that capture observable behavioral cues and their temporal progression.
-
-These semantically grounded representations provide a different perspective on incorporating visual signals within conversational reasoning frameworks and demonstrate that visual information can be expressed in a form closer to how emotions are typically interpreted. Our findings suggest that such semantic visual representations can serve as a viable alternative to traditional visual feature pipelines used in graph based MERC systems.
-
-Future work may extend this idea to the acoustic modality by transforming speech signals into descriptive semantic representations that capture emotionally relevant characteristics of the audio. Additionally, architectures specifically designed to process semantic multimodal representations could further improve how such information is incorporated into conversational emotion recognition systems.
+We proposed replacing conventional pixel-level visual embeddings in graph-based MERC with semantic descriptions generated by a Vision--Language Model, demonstrating that such representations are a viable alternative to traditional visual feature pipelines. Our findings show that high-level behavioral descriptions align more naturally with linguistic and acoustic modalities, enabling effective integration within existing graph-based frameworks. Future work could extend this idea to the acoustic modality and explore architectures tailored to semantic multimodal inputs.
 
 
 % ---- Bibliography ----
