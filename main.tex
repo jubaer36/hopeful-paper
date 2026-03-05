@@ -227,21 +227,21 @@ To understand how utterances relate to each other across different sensory input
 
 \subsubsection{Alternate Graph Propagation}
 Graph Neural Networks (GNNs) \cite{kipf2017gcn,scarselli2008graph} are highly effective at uncovering both cross modal and intra modal relationships. In our design, each dialogue graph passes information through multiple simplified convolutional layers. It alternates between extracting inter modal and intra modal features layer by layer, calculated as:
-\begin{equation*}
+\begin{equation}
   X^{(l)} = AX^{(l-1)}\Theta^{(l)}, \quad l = 1, 2, \dots, L
-\end{equation*}
+\end{equation}
 
 \noindent Here, $A$ is the dialogue graph's adjacency matrix, $X^{(l)}$ is the output feature at layer $l$, and $\Theta^{(l)}$ is the trainable weight matrix for that layer. For the textual-visual graph, the starting input $X^{tv,(0)}$ simply combines the raw textual features $[x^t_1, \dots, x^t_M]$ and visual features $[x^v_1, \dots, x^v_M]$.
 
 Next, we use residual connections \cite{he2016resnet} to sum the feature representations from every layer:
-\begin{equation*}
+\begin{equation}
   X = X^{(0)} + \text{FC}^{(1)}(X^{(1)}) + \dots + \text{FC}^{(L)}(X^{(L)})
-\end{equation*}
+\end{equation}
 
 \noindent The fully connected layer $\text{FC}(\cdot)$ includes a linear transformation, a LeakyReLU \cite{maas2013rectifier} activation, and dropout \cite{srivastava2014dropout}:
-\begin{equation*}
+\begin{equation}
   \text{FC}(X) = \text{Dropout}(\text{LeakyReLU}(X\Theta_f + b_f))
-\end{equation*}
+\end{equation}
 
 \noindent This setup serves two purposes: it lets the network dynamically choose which layer's information is most useful, and it boosts the overall expressive power of the GSF module.
 
@@ -266,14 +266,14 @@ After processing the textual-visual ($\mathcal{G}^{tv}$), textual-acoustic ($\ma
 
 After the graph propagation and integration phase, the resulting feature matrix $H$ is passed into a multitask classification head.
 For the primary task of emotion classification, $H$ goes through a linear classifier and a softmax function to predict the exact emotional category. This is formulated as:
-\begin{equation*}
+\begin{equation}
   \hat{Y} = \text{softmax}(H\Theta_y + b_y), \qquad \hat{e}_i = \text{argmax}(\hat{y}_i[\tau])
-\end{equation*}
+\end{equation}
 
 \noindent Here, $\Theta_y$ and $b_y$ are the learned weights and biases. $\tau$ denotes the index over the set of emotion classes. The vector $\hat{y}_i$ holds the emotion probabilities for utterance $u_i$, and $\hat{e}_i$ is the final predicted emotion label. We optimize the network using categorical cross-entropy loss:
-\begin{equation*}
+\begin{equation}
   \mathcal{L}_e = -\frac{1}{M} \sum_{i=1}^{M} \sum_{j=1}^{C_e} y_{i,j} \log \hat{y}_{i,j}
-\end{equation*}
+\end{equation}
 
 \noindent where $M$ is the total number of utterances, $C_e$ is the number of emotion classes, $y_{i,j}$ is the true label, and $\hat{y}_{i,j}$ is our model's prediction.
 
@@ -281,37 +281,37 @@ For the primary task of emotion classification, $H$ goes through a linear classi
 To capture inter utterance sentiment changes overlooked by static context models, we adopt the Sentiment Dynamics Perception (SDP) module \cite{li2024graphsmile} as an auxiliary task. It casts conversation dynamics as pairwise shift prediction, jointly optimizing a shift loss with the main emotion classification loss to improve class separation and align naturally with the temporal descriptions from the VLM stage.
 \subsubsection{Shift Label}
 We define a sentiment shift label $o_{(i,j)}$ for any pair of utterances $u_i$ and $u_j$. If the sentiment changes between the two utterances, the label is 1; if the sentiment remains the same, the label is 0:
-\begin{equation*}
+\begin{equation}
   o_{(i,j)} =
   \begin{cases}
     1, & \text{if } s_i \neq s_j, \\
     0, & \text{if } s_i = s_j.
   \end{cases}
-\end{equation*}
+\end{equation}
 
 \noindent where $s_i$ denotes the ground truth sentiment state of utterance $u_i$.
 
 \subsubsection{Shift Classification}
 We construct pairwise shift features $T$ from the fused representations and pass them through a softmax classifier to predict the shift probability $\hat{Z}$:
-\begin{equation*}
+\begin{equation}
   \hat{Z} = \text{softmax}(T\Theta_z + b_z)
-\end{equation*}
+\end{equation}
 
 \noindent where $\Theta_z$ and $b_z$ are learnable parameters. The module is optimized using a standard cross-entropy loss function, denoted as $\mathcal{L}_o$.
 
 \subsection{Sentiment Classification}
 To extend our model to the Multimodal Sentiment Analysis in Conversation (MSAC) task, we add a sentiment classifier. The fused feature matrix $H$ is processed through a linear layer and a softmax activation:
-\begin{equation*}
+\begin{equation}
   \hat{W} = \text{softmax}(H\Theta_w + b_w)
-\end{equation*}
+\end{equation}
 
 \noindent Here, $\Theta_w$ and $b_w$ are learnable parameters, and $\hat{W}$ contains the predicted sentiment probabilities. This task is supervised by a sentiment classification cross-entropy loss, denoted as $\mathcal{L}_s$.
 
 \subsection{Total Training Objective}
 To simultaneously extract both emotional and sentimental cues, the primary emotion recognition task is jointly learned alongside the sentiment and shift classification tasks. The overall network parameters are optimized using a combined loss function:
-\begin{equation*}
+\begin{equation}
   \mathcal{L}_{total} = \mathcal{L}_e + \lambda_s \mathcal{L}_s + \lambda_o \mathcal{L}_o + \beta ||\Theta_{total}||
-\end{equation*}
+\end{equation}
 
 \noindent where $\mathcal{L}_e$ is the primary emotion classification loss, $\lambda_s$ and $\lambda_o$ are trade-off hyperparameters balancing the auxiliary tasks, $\beta$ is the $L_2$ regularization weight, and $\Theta_{total}$ represents all trainable parameters in the model.
 
@@ -403,7 +403,7 @@ The model follows the multitask optimization strategy of GraphSmile~\cite{li2024
 \subsection{Results Comparison}
 Tables~\ref{tab:main_result_iemocap} and~\ref{tab:main_result_meld} report the performance of GraphSmile integrated with semantic visual representations on IEMOCAP and MELD, including overall accuracy (ACC), weighted F1 (WF1), and per-class F1 scores.
 
-On IEMOCAP, GraphSmile with BERT-encoded VLM descriptions achieved the highest WF1 of 71.65, slightly above the baseline (71.29). Longformer encoding was comparable (WF1 71.49). BERT-based VLM features particularly improved recognition for Happy (61.49) and Frustrated (67.51) emotions.
+On IEMOCAP, GraphSmile with BERT-encoded VLM descriptions achieved the highest WF1 of 71.65, slightly above the baseline (71.29). Longformer encoding was comparable (WF1 71.49). BERT-based VLM features particularly improved recognition for Happy (61.49) and Sad (83.43) emotions.
 
 On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (ACC 67.47, WF1 66.35), while Qwen-VL-3B with BERT slightly outperformed Longformer (ACC 67.32 vs.\ 67.13; WF1 66.12 vs.\ 65.97). Overall results were close to the baseline (ACC 67.66, WF1 66.67), with minor variations across emotion categories.
 
@@ -457,7 +457,7 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
     \end{tabular}%
   }}
   \begin{minipage}{\textwidth}
-    $^\dagger$~results are directly taken from the original paper; $^\ddagger$~results independently replicated by us; no marker represents results replicated by GraphSmile~\cite{li2024graphsmile} from the source code implementaton
+    $^\dagger$~results are directly taken from the original paper; $^\ddagger$~results independently replicated by us; no marker represents results replicated by GraphSmile~\cite{li2024graphsmile} from the source code implementation
   \end{minipage}
 \end{table}
 
