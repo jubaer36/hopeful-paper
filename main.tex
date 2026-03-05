@@ -25,6 +25,7 @@
 \usepackage{booktabs}
 \usepackage{threeparttable}
 \usepackage{multirow}
+\usepackage{array}
 
 % The "axessiblity" package can be found at: https://ctan.org/pkg/axessibility?lang=en
 \usepackage[accsupp]{axessibility}  % Improves PDF readability for those with disabilities.
@@ -447,41 +448,52 @@ The model follows the multi-task optimization strategy of GraphSmile~\cite{li202
 \subsection{Main Result for Emotion Recognition}
 \begin{table}[htbp]
   \centering
-  \caption{\label{tab:main_result_emo}Main Results for the MERC Task on All Datasets}
+  \caption{\label{tab:main_result_iemocap}Main Results for the MERC Task on the IEMOCAP Dataset.}
   \resizebox{\textwidth}{!}{%
-    \begin{tabular}{cccccccccccc}
+    \begin{tabular}{l @{\hspace{1.5em}} c @{\hspace{1.5em}} c @{\hspace{1.5em}} *{6}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{1.5em}} cc}
       \toprule
-      \multirow{2}{*}{Method} & \multicolumn{11}{c}{IEMOCAP-6}                                                                                                                    \\
-      \cmidrule(lr){2-12}
-                              & col1                           & col2 & Happy   & Sad      & Neutral & Angry   & Excited & Frustrated & \multicolumn{2}{c}{ACC}   & WF1           \\
+      \multirow{2}{*}{Method} & \multicolumn{10}{c}{IEMOCAP-6}                                                                    \\
+      \cmidrule(lr){2-3} \cmidrule(lr){4-9} \cmidrule(lr){10-11}
+                              & \shortstack{VLM                                                                                   \\ Model}      & \shortstack{Text \\ Encoder} & Happy & Sad   & Neutral & Angry & Excited & Frustrated & ACC   & WF1   \\
       \midrule
-      COGMEN$^\dagger$        &                                &      & 51.90   & 81.70    & 68.60   & 66.00   & 75.30   & 58.20      & \multicolumn{2}{c}{68.20} & 67.60         \\
-      Joyful$^\dagger$        &                                &      & 60.94   & 84.42    & 68.24   & 69.95   & 73.54   & 67.55      & \multicolumn{2}{c}{70.55} & 71.03         \\
-      DER-GCN$^\dagger$       &                                &      & 58.80   & 79.80    & 61.50   & 72.10   & 73.30   & 67.80      & \multicolumn{2}{c}{69.70} & 69.40         \\
-      % \midrule
-      DialogueCRN$^\dagger$   &                                &      & 53.85   & 82.66    & 71.03   & 62.33   & 77.64   & 58.81      & \multicolumn{2}{c}{68.70} & 68.82         \\
-      MMGCN$^\dagger$         &                                &      & 47.10   & 81.91    & 66.44   & 63.51   & 76.17   & 59.06      & \multicolumn{2}{c}{67.10} & 66.81         \\
-      MM-DFN$^\dagger$        &                                &      & 43.36   & 83.23    & 70.03   & 70.19   & 73.11   & 64.01      & \multicolumn{2}{c}{69.44} & 68.83         \\
-      SACL-LSTM$^\dagger$     &                                &      & 51.30   & 82.25    & 71.39   & 67.78   & 75.26   & 66.94      & \multicolumn{2}{c}{70.55} & 70.60         \\
-      M3Net$^\dagger$         &                                &      & 60.93   & 78.84    & 70.14   & 68.06   & 77.11   & 67.42      & \multicolumn{2}{c}{70.92} & 71.07         \\
+      COGMEN$^\dagger$        & --                             & -- & 51.90 & 81.70 & 68.60 & 66.00 & 75.30 & 58.20 & 68.20 & 67.60 \\
+      Joyful$^\dagger$        & --                             & -- & 60.94 & 84.42 & 68.24 & 69.95 & 73.54 & 67.55 & 70.55 & 71.03 \\
+      DER-GCN$^\dagger$       & --                             & -- & 58.80 & 79.80 & 61.50 & 72.10 & 73.30 & 67.80 & 69.70 & 69.40 \\
+      DialogueCRN             & --                             & -- & 53.85 & 82.66 & 71.03 & 62.33 & 77.64 & 58.81 & 68.70 & 68.82 \\
+      MMGCN                   & --                             & -- & 47.10 & 81.91 & 66.44 & 63.51 & 76.17 & 59.06 & 67.10 & 66.81 \\
+      MM-DFN                  & --                             & -- & 43.36 & 83.23 & 70.03 & 70.19 & 73.11 & 64.01 & 69.44 & 68.83 \\
+      SACL-LSTM               & --                             & -- & 51.30 & 82.25 & 71.39 & 67.78 & 75.26 & 66.94 & 70.55 & 70.60 \\
+      M3Net                   & --                             & -- & 60.93 & 78.84 & 70.14 & 68.06 & 77.11 & 67.42 & 70.92 & 71.07 \\
+
+      GraphSmile$^\ddagger$   & --                             & -- & 59.31 & 82.47 & 69.68 & 67.53 & 78.76 & 66.06 & 71.23 & 71.29 \\
       \midrule
-      GraphSmile$^\ddagger$   &                                &      & 59.31   & 82.47    & 69.68   & 67.53   & 78.76   & 66.06      & \multicolumn{2}{c}{71.23} & 71.29         \\
+      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & Longformer & 54.11 & 82.82 & 70.23 & 70.72 & 79.81 & 65.87 & 71.53 & 71.49 \\
+      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & BERT       & 61.49 & 83.43 & 69.69 & 67.33 & 77.12 & 67.51 & 71.53 & 71.65 \\
+      \bottomrule
+    \end{tabular}%
+  }
+
+  \vspace{1.5em}
+
+  \caption{\label{tab:main_result_meld}Main Results for the MERC Task on the MELD Dataset.}
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{l @{\hspace{1.5em}} c @{\hspace{1.5em}} c @{\hspace{1.5em}} *{7}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{1.5em}} cc}
+      \toprule
+      \multirow{2}{*}{Method} & \multicolumn{11}{c}{MELD}                                                                            \\
+      \cmidrule(lr){2-3} \cmidrule(lr){4-10} \cmidrule(lr){11-12}
+                              & \shortstack{VLM                                                                                      \\ Model}      & \shortstack{Text \\ Encoder} & Neutral & Surprise & Fear & Sadness & Joy & Disgust & Anger & ACC   & WF1   \\
       \midrule
+      Joyful$^\dagger$        & --                        & -- & 76.80 & 51.91 & --    & 41.78 & 56.89 & --    & 50.71 & 62.53 & 61.77 \\
+      DER-GCN$^\dagger$       & --                        & -- & 80.60 & 51.00 & 10.40 & 41.50 & 64.30 & 10.30 & 57.40 & 66.80 & 66.10 \\
+      DialogueCRN             & --                        & -- & 76.15 & 56.72 & 18.67 & 38.29 & 63.21 & 27.69 & 50.67 & 62.38 & 63.32 \\
+      MMGCN                   & --                        & -- & 78.62 & 57.78 & 3.77  & 40.35 & 63.60 & 12.20 & 53.68 & 66.02 & 64.55 \\
+      MM-DFN                  & --                        & -- & 79.84 & 58.43 & 15.79 & 31.65 & 64.01 & 28.04 & 53.60 & 67.05 & 65.21 \\
+      SACL-LSTM               & --                        & -- & 77.42 & 58.50 & 20.41 & 39.58 & 62.76 & 34.71 & 52.08 & 64.52 & 64.55 \\
+      M3Net                   & --                        & -- & 79.14 & 59.54 & 13.33 & 42.86 & 65.05 & 21.69 & 53.54 & 66.59 & 65.83 \\
+      GraphSmile$^\ddagger$   & --                        & -- & 80.32 & 58.96 & 18.18 & 42.46 & 64.99 & 32.43 & 53.59 & 67.66 & 66.67 \\
       \midrule
-      \multirow{2}{*}{Method} & \multicolumn{11}{c}{MELD}                                                                                                                         \\
-      \cmidrule(lr){2-12}
-                              & col1                           & col2 & Neutral & Surprise & Fear    & Sadness & Joy     & Disgust    & Anger                     & ACC   & WF1   \\
-      \midrule
-      Joyful$^\dagger$        &                                &      & 76.80   & 51.91    & --      & 41.78   & 56.89   & --         & 50.71                     & 62.53 & 61.77 \\
-      DER-GCN$^\dagger$       &                                &      & 80.60   & 51.00    & 10.40   & 41.50   & 64.30   & 10.30      & 57.40                     & 66.80 & 66.10 \\
-      % \midrule
-      DialogueCRN$^\dagger$   &                                &      & 76.15   & 56.72    & 18.67   & 38.29   & 63.21   & 27.69      & 50.67                     & 62.38 & 63.32 \\
-      MMGCN$^\dagger$         &                                &      & 78.62   & 57.78    & 3.77    & 40.35   & 63.60   & 12.20      & 53.68                     & 66.02 & 64.55 \\
-      MM-DFN$^\dagger$        &                                &      & 79.84   & 58.43    & 15.79   & 31.65   & 64.01   & 28.04      & 53.60                     & 67.05 & 65.21 \\
-      SACL-LSTM$^\dagger$     &                                &      & 77.42   & 58.50    & 20.41   & 39.58   & 62.76   & 34.71      & 52.08                     & 64.52 & 64.55 \\
-      M3Net$^\dagger$         &                                &      & 79.14   & 59.54    & 13.33   & 42.86   & 65.05   & 21.69      & 53.54                     & 66.59 & 65.83 \\
-      \midrule
-      GraphSmile$^\ddagger$   &                                &      & 80.32   & 58.96    & 18.18   & 42.46   & 64.99   & 32.43      & 53.59                     & 67.66 & 66.67 \\
+      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & Longformer & 79.82 & 57.56 & 16.44 & 41.95 & 63.94 & 31.78 & 53.19 & 67.13 & 65.97 \\
+      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & BERT       & 79.82 & 57.73 & 19.18 & 42.17 & 63.94 & 32.08 & 53.61 & 67.32 & 66.12 \\
       \bottomrule
     \end{tabular}%
   }
@@ -489,7 +501,8 @@ The model follows the multi-task optimization strategy of GraphSmile~\cite{li202
   \vspace{1ex}
   \begin{minipage}{\textwidth}
     \small
-    The marker $^\dagger$ indicates the results (\%) as stated by the GraphSmile paper, and the marker $^\ddagger$ indicates the results (\%) replicated by us.\end{minipage}
+    The marker $^\dagger$ indicates the results (\%) as replicated by the GraphSmile paper, and the marker $^\ddagger$ indicates the results (\%) replicated by us and no marker indicates results taken from original papers.
+  \end{minipage}
 \end{table}
 
 \section{Conclusion}

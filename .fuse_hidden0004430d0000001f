@@ -39,13 +39,14 @@
 \citation{schuller2011recognising}
 \citation{li2018self}
 \citation{shou2025comprehensivesurveymultimodalconversational}
+\citation{majumder2019dialoguernn}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overview of the proposed semantic visual preprocessing pipeline.}}{4}{figure.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:preprocessing}{{1}{4}{Overview of the proposed semantic visual preprocessing pipeline}{figure.caption.2}{}}
 \newlabel{fig:preprocessing@cref}{{[figure][1][]1}{[1][4][]4}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{4}{section.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Emotion Recognition in Conversations and Multimodal Extensions}{4}{subsection.1.2.1}\protected@file@percent }
-\citation{majumder2019dialoguernn}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Approaches to MERC}{4}{subsection.1.2.2}\protected@file@percent }
 \citation{morency2011multimodal,perezrosas2013utterance,poria2016fusing,zadeh2016mosi}
 \citation{tsai2019mult}
 \citation{hazarika2020misa}
@@ -56,11 +57,10 @@
 \citation{kipf2017gcn}
 \citation{ghosal2019dialoguegcn}
 \citation{hu2021mmgcn}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Approaches to MERC}{5}{subsection.1.2.2}\protected@file@percent }
+\citation{li-etal-2023-joyful}
 \@writefile{toc}{\contentsline {subsubsection}{Sequence and Context Based Methods.}{5}{section*.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Fusion Based Methods.}{5}{section*.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Graph Based MERC Approaches}{5}{subsection.1.2.3}\protected@file@percent }
-\citation{li-etal-2023-joyful}
 \citation{li2024graphsmile}
 \citation{li2024graphsmile}
 \citation{hu2021mmgcn}
@@ -73,10 +73,10 @@
 \citation{devlin2019bert}
 \citation{videmo}
 \citation{huang2025emotionqwen}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Vision Language and LLM Based Approaches for Emotion Recognition}{6}{subsection.1.2.4}\protected@file@percent }
 \citation{fu2025bemerc}
 \citation{radford2021clip}
 \citation{qwen2_5_vl}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Vision Language and LLM Based Approaches for Emotion Recognition}{6}{subsection.1.2.4}\protected@file@percent }
 \citation{li2018self}
 \citation{radford2021clip}
 \citation{li2024graphsmile}
@@ -88,30 +88,30 @@
 \citation{huang2017densely}
 \citation{baltrusaitis2018openface}
 \citation{radford2021clip,qwen2_5_vl}
+\citation{li2024graphsmile}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Positioning of Our Work}{7}{subsection.1.2.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{7}{section.1.3}\protected@file@percent }
 \newlabel{sec:methodology}{{3}{7}{Methodology}{section.1.3}{}}
 \newlabel{sec:methodology@cref}{{[section][3][]3}{[1][7][]7}}
 \citation{li2024graphsmile}
 \citation{li2024graphsmile}
-\citation{li2024graphsmile}
 \citation{liu2019roberta}
 \citation{busso2008iemocap}
 \citation{poria2019meld}
 \citation{eyben2010opensmile}
-\citation{busso2008iemocap}
-\citation{poria2019meld}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The multimodal preprocessing pipeline for extracting utterance-level textual, acoustic, and visual features.}}{8}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:pipeline}{{2}{8}{The multimodal preprocessing pipeline for extracting utterance-level textual, acoustic, and visual features}{figure.caption.8}{}}
+\newlabel{fig:pipeline@cref}{{[figure][2][]2}{[1][8][]8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Utterance Level Feature Extraction}{8}{subsection.1.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Textual Feature Extraction.}{8}{section*.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Acoustic Feature Extraction.}{8}{section*.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Semantic Visual Feature Extraction.}{8}{figure.caption.8}\protected@file@percent }
+\citation{busso2008iemocap}
+\citation{poria2019meld}
 \citation{videmo}
 \citation{qwen2_5_vl}
 \citation{devlin2019bert}
 \citation{li2024graphsmile}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The multimodal preprocessing pipeline for extracting utterance-level textual, acoustic, and visual features.}}{9}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:pipeline}{{2}{9}{The multimodal preprocessing pipeline for extracting utterance-level textual, acoustic, and visual features}{figure.caption.8}{}}
-\newlabel{fig:pipeline@cref}{{[figure][2][]2}{[1][8][]9}}
 \citation{hu2021mmgcn,li2024graphsmile}
 \citation{kipf2017gcn,scarselli2008graph}
 \citation{he2016resnet}
@@ -126,8 +126,8 @@
 \newlabel{fig:nodesgnn}{{3}{11}{The GraphSmile~\cite {li2024graphsmile} architecture: bipartite multimodal dialogue graphs connecting utterance nodes across modality pairs, propagated through the Graph Structure Fusion (GSF) module}{figure.caption.11}{}}
 \newlabel{fig:nodesgnn@cref}{{[figure][3][]3}{[1][11][]11}}
 \@writefile{toc}{\contentsline {subsubsection}{Multimodal Integration}{11}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Emotion Classification}{11}{subsection.1.3.3}\protected@file@percent }
 \citation{li2024graphsmile}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Emotion Classification}{12}{subsection.1.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Sentiment Dynamics Perception (SDP) Module}{12}{subsection.1.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Shift Label}{12}{section*.13}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Shift Classification}{12}{section*.14}\protected@file@percent }
@@ -155,49 +155,9 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Integration into Graph Based MERC Framework}{15}{subsection.1.4.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Main Result for Emotion Recognition}{15}{subsection.1.4.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{15}{section.1.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Main Results for the MERC Task on the IEMOCAP Dataset.}}{16}{table.caption.17}\protected@file@percent }
-\newlabel{tab:main_result_iemocap}{{3}{16}{Main Results for the MERC Task on the IEMOCAP Dataset}{table.caption.17}{}}
-\newlabel{tab:main_result_iemocap@cref}{{[table][3][]3}{[1][15][]16}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Main Results for the MERC Task on the MELD Dataset.}}{16}{table.caption.17}\protected@file@percent }
-\newlabel{tab:main_result_meld}{{4}{16}{Main Results for the MERC Task on the MELD Dataset}{table.caption.17}{}}
-\newlabel{tab:main_result_meld@cref}{{[table][4][]4}{[1][15][]16}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Main Results for the MERC Task on All Datasets}}{16}{table.caption.17}\protected@file@percent }
+\newlabel{tab:main_result_emo}{{3}{16}{Main Results for the MERC Task on All Datasets}{table.caption.17}{}}
+\newlabel{tab:main_result_emo@cref}{{[table][3][]3}{[1][15][]16}}
 \bibstyle{splncs04}
 \bibdata{citations,main}
-\bibcite{qwen2_5_vl}{1}
-\bibcite{baltrusaitis2018openface}{2}
-\bibcite{beltagy2020longformer}{3}
-\bibcite{busso2008iemocap}{4}
-\bibcite{calvo2010affect}{5}
-\bibcite{devlin2019bert}{6}
-\bibcite{dosovitskiy2021vit}{7}
-\bibcite{eyben2010opensmile}{8}
-\bibcite{fu2025bemerc}{9}
-\bibcite{ghosal2019dialoguegcn}{10}
-\bibcite{hazarika2018icon}{11}
-\bibcite{hazarika2020misa}{12}
-\bibcite{he2016resnet}{13}
-\bibcite{hu2021mmgcn}{14}
-\bibcite{huang2025emotionqwen}{15}
-\bibcite{huang2017densely}{16}
-\bibcite{kipf2017gcn}{17}
-\bibcite{li-etal-2023-joyful}{18}
-\bibcite{li2024graphsmile}{19}
-\bibcite{li2018self}{20}
-\bibcite{liu2019roberta}{21}
-\bibcite{maas2013rectifier}{22}
-\bibcite{majumder2019dialoguernn}{23}
-\bibcite{morency2011multimodal}{24}
-\bibcite{perezrosas2013utterance}{25}
-\bibcite{poria2016fusing}{26}
-\bibcite{poria2019meld}{27}
-\bibcite{radford2021clip}{28}
-\bibcite{scarselli2008graph}{29}
-\bibcite{schuller2011recognising}{30}
-\bibcite{shou2025comprehensivesurveymultimodalconversational}{31}
-\bibcite{srivastava2014dropout}{32}
-\bibcite{tsai2019mult}{33}
-\bibcite{zadeh2017tfn}{34}
-\bibcite{zadeh2018multimodal}{35}
-\bibcite{zadeh2016mosi}{36}
-\bibcite{videmo}{37}
-\gdef \@abspage@last{19}
+\gdef \@abspage@last{17}

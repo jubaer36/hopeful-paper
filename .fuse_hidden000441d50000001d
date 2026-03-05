@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  5 MAR 2026 18:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  5 MAR 2026 17:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -730,6 +730,18 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count373
 \l__pdf_internal_box=\box116
 ) (./main.aux)
+Runaway argument?
+{\contentsline {subsectio 
+/mnt/Work/ML/ECCV-Paper/main.tex:55: File ended while scanning use of \@writefile.
+<inserted text> 
+                \par 
+l.55 \begin{document}
+                     
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
@@ -750,7 +762,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
 LaTeX Font Info:    ... okay on input line 55.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 55.
 LaTeX Font Info:    ... okay on input line 55.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count374
 \scratchdimen=\dimen325
@@ -833,26 +845,256 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+
+LaTeX Warning: Citation `calvo2010affect' on page 1 undefined on input line 98.
+
+
+LaTeX Warning: Citation `poria2019meld' on page 1 undefined on input line 99.
+
+
+LaTeX Warning: Citation `zadeh2018multimodal' on page 1 undefined on input line 99.
+
+
+LaTeX Warning: Citation `majumder2019dialoguernn' on page 1 undefined on input line 99.
+
+
+LaTeX Warning: Citation `ghosal2019dialoguegcn' on page 1 undefined on input line 99.
+
+
+LaTeX Warning: Citation `zadeh2017tfn' on page 1 undefined on input line 99.
+
+
+LaTeX Warning: Citation `tsai2019mult' on page 1 undefined on input line 99.
+
+
+LaTeX Warning: Citation `ghosal2019dialoguegcn' on page 1 undefined on input line 99.
+
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 1 undefined on input line 99.
+
+
+LaTeX Warning: Citation `shou2025comprehensivesurveymultimodalconversational' on page 1 undefined on input line 99.
+
+
+LaTeX Warning: Citation `kipf2017gcn' on page 1 undefined on input line 100.
+
+
+LaTeX Warning: Citation `ghosal2019dialoguegcn' on page 1 undefined on input line 100.
+
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 1 undefined on input line 100.
+
+
+LaTeX Warning: Citation `ghosal2019dialoguegcn' on page 1 undefined on input line 100.
+
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 1 undefined on input line 100.
+
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 2 undefined on input line 102.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 2 undefined on input line 102.
+
+
+LaTeX Warning: Citation `he2016resnet' on page 2 undefined on input line 102.
+
+
+LaTeX Warning: Citation `dosovitskiy2021vit' on page 2 undefined on input line 102.
+
+
+LaTeX Warning: Citation `li2018self' on page 2 undefined on input line 102.
+
+
+LaTeX Warning: Citation `hazarika2018icon' on page 2 undefined on input line 102.
+
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 2 undefined on input line 104.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 2 undefined on input line 104.
+
+
+LaTeX Warning: Citation `he2016resnet' on page 2 undefined on input line 106.
+
+
+LaTeX Warning: Citation `dosovitskiy2021vit' on page 2 undefined on input line 106.
+
+
+LaTeX Warning: Citation `li2018self' on page 2 undefined on input line 106.
+
+
+LaTeX Warning: Citation `ghosal2019dialoguegcn' on page 2 undefined on input line 107.
+
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 2 undefined on input line 107.
+
+
+LaTeX Warning: Citation `zadeh2018multimodal' on page 2 undefined on input line 107.
+
+
+LaTeX Warning: Citation `tsai2019mult' on page 2 undefined on input line 107.
+
+
 Underfull \vbox (badness 5105) has occurred while \output is active []
 
- [2] [3]
-<VLMtemporal.pdf, id=88, 760.76218pt x 355.3275pt>
+ [2]
+
+LaTeX Warning: Citation `devlin2019bert' on page 3 undefined on input line 111.
+
+
+LaTeX Warning: Citation `schuller2011recognising' on page 3 undefined on input line 111.
+
+
+LaTeX Warning: Citation `ghosal2019dialoguegcn' on page 3 undefined on input line 111.
+
+
+LaTeX Warning: Citation `qwen2_5_vl' on page 3 undefined on input line 115.
+
+
+LaTeX Warning: Citation `radford2021clip' on page 3 undefined on input line 117.
+
+[3]
+<VLMtemporal.pdf, id=31, 760.76218pt x 355.3275pt>
 File: VLMtemporal.pdf Graphic file (type pdf)
 <use VLMtemporal.pdf>
 Package pdftex.def Info: VLMtemporal.pdf  used on input line 131.
 (pdftex.def)             Requested size: 347.12361pt x 162.12968pt.
- [4 <./VLMtemporal.pdf>]
-Overfull \hbox (7.33983pt too wide) in paragraph at lines 166--167
-\T1/cmr/m/n/10 ture and re-la-tional de-pen-den-cies into the learn-ing pro-cess [[]14[], []19[]]. In this paradigm,
+
+
+LaTeX Warning: Citation `shou2025comprehensivesurveymultimodalconversational' on page 4 undefined on input line 140.
+
+
+LaTeX Warning: Citation `majumder2019dialoguernn' on page 4 undefined on input line 140.
+
+
+LaTeX Warning: Citation `hazarika2018icon' on page 4 undefined on input line 140.
+
+
+LaTeX Warning: Citation `poria2019meld' on page 4 undefined on input line 142.
+
+
+LaTeX Warning: Citation `zadeh2018multimodal' on page 4 undefined on input line 142.
+
+
+LaTeX Warning: Citation `schuller2011recognising' on page 4 undefined on input line 142.
+
+
+LaTeX Warning: Citation `li2018self' on page 4 undefined on input line 142.
+
+
+LaTeX Warning: Citation `shou2025comprehensivesurveymultimodalconversational' on page 4 undefined on input line 142.
+
+
+LaTeX Warning: Citation `majumder2019dialoguernn' on page 4 undefined on input line 149.
+
+[4 <./VLMtemporal.pdf>]
+
+LaTeX Warning: Citation `morency2011multimodal' on page 5 undefined on input line 154.
+
+
+LaTeX Warning: Citation `perezrosas2013utterance' on page 5 undefined on input line 154.
+
+
+LaTeX Warning: Citation `poria2016fusing' on page 5 undefined on input line 154.
+
+
+LaTeX Warning: Citation `zadeh2016mosi' on page 5 undefined on input line 154.
+
+
+LaTeX Warning: Citation `tsai2019mult' on page 5 undefined on input line 156.
+
+
+LaTeX Warning: Citation `hazarika2020misa' on page 5 undefined on input line 156.
+
+
+LaTeX Warning: Citation `tsai2019mult' on page 5 undefined on input line 158.
+
+
+LaTeX Warning: Citation `majumder2019dialoguernn' on page 5 undefined on input line 160.
+
+
+LaTeX Warning: Citation `hazarika2018icon' on page 5 undefined on input line 160.
+
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 5 undefined on input line 166.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 5 undefined on input line 166.
+
+
+LaTeX Warning: Citation `kipf2017gcn' on page 5 undefined on input line 166.
+
+
+LaTeX Warning: Citation `ghosal2019dialoguegcn' on page 5 undefined on input line 168.
+
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 5 undefined on input line 170.
+
+
+LaTeX Warning: Citation `li-etal-2023-joyful' on page 5 undefined on input line 172.
+
+[5]
+
+LaTeX Warning: Citation `li2024graphsmile' on page 6 undefined on input line 174.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 6 undefined on input line 174.
+
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 6 undefined on input line 174.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 6 undefined on input line 174.
+
+
+LaTeX Warning: Citation `he2016resnet' on page 6 undefined on input line 176.
+
+
+LaTeX Warning: Citation `baltrusaitis2018openface' on page 6 undefined on input line 176.
+
+
+LaTeX Warning: Citation `radford2021clip' on page 6 undefined on input line 180.
+
+
+LaTeX Warning: Citation `he2016resnet' on page 6 undefined on input line 180.
+
+
+LaTeX Warning: Citation `dosovitskiy2021vit' on page 6 undefined on input line 180.
+
+
+LaTeX Warning: Citation `devlin2019bert' on page 6 undefined on input line 180.
+
+
+LaTeX Warning: Citation `videmo' on page 6 undefined on input line 182.
+
+
+LaTeX Warning: Citation `huang2025emotionqwen' on page 6 undefined on input line 182.
+
+
+LaTeX Warning: Citation `fu2025bemerc' on page 6 undefined on input line 184.
+
+
+LaTeX Warning: Citation `radford2021clip' on page 6 undefined on input line 184.
+
+
+LaTeX Warning: Citation `qwen2_5_vl' on page 6 undefined on input line 184.
+
+
+Overfull \hbox (5.8622pt too wide) in paragraph at lines 184--185
+[]\T1/cmr/m/n/10 Multimodal LLM in-te-gra-tions ex-tend this idea fur-ther. Works like Be-MERC [\T1/cmr/bx/n/10 ?\T1/cmr/m/n/10 ]
  []
 
-[5] [6]
-Overfull \hbox (5.43175pt too wide) in paragraph at lines 184--185
-[]\T1/cmr/m/n/10 Multimodal LLM in-te-gra-tions ex-tend this idea fur-ther. Works like Be-MERC [[]9[]]
- []
+[6]
+
+LaTeX Warning: Citation `li2018self' on page 7 undefined on input line 186.
+
+
+LaTeX Warning: Citation `radford2021clip' on page 7 undefined on input line 186.
 
 
 Overfull \hbox (8.01445pt too wide) in paragraph at lines 186--187
@@ -860,19 +1102,78 @@ Overfull \hbox (8.01445pt too wide) in paragraph at lines 186--187
  []
 
 
-Overfull \hbox (31.60335pt too wide) in paragraph at lines 190--191
-\T1/cmr/m/n/10 Our work builds upon the strengths of graph based MERC, par-tic-u-larly GraphSmile [[]19[]],
+LaTeX Warning: Citation `li2024graphsmile' on page 7 undefined on input line 190.
+
+
+LaTeX Warning: Citation `he2016resnet' on page 7 undefined on input line 190.
+
+
+LaTeX Warning: Citation `baltrusaitis2018openface' on page 7 undefined on input line 190.
+
+
+LaTeX Warning: Citation `videmo' on page 7 undefined on input line 190.
+
+
+LaTeX Warning: Citation `qwen2_5_vl' on page 7 undefined on input line 190.
+
+
+Overfull \hbox (27.03502pt too wide) in paragraph at lines 190--191
+\T1/cmr/m/n/10 Our work builds upon the strengths of graph based MERC, par-tic-u-larly GraphSmile [\T1/cmr/bx/n/10 ?\T1/cmr/m/n/10 ],
  []
 
+
+LaTeX Warning: Citation `devlin2019bert' on page 7 undefined on input line 192.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 7 undefined on input line 192.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 7 undefined on input line 197.
+
+
+LaTeX Warning: Citation `huang2017densely' on page 7 undefined on input line 199.
+
+
+LaTeX Warning: Citation `baltrusaitis2018openface' on page 7 undefined on input line 199.
+
+
+LaTeX Warning: Citation `radford2021clip' on page 7 undefined on input line 199.
+
+
+LaTeX Warning: Citation `qwen2_5_vl' on page 7 undefined on input line 199.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 7 undefined on input line 204.
+
 [7]
+
+LaTeX Warning: Citation `li2024graphsmile' on page 8 undefined on input line 205.
+
+
 Overfull \hbox (7.59947pt too wide) in paragraph at lines 205--206
 []\T1/cmr/m/n/10 Multitask clas-si-fi-ca-tion in-cor-po-rat-ing a Sen-ti-ment Dy-nam-ics Per-cep-tion (SDP)
  []
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 8 undefined on input line 211.
+
+
+LaTeX Warning: Citation `liu2019roberta' on page 8 undefined on input line 214.
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 214.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
+
+LaTeX Warning: Citation `busso2008iemocap' on page 8 undefined on input line 217.
+
+
+LaTeX Warning: Citation `poria2019meld' on page 8 undefined on input line 217.
+
+
+LaTeX Warning: Citation `eyben2010opensmile' on page 8 undefined on input line 217.
+
+
 Overfull \hbox (0.54149pt too wide) in paragraph at lines 217--218
 \T1/cmr/m/n/10 guis-tic speech char-ac-ter-is-tics in-clud-ing fun-da-men-tal fre-quency (F0), en-ergy, spec-
  []
@@ -880,12 +1181,53 @@ Overfull \hbox (0.54149pt too wide) in paragraph at lines 217--218
 
 
 pdfTeX warning: pdflatex (file ./Preprocessing.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.6> allowed
-<Preprocessing.pdf, id=201, 926.50137pt x 327.14218pt>
+<Preprocessing.pdf, id=74, 926.50137pt x 327.14218pt>
 File: Preprocessing.pdf Graphic file (type pdf)
 <use Preprocessing.pdf>
 Package pdftex.def Info: Preprocessing.pdf  used on input line 222.
 (pdftex.def)             Requested size: 347.12361pt x 122.56819pt.
-[8] [9 <./Preprocessing.pdf>]
+[8 <./Preprocessing.pdf>]
+
+LaTeX Warning: Citation `busso2008iemocap' on page 9 undefined on input line 230.
+
+
+LaTeX Warning: Citation `poria2019meld' on page 9 undefined on input line 230.
+
+
+LaTeX Warning: Citation `videmo' on page 9 undefined on input line 234.
+
+
+LaTeX Warning: Citation `qwen2_5_vl' on page 9 undefined on input line 234.
+
+
+LaTeX Warning: Citation `devlin2019bert' on page 9 undefined on input line 245.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 9 undefined on input line 245.
+
+[9]
+
+LaTeX Warning: Citation `hu2021mmgcn' on page 10 undefined on input line 251.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 10 undefined on input line 251.
+
+
+LaTeX Warning: Citation `kipf2017gcn' on page 10 undefined on input line 261.
+
+
+LaTeX Warning: Citation `scarselli2008graph' on page 10 undefined on input line 261.
+
+
+LaTeX Warning: Citation `he2016resnet' on page 10 undefined on input line 267.
+
+
+LaTeX Warning: Citation `maas2013rectifier' on page 10 undefined on input line 271.
+
+
+LaTeX Warning: Citation `srivastava2014dropout' on page 10 undefined on input line 271.
+
+
 Overfull \hbox (3.85251pt too wide) in paragraph at lines 271--272
 []\T1/cmr/m/n/10 The fully con-nected layer $[]\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 )$ \T1/cmr/m/n/10 in-cludes a lin-ear trans-for-ma-tion, a LeakyReLU
  []
@@ -893,47 +1235,122 @@ Overfull \hbox (3.85251pt too wide) in paragraph at lines 271--272
 [10]
 
 pdfTeX warning: pdflatex (file ./NodesGNN.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.6> allowed
-<NodesGNN.pdf, id=258, 984.5583pt x 524.92107pt>
+<NodesGNN.pdf, id=114, 984.5583pt x 524.92107pt>
 File: NodesGNN.pdf Graphic file (type pdf)
 <use NodesGNN.pdf>
 Package pdftex.def Info: NodesGNN.pdf  used on input line 279.
 (pdftex.def)             Requested size: 347.12361pt x 185.07074pt.
-[11 <./NodesGNN.pdf>] [12] [13]
+
+LaTeX Warning: Citation `li2024graphsmile' on page 11 undefined on input line 280.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 11 undefined on input line 280.
+
+[11 <./NodesGNN.pdf>]
+
+LaTeX Warning: Citation `li2024graphsmile' on page 12 undefined on input line 310.
+
+[12]
+
+LaTeX Warning: Citation `busso2008iemocap' on page 13 undefined on input line 347.
+
+
+LaTeX Warning: Citation `poria2019meld' on page 13 undefined on input line 350.
+
+[13]
+
+LaTeX Warning: Citation `videmo' on page 14 undefined on input line 390.
+
+
+LaTeX Warning: Citation `qwen2_5_vl' on page 14 undefined on input line 390.
+
+
+LaTeX Warning: Citation `beltagy2020longformer' on page 14 undefined on input line 405.
+
+
 Overfull \hbox (2.35075pt too wide) in paragraph at lines 405--406
 \T1/cmr/m/n/10 with-out trun-ca-tion; a 768-dimensional em-bed-ding is ex-tracted from the \T1/cmtt/m/n/10 [CLS]
  []
 
+
+LaTeX Warning: Citation `devlin2019bert' on page 14 undefined on input line 406.
+
 [14]
-Overfull \hbox (9.98567pt too wide) in paragraph at lines 474--474
+
+LaTeX Warning: Citation `li2024graphsmile' on page 15 undefined on input line 438.
+
+
+LaTeX Warning: Citation `li2024graphsmile' on page 15 undefined on input line 446.
+
+
+Overfull \hbox (0.99905pt too wide) in paragraph at lines 488--488
+ []|\T1/cmr/m/n/9 Neutral| 
+ []
+
+
+Overfull \hbox (1.10738pt too wide) in paragraph at lines 488--488
+ []|\T1/cmr/m/n/9 Excited| 
+ []
+
+
+Overfull \hbox (12.76003pt too wide) in paragraph at lines 488--488
  []|\T1/cmr/m/n/9 Frustrated| 
  []
 
 
-Overfull \hbox (0.61023pt too wide) in paragraph at lines 499--499
+Overfull \hbox (0.99905pt too wide) in paragraph at lines 488--488
+ []|\T1/cmr/m/n/9 Neutral| 
+ []
+
+
+Overfull \hbox (3.38458pt too wide) in paragraph at lines 488--488
  []|\T1/cmr/m/n/9 Surprise| 
  []
 
-[15] [16] (./main.bbl [17] [18]) [19] (./main.aux)
+
+Overfull \hbox (1.85303pt too wide) in paragraph at lines 488--488
+ []|\T1/cmr/m/n/9 Sadness| 
+ []
+
+
+Overfull \hbox (0.69287pt too wide) in paragraph at lines 488--488
+ []|\T1/cmr/m/n/9 Disgust| 
+ []
+
+[15] [16] (./main.bbl) [17] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8A554E481B85CA08769BB26BE8FBF25E;846.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
+(rerunfilecheck)             After:  8A554E481B85CA08769BB26BE8FBF25E;846.
  ) 
 Here is how much of TeX's memory you used:
- 26202 strings out of 476182
- 490388 string characters out of 5795596
- 1969975 words of memory out of 5000000
- 47657 multiletter control sequences out of 15000+600000
- 576044 words of font info for 75 fonts, out of 8000000 for 9000
+ 26156 strings out of 476182
+ 489442 string characters out of 5795596
+ 1967975 words of memory out of 5000000
+ 47652 multiletter control sequences out of 15000+600000
+ 575731 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,14n,101p,1857b,622s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.525pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on main.pdf (19 pages, 1972246 bytes).
+ 99i,13n,101p,1857b,552s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.525pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on main.pdf (17 pages, 1836397 bytes).
 PDF statistics:
- 1017 PDF objects out of 1200 (max. 8388607)
- 500 compressed objects within 5 object streams
- 103 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 675 PDF objects out of 1000 (max. 8388607)
+ 230 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
