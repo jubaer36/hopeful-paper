@@ -127,7 +127,7 @@ Multimodal ERC (MERC) incorporates text, acoustic, and visual cues to better ref
 
 Multimodal Emotion Recognition in Conversations (MERC) has been addressed using several modeling strategies, ranging from sequence based methods to multimodal fusion and graph based approaches.
 
-Sequence based methods capture temporal dependencies and speaker states in conversations. For example, DialogueRNN~\cite{majumder2019dialoguernn} uses recurrent structures to leverage dialog history for emotion prediction, while also incorporating speaker state tracking. Fusion based methods integrate information across modalities using strategies such as early or late fusion, attention mechanisms, and transformer based cross modal alignment. Early and late fusion combine modality features at the input or decision stage~\cite{morency2011multimodal,perezrosas2013utterance,poria2016fusing,zadeh2016mosi}, whereas attention based and transformer architectures, such as Multimodal Transformer~\cite{tsai2019mult} and MISA~\cite{hazarika2020misa}, model interactions between modalities and learn both shared and modality specific representations. Some methods, like DialogueRNN and its extensions, also incorporate mechanisms for tracking emotion transitions within conversations~\cite{majumder2019dialoguernn,hazarika2018icon}.
+Sequence based methods capture temporal dependencies and speaker states in conversations. For example, DialogueRNN~\cite{majumder2019dialoguernn} uses recurrent structures to leverage dialogue history for emotion prediction, while also incorporating speaker state tracking. Fusion based methods integrate information across modalities using strategies such as early or late fusion, attention mechanisms, and transformer based cross modal alignment. Early and late fusion combine modality features at the input or decision stage~\cite{morency2011multimodal,perezrosas2013utterance,poria2016fusing,zadeh2016mosi}, whereas attention based and transformer architectures, such as Multimodal Transformer~\cite{tsai2019mult} and MISA~\cite{hazarika2020misa}, model interactions between modalities and learn both shared and modality specific representations. Some methods, like DialogueRNN and its extensions, also incorporate mechanisms for tracking emotion transitions within conversations~\cite{majumder2019dialoguernn,hazarika2018icon}.
 
 While these sequence and fusion approaches capture context and multimodal interactions, they often fail to explicitly model conversational structure or relational dependencies between speakers, a gap addressed by graph based methods~\cite{ghosal2019dialoguegcn,hu2021mmgcn,li2024graphsmile}.\subsection{Graph Based MERC Approaches}
 
@@ -409,11 +409,11 @@ On IEMOCAP, GraphSmile with BERT-encoded VLM descriptions achieved the highest W
 
 On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (ACC 67.47, WF1 66.35), while Qwen-VL-3B with BERT slightly outperformed Longformer (ACC 67.32 vs.\ 67.13; WF1 66.12 vs.\ 65.97). Overall results were close to the baseline (ACC 67.66, WF1 66.67), with minor variations across emotion categories.
 
-\begin{table}[H]
+\begin{table}[tp]
   \centering
   \caption{\label{tab:main_result_iemocap}Main Results for the MERC Task on the IEMOCAP Dataset.}
   {\renewcommand{\arraystretch}{0.82}\resizebox{\textwidth}{!}{%
-    \begin{tabular}{l @{\hspace{1.5em}} c @{\hspace{1.5em}} c @{\hspace{1.5em}} *{6}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{1.5em}} c @{\hspace{1.5em}} c}
+    \begin{tabular}{l c c *{6}{>{\centering\arraybackslash}p{3.5em}} c c}
       \toprule
       \multirow{2}{*}{Method} & \multicolumn{10}{c}{IEMOCAP-6}                                                                    \\
       \cmidrule(lr){2-3} \cmidrule(lr){4-9} \cmidrule(lr){10-11}
@@ -427,7 +427,6 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
       MM-DFN                  & --                             & -- & 43.36 & 83.23 & 70.03 & 70.19 & 73.11 & 64.01 & 69.44 & 68.83 \\
       SACL-LSTM               & --                             & -- & 51.30 & 82.25 & \textbf{71.39} & 67.78 & 75.26 & 66.94 & 70.55 & 70.60 \\
       M3Net                   & --                             & -- & 60.93 & 78.84 & 70.14 & 68.06 & 77.11 & 67.42 & 70.92 & 71.07 \\
-
       GraphSmile$^\ddagger$   & --                             & -- & 59.31 & 82.47 & 69.68 & 67.53 & \underline{78.76} & 66.06 & \underline{71.23} & 71.29 \\
       \midrule
       \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & Longformer & 54.11 & 82.82 & 70.23 & \underline{70.72} & \textbf{79.81} & 65.87 & \textbf{71.53} & \underline{71.49} \\
@@ -435,12 +434,10 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
       \bottomrule
     \end{tabular}%
   }}
-\end{table}
-\begin{table}[H]
-  \centering
+  \bigskip
   \caption{\label{tab:main_result_meld}Main Results for the MERC Task on the MELD Dataset.}
   {\renewcommand{\arraystretch}{0.82}\resizebox{\textwidth}{!}{%
-    \begin{tabular}{l @{\hspace{1.5em}} c @{\hspace{1.5em}} c @{\hspace{1.5em}} *{7}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{1.5em}} c @{\hspace{1.5em}} c}
+    \begin{tabular}{l c c *{7}{>{\centering\arraybackslash}p{3.5em}} c c}
       \toprule
       \multirow{2}{*}{Method} & \multicolumn{11}{c}{MELD}                                                                            \\
       \cmidrule(lr){2-3} \cmidrule(lr){4-10} \cmidrule(lr){11-12}
