@@ -23,6 +23,8 @@
 % Include other packages here, before hyperref.
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{multirow}
 
 % The "axessiblity" package can be found at: https://ctan.org/pkg/axessibility?lang=en
 \usepackage[accsupp]{axessibility}  % Improves PDF readability for those with disabilities.
@@ -218,7 +220,7 @@ The acoustic features, $X^a$, capture paralinguistic speech characteristics incl
   \centering
   \includegraphics[width=\linewidth]{Preprocessing.pdf}
   \caption{The multimodal preprocessing pipeline for extracting utterance-level textual, acoustic, and visual features.}
-  \label{fig:preprocessing}
+  \label{fig:pipeline}
 \end{figure}
 Traditional visual encoders often fail to fully harness conversational cues because they are restricted to extracting context blind spatial features or isolated facial mechanics, creating a semantic gap between raw physical movements and complex emotional states. The core methodological contribution addresses this by redefining the visual feature extraction process through a three stage semantic preprocessing pipeline.
 
@@ -441,6 +443,55 @@ Accuracy (ACC) and Weighted F1-score (WF1) serve as the primary evaluation metri
 \smallskip
 \noindent\textbf{Training and Optimization Strategy.}
 The model follows the multi-task optimization strategy of GraphSmile~\cite{li2024graphsmile}, jointly learning the primary emotion recognition task alongside sentiment and sentiment-shift classification. All structural components of the Graph Structure Fusion (GSF) module and the Sentiment Dynamics Perception (SDP) module are maintained as per the original implementation to ensure a controlled comparison of visual feature effectiveness.
+
+\subsection{Main Result for Emotion Recognition}
+\begin{table}[htbp]
+  \centering
+  \caption{\label{tab:main_result_emo}Main Results for the MERC Task on All Datasets}
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{cccccccccccc}
+      \toprule
+      \multirow{2}{*}{Method} & \multicolumn{11}{c}{IEMOCAP-6}                                                                                                                                                                                                               \\
+      \cmidrule(lr){2-12}
+                              & col1                           & col2 & Happy              & Sad               & Neutral           & Angry              & Excited           & Frustrated        & \multicolumn{2}{c}{ACC}               & WF1                                \\
+      \midrule
+      COGMEN$^\dagger$        &                                &      & 51.90              & 81.70             & 68.60             & 66.00              & 75.30             & 58.20             & \multicolumn{2}{c}{68.20}             & 67.60                              \\
+      Joyful$^\dagger$        &                                &      & \underline{60.94}  & \textbf{84.42}    & 68.24             & 69.95              & 73.54             & \underline{67.55} & \multicolumn{2}{c}{70.55}             & 71.03                              \\
+      DER-GCN$^\dagger$       &                                &      & 58.80              & 79.80             & 61.50             & \textbf{72.10}     & 73.30             & \textbf{67.80}    & \multicolumn{2}{c}{69.70}             & 69.40                              \\
+      % \midrule
+      DialogueCRN$^\ddagger$  &                                &      & 53.85              & 82.66             & 71.03             & 62.33              & \underline{77.64} & 58.81             & \multicolumn{2}{c}{68.70}             & 68.82                              \\
+      MMGCN$^\ddagger$        &                                &      & 47.10              & 81.91             & 66.44             & 63.51              & 76.17             & 59.06             & \multicolumn{2}{c}{67.10}             & 66.81                              \\
+      MM-DFN$^\ddagger$       &                                &      & 43.36              & \underline{83.23} & 70.03             & 70.19              & 73.11             & 64.01             & \multicolumn{2}{c}{69.44}             & 68.83                              \\
+      SACL-LSTM$^\ddagger$    &                                &      & 51.30              & 82.25             & \textbf{71.39}    & 67.78              & 75.26             & 66.94             & \multicolumn{2}{c}{70.55}             & 70.60                              \\
+      M3Net$^\ddagger$        &                                &      & 60.93              & 78.84             & 70.14             & 68.06              & 77.11             & 67.42             & \multicolumn{2}{c}{\underline{70.92}} & \underline{71.07}                  \\
+      \midrule
+      GraphSmile$^\ddagger$   &                                &      & \textbf{59.31}     & 82.47             & \underline{69.68} & \underline{67.53}  & \textbf{78.76}    & 66.06             & \multicolumn{2}{c}{\textbf{71.23}}    & \textbf{71.29}                     \\
+      \midrule
+      \midrule
+      \multirow{2}{*}{Method} & \multicolumn{11}{c}{MELD}                                                                                                                                                                                                                    \\
+      \cmidrule(lr){2-12}
+                              & col1                           & col2 & Neutral            & Surprise          & Fear              & Sadness            & Joy               & Disgust           & Anger                                 & ACC               & WF1            \\
+      \midrule
+      Joyful$^\dagger$        &                                &      & 76.80              & 51.91             & --                & 41.78              & 56.89             & --                & 50.71                                 & 62.53             & 61.77          \\
+      DER-GCN$^\dagger$       &                                &      & \textbf{80.60}     & 51.00             & 10.40             & 41.50              & 64.30             & 10.30             & \textbf{57.40}                        & 66.80             & 66.10          \\
+      % \midrule
+      DialogueCRN$^\ddagger$  &                                &      & 76.15              & 56.72             & \underline{18.67} & 38.29              & 63.21             & 27.69             & 50.67                                 & 62.38             & 63.32          \\
+      MMGCN$^\ddagger$        &                                &      & 78.62              & 57.78             & 3.77              & 40.35              & 63.60             & 12.20             & \underline{53.68}                     & 66.02             & 64.55          \\
+      MM-DFN$^\ddagger$       &                                &      & 79.84              & 58.43             & 15.79             & 31.65              & 64.01             & 28.04             & 53.60                                 & \underline{67.05} & 65.21          \\
+      SACL-LSTM$^\ddagger$    &                                &      & 77.42              & 58.50             & \textbf{20.41}    & 39.58              & 62.76             & \textbf{34.71}    & 52.08                                 & 64.52             & 64.55          \\
+      M3Net$^\ddagger$        &                                &      & 79.14              & \textbf{59.54}    & 13.33             & \textbf{42.86}     & \textbf{65.05}    & 21.69             & 53.54                                 & 66.59             & 65.83          \\
+      \midrule
+      GraphSmile$^\ddagger$   &                                &      & \underline{ 80.32} & \underline{58.96} & 18.18             & \underline{ 42.46} & \underline{64.99} & \underline{32.43} & 53.59                                 & \textbf{67.66}    & \textbf{66.67} \\
+      \bottomrule
+    \end{tabular}%
+  }
+
+  \vspace{1ex}
+  \begin{minipage}{\textwidth}
+    \small
+    The marker $^\dagger$ indicates the results (\%) from the original paper, and the marker $^\ddagger$ indicates the replication results (\%) based on the open source code and our dataset setting. In DialogueCRN and SACL-LSTM, multimodal features are directly concatenated to meet their input requirements.
+  \end{minipage}
+\end{table}
 
 \section{Conclusion}
 The paper ends with a conclusion.
