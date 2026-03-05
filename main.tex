@@ -87,9 +87,9 @@
 
 
 \begin{abstract}
-  Multimodal Emotion Recognition in Conversations (MERC) aims to recognize human emotions for each utterance via visual, audio, and linguistic modalities. Its potential uses in affective computing and human-computer interaction have drawn a lot of attention in recent years. Among the various approaches proposed to solve this problem, graph based approaches have emerged as some of the most promising ones. However, because this pixel level feature extraction is noisy , the visual modality frequently makes only a small contribution or is underutilized in many graph based MERC frameworks. Traditional visual encoders generally focus on geometric and textual patterns to produce feature maps or patch representations. These representations often fail to sufficiently express the facial and behavioral cues leading to weak cross modal alignment with the other semantically rich modalities. To address this problem, we propose a Vision Language Model (VLM) based feature extraction approach that captures facial expressions and behavioral cues from the visual modality and encodes them as semantically meaningful representations. Using this approach, the raw video for each utterance is translated into a descriptive and meaningful textual representation through a VLM with structured prompts designed to capture facial expressions, behavioral cues, and body language. The resulting semantic visual features are then incorporated into graph based MERC frameworks as a replacement for low level visual features, reducing noise in the visual modality while increasing the model’s reliance on meaningful visual information through the VLM. This work presents VLM-based semantic visual feature extraction as a viable replacement for conventional visual feature extraction pipelines in graph-based MERC frameworks.
+  Multimodal Emotion Recognition in Conversations (MERC) aims to identify emotions in each utterance using visual, audio, and linguistic cues, with applications in affective computing and human-computer interaction.  Among the various approaches proposed to solve this problem, graph based approaches have emerged as some of the most promising ones but they often underutilize the visual modality due to noisy pixel level features. Traditional visual encoders focus on geometric and texture patterns, which often fail to capture facial expressions and behavioral cues, resulting in weak cross-modal alignment. To address this issue, we propose a Vision-Language Model (VLM) based approach that encodes facial expressions and behavioral cues from the visual modality into semantically meaningful representations. Each utterance’s video is translated into a descriptive textual representation using structured VLM prompts capturing expressions, gestures, body language and scenario understanding. These semantic visual features replace traditional low level visual inputs in graph based MERC frameworks, reducing noise and allowing the model to focus on meaningful visual information. This work presents VLM based semantic visual feature extraction as a viable replacement for conventional visual feature extraction pipelines in graph based MERC frameworks.
 
-  \keywords{Multimodal Emotion Recognition in Conversations \and Vision Language Models \and Semantic Visual Features \and Graph Neural Networks}
+  \keywords{Multimodal Emotion Recognition in Conversations \and Vision Language Models \and Graph Neural Networks}
 \end{abstract}
 
 
@@ -407,7 +407,7 @@ All experiments are conducted on an NVIDIA GeForce RTX 3060 (12\,GB VRAM) using 
     Shift Window               & 19               & 3                \\
     Heterogeneous Graph Layers & 7                & 4                \\
     Dropout Rate               & 0.2              & 0.2              \\
-    Loss Weights               & 1.0,~1.0,~0.7    & 0.0,~0.5,~0.2    \\
+    Loss Weights               & 1.0,~1.0,~0.7    & 1.0,~0.5,~0.2    \\
     \hline
   \end{tabular}
 \end{table}
