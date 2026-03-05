@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  5 MAR 2026 19:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  5 MAR 2026 20:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -894,42 +894,47 @@ File: Preprocessing.pdf Graphic file (type pdf)
 Package pdftex.def Info: Preprocessing.pdf  used on input line 223.
 (pdftex.def)             Requested size: 347.12361pt x 122.56819pt.
 [8] [9 <./Preprocessing.pdf>]
-Overfull \hbox (3.85251pt too wide) in paragraph at lines 272--273
-[]\T1/cmr/m/n/10 The fully con-nected layer $[]\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 )$ \T1/cmr/m/n/10 in-cludes a lin-ear trans-for-ma-tion, a LeakyReLU
+Overfull \hbox (44.36302pt too wide) in paragraph at lines 247--249
+\T1/cmr/m/n/10 tracts the \T1/cmtt/m/n/10 [CLS] \T1/cmr/m/n/10 to-ken em-bed-ding; and Long-former [[]3[]] (\T1/cmtt/m/n/10 allenai/longformer-base-4096\T1/cmr/m/n/10 ),
  []
 
 [10]
+Overfull \hbox (3.85251pt too wide) in paragraph at lines 274--275
+[]\T1/cmr/m/n/10 The fully con-nected layer $[]\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 )$ \T1/cmr/m/n/10 in-cludes a lin-ear trans-for-ma-tion, a LeakyReLU
+ []
+
+
 
 pdfTeX warning: pdflatex (file ./NodesGNN.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.6> allowed
-<NodesGNN.pdf, id=258, 984.5583pt x 524.92107pt>
+<NodesGNN.pdf, id=260, 984.5583pt x 524.92107pt>
 File: NodesGNN.pdf Graphic file (type pdf)
 <use NodesGNN.pdf>
-Package pdftex.def Info: NodesGNN.pdf  used on input line 280.
+Package pdftex.def Info: NodesGNN.pdf  used on input line 282.
 (pdftex.def)             Requested size: 347.12361pt x 185.07074pt.
-[11 <./NodesGNN.pdf>] [12] [13]
-Overfull \hbox (2.35075pt too wide) in paragraph at lines 406--407
+[11 <./NodesGNN.pdf>] [12] [13] [14]
+Overfull \hbox (2.35075pt too wide) in paragraph at lines 408--409
 \T1/cmr/m/n/10 with-out trun-ca-tion; a 768-dimensional em-bed-ding is ex-tracted from the \T1/cmtt/m/n/10 [CLS]
  []
 
-[14]
-Overfull \hbox (9.98567pt too wide) in paragraph at lines 476--476
+[15]
+Overfull \hbox (9.98567pt too wide) in paragraph at lines 484--484
  []|\T1/cmr/m/n/9 Frustrated| 
  []
 
 
-Overfull \hbox (0.61023pt too wide) in paragraph at lines 502--502
+Overfull \hbox (0.61023pt too wide) in paragraph at lines 510--510
  []|\T1/cmr/m/n/9 Surprise| 
  []
 
 
-Underfull \vbox (badness 1681) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15] [16]
+ [16] [17]
 Overfull \hbox (5.15514pt too wide) in paragraph at lines 527--528
 []\T1/cmr/m/n/10 On MELD, multi-party in-ter-ac-tions com-pli-cate speaker-specific emo-tion recog-
  []
 
-[17] (./main.bbl [18] [19] [20]) [21] (./main.aux)
+(./main.bbl [18] [19] [20]) [21] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -940,16 +945,16 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  26266 strings out of 476182
  491387 string characters out of 5795596
- 1975975 words of memory out of 5000000
+ 1977975 words of memory out of 5000000
  47712 multiletter control sequences out of 15000+600000
  576044 words of font info for 75 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,14n,101p,1857b,624s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,14n,101p,1865b,622s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.525pk> </home/jubaer/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on main.pdf (21 pages, 2005332 bytes).
+Output written on main.pdf (21 pages, 2020228 bytes).
 PDF statistics:
- 1041 PDF objects out of 1200 (max. 8388607)
- 516 compressed objects within 6 object streams
+ 1043 PDF objects out of 1200 (max. 8388607)
+ 518 compressed objects within 6 object streams
  108 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
