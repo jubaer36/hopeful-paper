@@ -267,7 +267,11 @@ After processing the textual-visual ($\mathcal{G}^{tv}$), textual-acoustic ($\ma
 After the graph propagation and integration phase, the resulting feature matrix $H$ is passed into a multitask classification head.
 For the primary task of emotion classification, $H$ goes through a linear classifier and a softmax function to predict the exact emotional category. This is formulated as:
 \begin{equation}
-  \hat{Y} = \text{softmax}(H\Theta_y + b_y), \qquad \hat{e}_i = \text{argmax}(\hat{y}_i[\tau])
+  \hat{Y} = \text{softmax}(H\Theta_y + b_y)
+\end{equation}
+
+\begin{equation}
+  \hat{e}_i = \text{argmax}(\hat{y}_i[\tau])
 \end{equation}
 
 \noindent Here, $\Theta_y$ and $b_y$ are the learned weights and biases. $\tau$ denotes the index over the set of emotion classes. The vector $\hat{y}_i$ holds the emotion probabilities for utterance $u_i$, and $\hat{e}_i$ is the final predicted emotion label. We optimize the network using categorical cross-entropy loss:
