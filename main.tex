@@ -26,7 +26,6 @@
 \usepackage{threeparttable}
 \usepackage{multirow}
 \usepackage{array}
-\usepackage{float}
 
 % The "axessiblity" package can be found at: https://ctan.org/pkg/axessibility?lang=en
 \usepackage[accsupp]{axessibility}  % Improves PDF readability for those with disabilities.
@@ -325,7 +324,7 @@ To simultaneously extract both emotional and sentimental cues, the primary emoti
 \smallskip
 \noindent\textbf{MELD}~\cite{poria2019meld}\textbf{.} This dataset is constructed from episodes of the television series \textit{Friends}, representing a multi-party conversational environment. The video data is inherently provided as pre-segmented, utterance-level clips.
 
-\begin{table}[h!]
+\begin{table}[tb]
   \centering
   \caption{Dataset statistics for IEMOCAP and MELD.}
   \label{tab:datasets}
@@ -366,7 +365,7 @@ VidEmo-3B~\cite{videmo} (Qwen2.5-VL backbone~\cite{qwen2_5_vl}) generates uttera
 \noindent\textbf{Hardware and Environment.}
 All experiments are conducted on an NVIDIA GeForce RTX 3060 (12\,GB VRAM) using a Conda environment with PyTorch 2.8.0+cu126.
 
-\begin{table}[H]
+\begin{table}[tb]
   \centering
   \caption{Hyperparameter settings for IEMOCAP and MELD.}
   \label{tab:hyperparams}
@@ -400,7 +399,6 @@ Accuracy (ACC) and Weighted F1-score (WF1) serve as the primary evaluation metri
 \noindent\textbf{Training and Optimization Strategy.}
 The model follows the multi-task optimization strategy of GraphSmile~\cite{li2024graphsmile}, jointly learning the primary emotion recognition task alongside sentiment and sentiment-shift classification. All structural components of the Graph Structure Fusion (GSF) module and the Sentiment Dynamics Perception (SDP) module are maintained as per the original implementation to ensure a controlled comparison of visual feature effectiveness.
 
-\raggedbottom
 \section{Results and Observations}
 \subsection{Results Comparison}
 Tables~\ref{tab:main_result_iemocap} and~\ref{tab:main_result_meld} report the performance of GraphSmile integrated with semantic visual representations on IEMOCAP and MELD, including overall accuracy (ACC), weighted F1 (WF1), and per-class F1 scores.
@@ -459,7 +457,6 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
     \end{tabular}%
   }}
   \begin{minipage}{\textwidth}
-    \small
     $^\dagger$~results are directly taken from the original paper; $^\ddagger$~results independently replicated by us; no marker represents results replicated by GraphSmile~\cite{li2024graphsmile} from the source code implementaton
   \end{minipage}
 \end{table}
