@@ -117,7 +117,7 @@ In summary, this work makes the following contributions:
 By bridging the gap between visual perception and semantic understanding, our approach offers a new direction for enhancing the role of visual information in multimodal conversational emotion recognition.
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\linewidth]{VLMtemporal.pdf}
+  \includegraphics[width=0.92\linewidth]{VLMtemporal.pdf}
   \caption{Overview of the proposed semantic visual preprocessing pipeline.}
   \label{fig:preprocessing}
 \end{figure}
@@ -148,14 +148,13 @@ Despite its strong performance, GraphSmile, like most existing graph based MERC 
 
 \subsection{Vision Language and LLM Based Approaches for Emotion Recognition}
 
-To overcome limitations of low level visual features, recent research has explored Vision Language Models (VLMs) and multimodal Large Language Models (LLMs) for emotion recognition tasks. VLMs pretrained on large image/video text datasets~\cite{radford2021clip} produce semantically meaningful representations of visual content: they generate textual or semantic descriptions from visual inputs, capturing behaviors, expressions, and dynamics that are difficult for CNN~\cite{he2016resnet} or ViT~\cite{dosovitskiy2021vit} features to represent, and these descriptions are inherently aligned with language modalities~\cite{devlin2019bert}, facilitating cross modal fusion and multimodal reasoning.
+To overcome the limitations of low-level visual features, recent research has explored Vision Language Models (VLMs) and multimodal Large Language Models (LLMs) for emotion recognition. Pretrained VLMs~\cite{radford2021clip} generate semantically meaningful descriptions from visual inputs, capturing expressions, behaviors, and dynamics that CNN~\cite{he2016resnet} or ViT~\cite{dosovitskiy2021vit} features often miss. These textual representations are inherently aligned with language modalities~\cite{devlin2019bert}, facilitating cross-modal fusion and multimodal reasoning.
 
-Recent works demonstrate that VLMs can capture emotionally relevant visual cues. Models such as VidEmo-3B~\cite{videmo} leverage video--language pretraining to describe visual affective cues over time, producing semantically grounded visual narratives. Task specific adaptations like Emotion-Qwen~\cite{huang2025emotionqwen} build hybrid frameworks that integrate emotion reasoning into general vision--language understanding by combining specialized emotion experts with general VL backbones. Evaluation studies of general VLMs show that, with appropriate prompting or fine tuning, vision--language models can recognize nuanced emotional expressions and behaviors that traditional encoders miss.
+VLMs such as VidEmo-3B~\cite{videmo} produce temporally grounded visual narratives, describing affective cues across an utterance. Task-specific adaptations like Emotion-Qwen~\cite{huang2025emotionqwen} integrate emotion reasoning with general vision-language backbones, combining specialized emotion experts with general VL features. With appropriate prompting or fine-tuning, these models capture subtle emotional expressions and behaviors that traditional encoders overlook.
 
-Multimodal LLM integrations extend this idea further. Works like BeMERC~\cite{fu2025bemerc} propose behavior aware MLLM frameworks for MERC, using multimodal LLMs tuned to behavior features (\eg, facial motion, body language) to directly predict conversational emotions, showing that LLMs can leverage both visual and linguistic context effectively. Prompt based or zero shot methods demonstrate that general large vision language systems such as CLIP~\cite{radford2021clip} or Qwen2.5-VL~\cite{qwen2_5_vl} can be prompted to interpret emotional cues in video or images without explicit retraining, offering flexible emotion inference.
+Multimodal LLMs extend this concept further. Frameworks like BeMERC~\cite{fu2025bemerc} leverage behavior-aware LLMs to integrate visual and linguistic context for conversational emotion prediction. Prompting general VL models such as CLIP~\cite{radford2021clip} or Qwen2.5-VL~\cite{qwen2_5_vl} can enable zero-shot emotion inference from video or images without retraining.
 
-These VLM/LLM approaches address two key limitations in traditional MERC: visual modality underutilization, by generating high level semantic visual descriptions rather than low level features~\cite{li2018self}; and cross modal alignment challenges, by inherently aligning visual and language modalities through shared semantic outputs~\cite{radford2021clip}. Integrating semantic VLM representations into structured MERC frameworks, especially graph based methods, emerges as an important frontier for multimodal emotion recognition.
-
+Overall, VLM/LLM approaches address two core MERC challenges: they reduce visual modality underutilization by producing high-level semantic descriptions~\cite{li2018self}, and improve cross-modal alignment by encoding visual and linguistic information in shared semantic spaces~\cite{radford2021clip}. Integrating these semantic visual representations into graph-based MERC frameworks represents a promising direction for enhanced multimodal emotion recognition.
 \subsection{Positioning of Our Work}
 
 Our work builds upon the strengths of graph based MERC frameworks , particularly GraphSmile~\cite{li2024graphsmile}, while addressing the underutilization of visual information. Instead of using static, low level visual embeddings~\cite{he2016resnet,baltrusaitis2018openface}, we introduce a VLM based semantic visual preprocessing stage~\cite{videmo,qwen2_5_vl} that converts raw video segments into temporally structured textual narratives capturing facial expressions, gaze shifts, and body language evolution within an utterance.
@@ -187,35 +186,36 @@ For the textual modality, utterance transcripts are encoded uniformly across bot
 \subsubsection{Acoustic Feature Extraction.}
 The acoustic features, $X^a$, capture paralinguistic speech characteristics including fundamental frequency (F0), energy, spectral properties, and temporal statistical functionals that reflect prosody and pitch dynamics. For both the IEMOCAP (6-way)~\cite{busso2008iemocap} and MELD~\cite{poria2019meld} datasets, these utterance level features are extracted using the openSMILE toolkit with the IS10 configuration~\cite{eyben2010opensmile}.
 
-\subsubsection{Semantic Visual Feature Extraction.}
+\subsubsection{Semantic Visual Feature Extraction}
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\linewidth]{Preprocessing.pdf}
+  \includegraphics[width=0.92\linewidth]{Preprocessing.pdf}
   \caption{The multimodal preprocessing pipeline for extracting utterance-level textual, acoustic, and visual features.}
   \label{fig:pipeline}
 \end{figure}
-Traditional visual encoders often fail to fully harness conversational cues because they are restricted to extracting context blind spatial features or isolated facial mechanics, creating a semantic gap between raw physical movements and complex emotional states. The core methodological contribution addresses this by redefining the visual feature extraction process through a three stage semantic preprocessing pipeline.
+
+Traditional visual encoders often fail to capture conversational cues, as they focus on context-blind spatial or facial features, creating a semantic gap between raw movements and emotional states. We address this via a three-stage semantic preprocessing pipeline.
 
 \smallskip
-\noindent\textbf{Stage 1: Dataset Specific Video Preprocessing.}
-To ensure the VLM accurately analyzes the correct subject, we apply tailored preprocessing strategies based on the native format of each dataset. The IEMOCAP dataset~\cite{busso2008iemocap}, which consists of continuous, multi speaker dialogue recordings, undergoes two explicit preprocessing steps. First, the sessions are temporally segmented into discrete, utterance level clips using provided timestamp annotations; second, each frame is spatially cropped to physically isolate the active speaker and eliminate visual interference. In contrast, the MELD dataset~\cite{poria2019meld} inherently provides presegmented utterance level clips, bypassing the need for physical cropping. Instead, spatial isolation for MELD is achieved entirely through zero shot prompting, wherein the VLM is explicitly instructed to autonomously identify and focus exclusively on the active speaker within the uncropped, multi person frame.
+\noindent\textbf{Stage 1: Dataset-Specific Video Preprocessing.}
+For IEMOCAP~\cite{busso2008iemocap}, continuous multi-speaker sessions are segmented into utterance-level clips and spatially cropped to isolate the active speaker. MELD~\cite{poria2019meld} already provides pre-segmented clips, so speaker focus is achieved via zero-shot prompting, instructing the VLM to attend only to the active speaker.
 
 \smallskip
 \noindent\textbf{Stage 2: VLM Temporal Analysis.}
-Each utterance clip is processed by VidEmo-3B~\cite{videmo} (built on the Qwen2.5-VL-3B backbone~\cite{qwen2_5_vl}). The model is driven by a highly structured prompt instructing it to focus exclusively on the active speaker and ignore any other visible participants. The VLM maps the speaker's emotional evolution by dividing the clip into a temporal progression (beginning, middle, and end). For each segment, the model grounds its analysis in specific visible signals across four dimensions:
+Utterance clips are processed by VidEmo-3B~\cite{videmo} (Qwen2.5-VL-3B backbone~\cite{qwen2_5_vl}) with structured prompts to focus on the active speaker. Each clip is divided into beginning, middle, and end segments, and analyzed for:
 \begin{itemize}
-  \item \textbf{Facial Expressions:} Specific muscle movements of the brow, lips, eyes, jaw, and cheeks.
+  \item \textbf{Facial Expressions:} Brow, lips, eyes, jaw, and cheek movements.
   \item \textbf{Head \& Gaze:} Tilts, nods, shakes, and eye direction.
-  \item \textbf{Body Language:} Posture shifts, gestures, and physical tension or relaxation.
-  \item \textbf{Instantaneous Emotion:} The most likely emotional state, explicitly supported by the aforementioned visual cues.
+  \item \textbf{Body Language:} Posture, gestures, and tension/relaxation.
+  \item \textbf{Instantaneous Emotion:} Likely emotional state from observed cues.
 \end{itemize}
-The temporal analysis concludes with a one sentence summary of the overall emotional arc (\eg, \emph{starts neutral $\rightarrow$ builds frustration $\rightarrow$ brief smile at end}). By enforcing that every observation is grounded in a specific visible signal from the speaker, this stage generates a semantically dense, temporally aware description of affective behavior, bypassing the noise of traditional frame averaging encoders.
+A one-sentence summary captures the overall emotional arc (e.g., \emph{neutral $\rightarrow$ frustration $\rightarrow$ brief smile}). This produces a dense, temporally aware textual description, avoiding noise from frame averaging.
 
-In a separate experimental condition on the MELD dataset, BLIP-2~\cite{li2023blip2} is employed as an alternative visual analysis model within this stage. Rather than processing the full video clip, three representative frames are sampled at fixed temporal positions corresponding to the beginning, middle, and end of each utterance. Each frame is individually processed by BLIP-2 with a prompt focused exclusively on the emotional state of the speaker in that moment, and the resulting per-frame descriptions are concatenated into a single utterance-level textual representation. This frame-level approach produces more targeted emotional descriptions, reducing scene-level noise that is particularly prevalent in the multi-party MELD setting.
+For MELD, BLIP-2~\cite{li2023blip2} is used in a frame-level approach: three frames (start, middle, end) are processed individually with emotion-focused prompts, and their outputs concatenated into a single utterance-level description, reducing multi-party noise.
 
 \smallskip
 \noindent\textbf{Stage 3: Text Encoding of VLM Output.}
-To bridge the symbolic output of the VLM with the continuous feature space expected by the graph network, the free text description is encoded using a pretrained transformer language model. Two encoders are evaluated in separate experimental conditions: BERT~\cite{devlin2019bert}, which truncates inputs to 512 tokens and extracts the \texttt{[CLS]} token embedding; and Longformer~\cite{beltagy2020longformer} , which processes the full description without truncation. Both produce a 768-dimensional dense vector that serves as the new visual modality feature, $X^v$. Encoding visual behavior in the same semantic space as the transcript fosters superior cross modal alignment within the GSF module~\cite{li2024graphsmile}.
+The VLM text is converted to a dense vector via pretrained transformers. BERT~\cite{devlin2019bert} extracts the \texttt{[CLS]} token from truncated inputs, while Longformer~\cite{beltagy2020longformer} processes the full description. Both yield 768-dimensional embeddings representing the visual modality, $X^v$, in the same semantic space as transcripts, improving cross-modal alignment within the GSF module~\cite{li2024graphsmile}.
 
 \subsection{Graph Structure Fusion (GSF) Module}
 
@@ -232,57 +232,63 @@ To understand how utterances relate to each other across different sensory input
 
 \subsubsection{Alternate Graph Propagation}
 Graph Neural Networks (GNNs) \cite{kipf2017gcn,scarselli2008graph} are highly effective at uncovering both cross modal and intra modal relationships. In our design, each dialogue graph passes information through multiple simplified convolutional layers. It alternates between extracting inter modal and intra modal features layer by layer, calculated as:
-
+\vspace{-6pt}
 $$X^{(l)} = AX^{(l-1)}\Theta^{(l)}, \quad l = 1, 2, \dots, L$$
+\vspace{-8pt}
 
-Here, $A$ is the dialogue graph's adjacency matrix, $X^{(l)}$ is the output feature at layer $l$, and $\Theta^{(l)}$ is the trainable weight matrix for that layer. For the textual-visual graph, the starting input $X^{tv,(0)}$ simply combines the raw textual features $[x^t_1, \dots, x^t_M]$ and visual features $[x^v_1, \dots, x^v_M]$.
+\noindent Here, $A$ is the dialogue graph's adjacency matrix, $X^{(l)}$ is the output feature at layer $l$, and $\Theta^{(l)}$ is the trainable weight matrix for that layer. For the textual-visual graph, the starting input $X^{tv,(0)}$ simply combines the raw textual features $[x^t_1, \dots, x^t_M]$ and visual features $[x^v_1, \dots, x^v_M]$.
 
 Next, we use residual connections \cite{he2016resnet} to sum the feature representations from every layer:
-
+\vspace{-6pt}
 $$X = X^{(0)} + \text{FC}^{(1)}(X^{(1)}) + \dots + \text{FC}^{(L)}(X^{(L)})$$
+\vspace{-8pt}
 
-The fully connected layer $\text{FC}(\cdot)$ includes a linear transformation, a LeakyReLU \cite{maas2013rectifier} activation, and dropout \cite{srivastava2014dropout}:
-
+\noindent The fully connected layer $\text{FC}(\cdot)$ includes a linear transformation, a LeakyReLU \cite{maas2013rectifier} activation, and dropout \cite{srivastava2014dropout}:
+\vspace{-6pt}
 $$\text{FC}(X) = \text{Dropout}(\text{LeakyReLU}(X\Theta_f + b_f))$$
+\vspace{-8pt}
 
-This setup serves two purposes: it lets the network dynamically choose which layer's information is most useful, and it boosts the overall expressive power of the GSF module.
+\noindent This setup serves two purposes: it lets the network dynamically choose which layer's information is most useful, and it boosts the overall expressive power of the GSF module.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=\linewidth]{NodesGNN.pdf}
+  \includegraphics[width=0.92\linewidth]{NodesGNN.pdf}
   \caption{Multimodal dialogue graph structure used in GraphSmile~\cite{li2024graphsmile}, in which utterance nodes from different modality pairs are connected via bipartite graphs and propagated through the Graph Structure Fusion (GSF) module. Adapted from~\cite{li2024graphsmile}.}
   \label{fig:nodesgnn}
 \end{figure}
 
 \subsubsection{Multimodal Integration}
 After processing the textual-visual ($\mathcal{G}^{tv}$), textual-acoustic ($\mathcal{G}^{ta}$), and visual-acoustic ($\mathcal{G}^{va}$) graphs through their own separate GSF modules, we get three distinct outputs: $X^{tv}$, $X^{ta}$, and $X^{va}$. We add these together to create a final, unified feature representation:
-
+\vspace{-6pt}
 \begin{align}
   H =\; & \sigma\!\left((X^{t \leftarrow v})\Theta_h\right) + \sigma\!\left((X^{v \leftarrow t})\Theta_h\right) \nonumber   \\
         & + \sigma\!\left((X^{t \leftarrow a})\Theta_h\right) + \sigma\!\left((X^{a \leftarrow t})\Theta_h\right) \nonumber \\
         & + \sigma\!\left((X^{v \leftarrow a})\Theta_h\right) + \sigma\!\left((X^{a \leftarrow v})\Theta_h\right)
 \end{align}
+\vspace{-8pt}
 
-In this equation, $\sigma$ is the activation function (like LeakyReLU) and $\Theta_h$ is a shared learning parameter. This combined matrix $H$ effectively captures all the complex, multi sensory emotional signals in the conversation.
+\noindent In this equation, $\sigma$ is the activation function (like LeakyReLU) and $\Theta_h$ is a shared learning parameter. This combined matrix $H$ effectively captures all the complex, multi sensory emotional signals in the conversation.
 
 \subsection{Emotion Classification}
 
 After the graph propagation and integration phase, the resulting feature matrix $H$ is passed into a multitask classification head.
 For the primary task of emotion classification, $H$ goes through a linear classifier and a softmax function to predict the exact emotional category. This is formulated as:
+\vspace{-6pt}
+$$\hat{Y} = \text{softmax}(H\Theta_y + b_y), \qquad \hat{e}_i = \text{argmax}(\hat{y}_i[\tau])$$
+\vspace{-8pt}
 
-$$\hat{Y} = \text{softmax}(H\Theta_y + b_y)$$
-$$\hat{e}_i = \text{argmax}(\hat{y}_i[\tau])$$
-
-Here, $\Theta_y$ and $b_y$ are the learned weights and biases. The vector $\hat{y}_i$ holds the emotion probabilities for utterance $u_i$, and $\hat{e}_i$ is the final predicted emotion label. We optimize the network using categorical cross-entropy loss:
-
+\noindent Here, $\Theta_y$ and $b_y$ are the learned weights and biases. The vector $\hat{y}_i$ holds the emotion probabilities for utterance $u_i$, and $\hat{e}_i$ is the final predicted emotion label. We optimize the network using categorical cross-entropy loss:
+\vspace{-6pt}
 $$\mathcal{L}_e = -\frac{1}{M} \sum_{i=1}^{M} \sum_{j=1}^{C_e} y_{i,j} \log \hat{y}_{i,j}$$
+\vspace{-8pt}
 
-where $M$ is the total number of utterances, $C_e$ is the number of emotion classes, $y_{i,j}$ is the true label, and $\hat{y}_{i,j}$ is our model's prediction.
+\noindent where $M$ is the total number of utterances, $C_e$ is the number of emotion classes, $y_{i,j}$ is the true label, and $\hat{y}_{i,j}$ is our model's prediction.
 
 \subsection{Sentiment Dynamics Perception (SDP) Module}
-Existing dialogue models often focus on static context, missing crucial inter utterance sentiment changes. To address this, we introduce the Sentiment Dynamics Perception (SDP) module \cite{li2024graphsmile} as a vital auxiliary task. The SDP module frames conversation dynamics as a pairwise prediction problem, tracking whether sentiment shifts or remains constant between consecutive utterances. By jointly optimizing this auxiliary shift loss with the main emotion classification loss, the network is strictly guided to learn the dialogue's emotional momentum. This joint supervision improves class separation (pulling similar sentiments closer and pushing differing ones apart), while perfectly aligning with the temporal descriptions created during the VLM preprocessing stage.
+To capture inter-utterance sentiment changes overlooked by static context models, we adopt the Sentiment Dynamics Perception (SDP) module \cite{li2024graphsmile} as an auxiliary task. It casts conversation dynamics as pairwise shift prediction, jointly optimizing a shift loss with the main emotion classification loss to improve class separation and align naturally with the temporal descriptions from the VLM stage.
 \subsubsection{Shift Label}
 We define a sentiment shift label $o_{(i,j)}$ for any pair of utterances $u_i$ and $u_j$. If the sentiment changes between the two utterances, the label is 1; if the sentiment remains the same, the label is 0:
+\vspace{-6pt}
 $$
   o_{(i,j)} =
   \begin{cases}
@@ -290,28 +296,39 @@ $$
     0, & \text{if } s_i = s_j.
   \end{cases}
 $$
-where $s_i$ denotes the ground truth sentiment state of utterance $u_i$.
+\vspace{-8pt}
+
+\noindent where $s_i$ denotes the ground truth sentiment state of utterance $u_i$.
 
 \subsubsection{Shift Classification}
 We construct pairwise shift features $T$ from the fused representations and pass them through a softmax classifier to predict the shift probability $\hat{Z}$:
+\vspace{-6pt}
 $$
   \hat{Z} = \text{softmax}(T\Theta_z + b_z)
 $$
-where $\Theta_z$ and $b_z$ are learnable parameters. The module is optimized using a standard cross-entropy loss function, denoted as $\mathcal{L}_o$.
+\vspace{-8pt}
+
+\noindent where $\Theta_z$ and $b_z$ are learnable parameters. The module is optimized using a standard cross-entropy loss function, denoted as $\mathcal{L}_o$.
 
 \subsection{Sentiment Classification}
 To extend our model to the Multimodal Sentiment Analysis in Conversation (MSAC) task, we add a sentiment classifier. The fused feature matrix $H$ is processed through a linear layer and a softmax activation:
+\vspace{-6pt}
 $$
   \hat{W} = \text{softmax}(H\Theta_w + b_w)
 $$
-Here, $\Theta_w$ and $b_w$ are learnable parameters, and $\hat{W}$ contains the predicted sentiment probabilities. This task is supervised by a sentiment classification cross-entropy loss, denoted as $\mathcal{L}_s$.
+\vspace{-8pt}
+
+\noindent Here, $\Theta_w$ and $b_w$ are learnable parameters, and $\hat{W}$ contains the predicted sentiment probabilities. This task is supervised by a sentiment classification cross-entropy loss, denoted as $\mathcal{L}_s$.
 
 \subsection{Total Training Objective}
 To simultaneously extract both emotional and sentimental cues, the primary emotion recognition task is jointly learned alongside the sentiment and shift classification tasks. The overall network parameters are optimized using a combined loss function:
+\vspace{-6pt}
 $$
   \mathcal{L}_{total} = \mathcal{L}_e + \lambda_s \mathcal{L}_s + \lambda_o \mathcal{L}_o + \beta ||\Theta_{total}||
 $$
-where $\mathcal{L}_e$ is the primary emotion classification loss, $\lambda_s$ and $\lambda_o$ are trade-off hyperparameters balancing the auxiliary tasks, $\beta$ is the $L_2$ regularization weight, and $\Theta_{total}$ represents all trainable parameters in the model.
+\vspace{-8pt}
+
+\noindent where $\mathcal{L}_e$ is the primary emotion classification loss, $\lambda_s$ and $\lambda_o$ are trade-off hyperparameters balancing the auxiliary tasks, $\beta$ is the $L_2$ regularization weight, and $\Theta_{total}$ represents all trainable parameters in the model.
 
 \section{Experimental Details}
 
@@ -356,32 +373,14 @@ where $\mathcal{L}_e$ is the primary emotion classification loss, $\lambda_s$ an
 
 \subsection{Semantic Visual Feature Extraction}
 
-\noindent\textbf{Video-to-Text Generation.}
-Vision Language Models (VLMs) are utilized to generate descriptive text for each utterance. The VidEmo-3B model~\cite{videmo}, built upon the Qwen2.5-VL backbone~\cite{qwen2_5_vl}, is applied to both datasets.
-
-\smallskip
-\noindent\textbf{Frame Sampling.} IEMOCAP videos are sampled at a fixed rate of 1 frame per second (FPS). MELD videos use an adaptive strategy of 1 FPS for clips under 15 seconds, capped at a maximum of 16 frames for longer clips.
-
-\smallskip
-\noindent\textbf{Prompt Structure.} The prompt requests a temporal progression (beginning, middle, and end) detailing facial expressions, head and gaze, body language, and instantaneous emotion, concluding with a one-sentence emotional arc summary. For MELD, zero-shot instructions are included to focus exclusively on the active speaker.
-
-\smallskip
-\noindent\textbf{Batching and Computation.} For IEMOCAP, inference was executed with a batch size of 4, requiring over 7 hours. For MELD, inference was executed with a batch size of 2, requiring over 10 hours.
-
-\smallskip
-\noindent\textbf{Text-to-Vector Encoding.}
-The generated descriptions are encoded using two models evaluated in separate experimental conditions:
-\begin{itemize}
-  \item \textbf{Longformer}~\cite{beltagy2020longformer} : inputs are processed without truncation; a 768-dimensional embedding is extracted from the \texttt{[CLS]} token.
-  \item \textbf{BERT}~\cite{devlin2019bert} : inputs are truncated to a maximum of 512 tokens; a 768-dimensional embedding is extracted from the \texttt{[CLS]} token.
-\end{itemize}
+VidEmo-3B~\cite{videmo} (Qwen2.5-VL backbone~\cite{qwen2_5_vl}) generates utterance-level descriptions for both datasets. IEMOCAP is sampled at 1 FPS; MELD uses 1 FPS up to 15 s, capped at 16 frames. Prompts request a temporal progression (beginning, middle, end) across facial expressions, gaze, body language, and emotion, ending with a one-sentence arc summary; MELD prompts additionally instruct the model to focus on the active speaker. Inference used batch size 4 ($>$7 h) for IEMOCAP and batch size 2 ($>$10 h) for MELD. Descriptions are encoded into 768-d \texttt{[CLS]} embeddings via \textbf{BERT}~\cite{devlin2019bert} (truncated to 512 tokens) or \textbf{Longformer}~\cite{beltagy2020longformer} (full sequence), evaluated as separate conditions.
 
 \subsection{Implementation Details}
 
 \noindent\textbf{Hardware and Environment.}
 All experiments are conducted on an NVIDIA GeForce RTX 3060 (12\,GB VRAM) using a Conda environment with PyTorch 2.8.0+cu126.
 
-\begin{table}[h!]
+\begin{table}[H]
   \centering
   \caption{Hyperparameter settings for IEMOCAP and MELD.}
   \label{tab:hyperparams}
@@ -415,19 +414,20 @@ Accuracy (ACC) and Weighted F1-score (WF1) serve as the primary evaluation metri
 \noindent\textbf{Training and Optimization Strategy.}
 The model follows the multi-task optimization strategy of GraphSmile~\cite{li2024graphsmile}, jointly learning the primary emotion recognition task alongside sentiment and sentiment-shift classification. All structural components of the Graph Structure Fusion (GSF) module and the Sentiment Dynamics Perception (SDP) module are maintained as per the original implementation to ensure a controlled comparison of visual feature effectiveness.
 
+\raggedbottom
 \section{Results and Observations}
 \subsection{Results Comparison}
-Tables~\ref{tab:main_result_iemocap} and~\ref{tab:main_result_meld} summarize the performance of the proposed semantic visual representation integrated with GraphSmile on the IEMOCAP and MELD datasets. The evaluation includes overall accuracy (ACC), weighted F1 score (WF1), and per-class F1 scores for each emotion category.
+Tables~\ref{tab:main_result_iemocap} and~\ref{tab:main_result_meld} report the performance of GraphSmile integrated with semantic visual representations on IEMOCAP and MELD, including overall accuracy (ACC), weighted F1 (WF1), and per-class F1 scores.
 
-On the IEMOCAP dataset, GraphSmile with BERT-based encoding of VLM-generated descriptions achieved the highest performance, with a weighted F1 score of 71.65, slightly improving over the baseline GraphSmile (WF1 71.29). Longformer-based encoding also performed comparably (WF1 71.49), but did not surpass BERT. For individual emotions, BERT-based VLM representations improved recognition for Happy (61.49) and Frustrated (67.51) categories.
+On IEMOCAP, GraphSmile with BERT-encoded VLM descriptions achieved the highest WF1 of 71.65, slightly above the baseline (71.29). Longformer encoding was comparable (WF1 71.49). BERT-based VLM features particularly improved recognition for Happy (61.49) and Frustrated (67.51) emotions.
 
-On the MELD dataset, the improvements were more modest. GraphSmile integrated with BLIP-2~\cite{li2023blip2} and BERT achieved the best performance among the VLM variants, with ACC 67.47 and WF1 66.35. Qwen-VL-3B with BERT also slightly outperformed Longformer-based encoding (ACC 67.32 vs.\ 67.13; WF1 66.12 vs.\ 65.97). Overall, performance remained close to the GraphSmile baseline (ACC 67.66, WF1 66.67). Individual emotion recognition showed minor variations across Neutral, Joy, Sadness, and other categories.
+On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (ACC 67.47, WF1 66.35), while Qwen-VL-3B with BERT slightly outperformed Longformer (ACC 67.32 vs.\ 67.13; WF1 66.12 vs.\ 65.97). Overall results were close to the baseline (ACC 67.66, WF1 66.67), with minor variations across emotion categories.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{\label{tab:main_result_iemocap}Main Results for the MERC Task on the IEMOCAP Dataset.}
-  \resizebox{\textwidth}{!}{%
-    \begin{tabular}{l @{\hspace{1.5em}} c @{\hspace{1.5em}} c @{\hspace{1.5em}} *{6}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{1.5em}} cc}
+  {\renewcommand{\arraystretch}{0.82}\resizebox{\textwidth}{!}{%
+    \begin{tabular}{l @{\hspace{0.8em}} c @{\hspace{0.8em}} c @{\hspace{0.8em}} *{6}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{0.8em}} cc}
       \toprule
       \multirow{2}{*}{Method} & \multicolumn{10}{c}{IEMOCAP-6}                                                                    \\
       \cmidrule(lr){2-3} \cmidrule(lr){4-9} \cmidrule(lr){10-11}
@@ -448,14 +448,14 @@ On the MELD dataset, the improvements were more modest. GraphSmile integrated wi
       \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & BERT       & 61.49 & 83.43 & 69.69 & 67.33 & 77.12 & 67.51 & 71.53 & 71.65 \\
       \bottomrule
     \end{tabular}%
-  }
+  }}
 \end{table}
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{\label{tab:main_result_meld}Main Results for the MERC Task on the MELD Dataset.}
-  \resizebox{\textwidth}{!}{%
-    \begin{tabular}{l @{\hspace{1.5em}} c @{\hspace{1.5em}} c @{\hspace{1.5em}} *{7}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{1.5em}} cc}
+  {\renewcommand{\arraystretch}{0.82}\resizebox{\textwidth}{!}{%
+    \begin{tabular}{l @{\hspace{0.8em}} c @{\hspace{0.8em}} c @{\hspace{0.8em}} *{7}{>{\centering\arraybackslash}p{3.5em}} @{\hspace{0.8em}} cc}
       \toprule
       \multirow{2}{*}{Method} & \multicolumn{11}{c}{MELD}                                                                            \\
       \cmidrule(lr){2-3} \cmidrule(lr){4-10} \cmidrule(lr){11-12}
@@ -475,7 +475,7 @@ On the MELD dataset, the improvements were more modest. GraphSmile integrated wi
       \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {BLIP2-2.7B}      & BERT       & 79.78 & 58.30 & 14.29 & 44.20 & 64.56 & 30.77 & 54.00 & 67.47 & 66.35 \\
       \bottomrule
     \end{tabular}%
-  }
+  }}
   \begin{minipage}{\textwidth}
     \small
     The marker $^\dagger$ indicates the results (\%) as replicated by the GraphSmile paper, and the marker $^\ddagger$ indicates the results (\%) replicated by us and no marker indicates results taken from original papers.
@@ -484,17 +484,17 @@ On the MELD dataset, the improvements were more modest. GraphSmile integrated wi
 
 \subsection{Observations}
 
-The results demonstrate that semantic visual representations can effectively replace traditional handcrafted visual descriptors in graph based MERC frameworks without significant loss in performance. In some cases, modest improvements were observed, particularly on IEMOCAP where the target speaker could be isolated.
+The results show that semantic visual representations can effectively replace traditional handcrafted visual descriptors in graph-based MERC frameworks without significant performance loss. Modest improvements were observed, particularly on IEMOCAP where the target speaker could be clearly isolated.
 
-The choice of text encoder affects performance depending on the length of VLM-generated descriptions. While Longformer can handle sequences up to 4096 tokens, most descriptions were within the 512-token limit of BERT. Consequently, BERT encoded the majority of samples efficiently without excessive padding, yielding slightly better performance than Longformer.
+The choice of text encoder affects performance depending on the length of VLM-generated descriptions. While Longformer handles sequences up to 4096 tokens, most descriptions were within BERT's 512-token limit. Consequently, BERT encoded the majority of samples efficiently, yielding slightly better performance than Longformer.
 
-Dataset characteristics also influence the effectiveness of semantic visual features. IEMOCAP clips have relatively low spatial resolution ($360\times480$ after speaker-focused splitting) and short durations, limiting the visibility of fine-grained facial expressions and the temporal context available for emotional inference. Additionally, VLM outputs occasionally contain hallucinated or repetitive descriptions, introducing noise into the semantic embeddings.
+Dataset characteristics also impact the effectiveness of semantic visual features. IEMOCAP clips have relatively low spatial resolution ($360\times480$ after speaker-focused splitting) and short durations, limiting fine-grained facial expression visibility and temporal context for emotion inference. VLM outputs sometimes contain hallucinated or repetitive descriptions, introducing additional noise into the semantic embeddings.
 
-On MELD, multi-party interactions complicate speaker-specific emotion recognition. Multiple characters appearing simultaneously make it difficult for the VLM to isolate the target speaker, often resulting in descriptions that focus on overall scene context rather than the emotional state of the intended individual. Hallucinations and inconsistent outputs, sometimes exacerbated by larger batch sizes during generation, add further noise to the embeddings.
+On MELD, multi-party interactions complicate speaker-specific emotion recognition. Multiple characters appearing simultaneously make it difficult for the VLM to isolate the target speaker, often producing descriptions focused on the overall scene rather than the intended individual. Hallucinations and inconsistent outputs, occasionally worsened by larger batch sizes, add further noise.
 
-Frame-level analysis with BLIP-2~\cite{li2023blip2}, where three representative frames from each clip (beginning, middle, end) were used, yielded more focused descriptions centered on the speaker's emotional state. This approach reduced redundancy and improved performance slightly compared to full-scene VLM descriptions, suggesting that targeted visual reasoning on key frames can be advantageous, particularly in multi-party settings.
+Frame-level analysis with BLIP-2~\cite{li2023blip2}, sampling three frames per clip (beginning, middle, end), produced more focused descriptions centered on the speaker's emotional state. This approach reduced redundancy and slightly improved performance compared to full-scene VLM descriptions, suggesting targeted reasoning on key frames can be beneficial, especially in multi-party settings.
 
-Overall, these observations highlight that semantic visual representations are a viable alternative to handcrafted features in MERC, but their effectiveness is highly dependent on scene structure, speaker isolation, and quality of VLM outputs. Future improvements may be achieved through explicit speaker localization, noise reduction in VLM descriptions, and optimized frame sampling strategies for temporal emotion tracking.
+Overall, these observations confirm that semantic visual representations are a viable alternative to handcrafted features in MERC. Their effectiveness depends on scene structure, speaker isolation, and VLM output quality. Future improvements could include explicit speaker localization, noise reduction in VLM descriptions, and optimized frame sampling for temporal emotion tracking.
 
 \section{Conclusion}
 
