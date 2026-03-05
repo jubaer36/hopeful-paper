@@ -430,18 +430,18 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
                               & \shortstack{VLM                                                                                   \\ Model}      & \shortstack{Text \\ Encoder} & Happy & Sad   & Neutral & Angry & Excited & Frustrated & ACC   & WF1   \\
       \midrule
       COGMEN$^\dagger$        & --                             & -- & 51.90 & 81.70 & 68.60 & 66.00 & 75.30 & 58.20 & 68.20 & 67.60 \\
-      Joyful$^\dagger$        & --                             & -- & 60.94 & 84.42 & 68.24 & 69.95 & 73.54 & 67.55 & 70.55 & 71.03 \\
-      DER-GCN$^\dagger$       & --                             & -- & 58.80 & 79.80 & 61.50 & 72.10 & 73.30 & 67.80 & 69.70 & 69.40 \\
-      DialogueCRN             & --                             & -- & 53.85 & 82.66 & 71.03 & 62.33 & 77.64 & 58.81 & 68.70 & 68.82 \\
+      Joyful$^\dagger$        & --                             & -- & \underline{60.94} & \textbf{84.42} & 68.24 & 69.95 & 73.54 & \underline{67.55} & 70.55 & 71.03 \\
+      DER-GCN$^\dagger$       & --                             & -- & 58.80 & 79.80 & 61.50 & \textbf{72.10} & 73.30 & \textbf{67.80} & 69.70 & 69.40 \\
+      DialogueCRN             & --                             & -- & 53.85 & 82.66 & \underline{71.03} & 62.33 & 77.64 & 58.81 & 68.70 & 68.82 \\
       MMGCN                   & --                             & -- & 47.10 & 81.91 & 66.44 & 63.51 & 76.17 & 59.06 & 67.10 & 66.81 \\
       MM-DFN                  & --                             & -- & 43.36 & 83.23 & 70.03 & 70.19 & 73.11 & 64.01 & 69.44 & 68.83 \\
-      SACL-LSTM               & --                             & -- & 51.30 & 82.25 & 71.39 & 67.78 & 75.26 & 66.94 & 70.55 & 70.60 \\
+      SACL-LSTM               & --                             & -- & 51.30 & 82.25 & \textbf{71.39} & 67.78 & 75.26 & 66.94 & 70.55 & 70.60 \\
       M3Net                   & --                             & -- & 60.93 & 78.84 & 70.14 & 68.06 & 77.11 & 67.42 & 70.92 & 71.07 \\
 
-      GraphSmile$^\ddagger$   & --                             & -- & 59.31 & 82.47 & 69.68 & 67.53 & 78.76 & 66.06 & 71.23 & 71.29 \\
+      GraphSmile$^\ddagger$   & --                             & -- & 59.31 & 82.47 & 69.68 & 67.53 & \underline{78.76} & 66.06 & \underline{71.23} & 71.29 \\
       \midrule
-      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & Longformer & 54.11 & 82.82 & 70.23 & 70.72 & 79.81 & 65.87 & 71.53 & 71.49 \\
-      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & BERT       & 61.49 & 83.43 & 69.69 & 67.33 & 77.12 & 67.51 & 71.53 & 71.65 \\
+      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & Longformer & 54.11 & 82.82 & 70.23 & \underline{70.72} & \textbf{79.81} & 65.87 & \textbf{71.53} & \underline{71.49} \\
+      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & BERT       & \textbf{61.49} & \underline{83.43} & 69.69 & 67.33 & 77.12 & 67.51 & \textbf{71.53} & \textbf{71.65} \\
       \bottomrule
     \end{tabular}%
   }}
@@ -458,17 +458,17 @@ On MELD, gains were smaller. BLIP-2 with BERT yielded the best VLM performance (
                               & \shortstack{VLM                                                                                      \\ Model}      & \shortstack{Text \\ Encoder} & Neutral & Surprise & Fear & Sadness & Joy & Disgust & Anger & ACC   & WF1   \\
       \midrule
       Joyful$^\dagger$        & --                        & -- & 76.80 & 51.91 & --    & 41.78 & 56.89 & --    & 50.71 & 62.53 & 61.77 \\
-      DER-GCN$^\dagger$       & --                        & -- & 80.60 & 51.00 & 10.40 & 41.50 & 64.30 & 10.30 & 57.40 & 66.80 & 66.10 \\
+      DER-GCN$^\dagger$       & --                        & -- & \textbf{80.60} & 51.00 & 10.40 & 41.50 & 64.30 & 10.30 & \textbf{57.40} & 66.80 & 66.10 \\
       DialogueCRN             & --                        & -- & 76.15 & 56.72 & 18.67 & 38.29 & 63.21 & 27.69 & 50.67 & 62.38 & 63.32 \\
       MMGCN                   & --                        & -- & 78.62 & 57.78 & 3.77  & 40.35 & 63.60 & 12.20 & 53.68 & 66.02 & 64.55 \\
       MM-DFN                  & --                        & -- & 79.84 & 58.43 & 15.79 & 31.65 & 64.01 & 28.04 & 53.60 & 67.05 & 65.21 \\
-      SACL-LSTM               & --                        & -- & 77.42 & 58.50 & 20.41 & 39.58 & 62.76 & 34.71 & 52.08 & 64.52 & 64.55 \\
-      M3Net                   & --                        & -- & 79.14 & 59.54 & 13.33 & 42.86 & 65.05 & 21.69 & 53.54 & 66.59 & 65.83 \\
-      GraphSmile$^\ddagger$   & --                        & -- & 80.32 & 58.96 & 18.18 & 42.46 & 64.99 & 32.43 & 53.59 & 67.66 & 66.67 \\
+      SACL-LSTM               & --                        & -- & 77.42 & 58.50 & \textbf{20.41} & 39.58 & 62.76 & \textbf{34.71} & 52.08 & 64.52 & 64.55 \\
+      M3Net                   & --                        & -- & 79.14 & \textbf{59.54} & 13.33 & \underline{42.86} & \textbf{65.05} & 21.69 & 53.54 & 66.59 & 65.83 \\
+      GraphSmile$^\ddagger$   & --                        & -- & \underline{80.32} & \underline{58.96} & 18.18 & 42.46 & \underline{64.99} & \underline{32.43} & 53.59 & \textbf{67.66} & \textbf{66.67} \\
       \midrule
       \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & Longformer & 79.82 & 57.56 & 16.44 & 41.95 & 63.94 & 31.78 & 53.19 & 67.13 & 65.97 \\
-      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & BERT       & 79.82 & 57.73 & 19.18 & 42.17 & 63.94 & 32.08 & 53.61 & 67.32 & 66.12 \\
-      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {BLIP2-2.7B}      & BERT       & 79.78 & 58.30 & 14.29 & 44.20 & 64.56 & 30.77 & 54.00 & 67.47 & 66.35 \\
+      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {Qwen-VL-3B}      & BERT       & 79.82 & 57.73 & \underline{19.18} & 42.17 & 63.94 & 32.08 & 53.61 & 67.32 & 66.12 \\
+      \shortstack[l]{GraphSmile+VLM$^\ddagger$} & {BLIP2-2.7B}      & BERT       & 79.78 & 58.30 & 14.29 & \textbf{44.20} & 64.56 & 30.77 & \underline{54.00} & \underline{67.47} & \underline{66.35} \\
       \bottomrule
     \end{tabular}%
   }}
@@ -486,7 +486,7 @@ The choice of text encoder affects performance depending on the length of VLM-ge
 
 Dataset characteristics also impact the effectiveness of semantic visual features. IEMOCAP clips have relatively low spatial resolution ($360\times480$ after speaker-focused splitting) and short durations, limiting fine-grained facial expression visibility and temporal context for emotion inference. VLM outputs sometimes contain hallucinated or repetitive descriptions, introducing additional noise into the semantic embeddings.
 
-On MELD, multi-party interactions complicate speaker-specific emotion recognition. Multiple characters appearing simultaneously make it difficult for the VLM to isolate the target speaker, often producing descriptions focused on the overall scene rather than the intended individual. Hallucinations and inconsistent outputs, occasionally worsened by larger batch sizes, add further noise.
+On MELD, multi party interactions complicate speaker-specific emotion recognition. Multiple characters appearing simultaneously make it difficult for the VLM to isolate the target speaker, often producing descriptions focused on the overall scene rather than the intended individual. Hallucinations and inconsistent outputs, occasionally worsened by larger batch sizes, add further noise.
 
 Frame-level analysis with BLIP-2~\cite{li2023blip2}, sampling three frames per clip (beginning, middle, end), produced more focused descriptions centered on the speaker's emotional state. This approach reduced redundancy and slightly improved performance compared to full-scene VLM descriptions, suggesting targeted reasoning on key frames can be beneficial, especially in multi-party settings.
 
