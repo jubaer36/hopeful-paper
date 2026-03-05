@@ -89,7 +89,7 @@
 \begin{abstract}
   Multimodal Emotion Recognition in Conversations (MERC) aims to recognize human emotions for each utterance via visual, audio, and linguistic modalities. Its potential uses in affective computing and human-computer interaction have drawn a lot of attention in recent years. Among the various approaches proposed to solve this problem, graph based approaches have emerged as some of the most promising ones. However, because this pixel level feature extraction is noisy , the visual modality frequently makes only a small contribution or is underutilized in many graph based MERC frameworks. Traditional visual encoders generally focus on geometric and textual patterns to produce feature maps or patch representations. These representations often fail to sufficiently express the facial and behavioral cues leading to weak cross modal alignment with the other semantically rich modalities. To address this problem, we propose a Vision Language Model (VLM) based feature extraction approach that captures facial expressions and behavioral cues from the visual modality and encodes them as semantically meaningful representations. Using this approach, the raw video for each utterance is translated into a descriptive and meaningful textual representation through a VLM with structured prompts designed to capture facial expressions, behavioral cues, and body language. The resulting semantic visual features are then incorporated into graph based MERC frameworks as a replacement for low level visual features, reducing noise in the visual modality while increasing the model’s reliance on meaningful visual information through the VLM. This work presents VLM-based semantic visual feature extraction as a viable replacement for conventional visual feature extraction pipelines in graph-based MERC frameworks.
 
-  \keywords{First keyword \and Second keyword \and Third keyword}
+  \keywords{Multimodal Emotion Recognition in Conversations \and Vision Language Models \and Semantic Visual Features \and Graph Neural Networks}
 \end{abstract}
 
 
@@ -97,33 +97,31 @@
 \label{sec:intro}
 
 The proper interpretation and communication of emotions are crucial, as they significantly influence interactions, conversations, and decision making processes. As this modern world advances to an AI dependent future it has become essential to ensure that these emerging AI systems and computers are capable of recognizing emotions at a level comparable to, or exceeding, human ability. But so far understanding human emotions in conversations has been a fundamental challenge in human–computer interaction and affective computing \cite{calvo2010affect}.
-Multimodal Emotion Recognition in Conversations (MERC) aims to identify the emotion expressed in each utterance by jointly leveraging information from multiple modalities, typically textual, acoustic, and visual signals \cite{poria2019meld,zadeh2018multimodal}. Unlike traditional single utterance emotion recognition, MERC must consider contextual dependencies across speakers and time, making it a more complex and realistic setting \cite{majumder2019dialoguernn,ghosal2019dialoguegcn}.Over the past years, numerous approaches have been adopted to solve this problem, starting from early fusion based techniques and transformer driven multimodal interaction models to more structured and context aware graph based architectures \cite{zadeh2017tfn,tsai2019mult,ghosal2019dialoguegcn,hu2021mmgcn,shou2025comprehensivesurveymultimodalconversational}.
+Multimodal Emotion Recognition in Conversations (MERC) aims to identify the emotion expressed in each utterance by jointly leveraging information from multiple modalities, typically textual, acoustic, and visual signals \cite{poria2019meld,zadeh2018multimodal}. Unlike traditional single utterance emotion recognition, MERC must consider contextual dependencies across speakers and time, making it a more complex and realistic setting \cite{majumder2019dialoguernn,ghosal2019dialoguegcn}. Over the past years, numerous approaches have been adopted to solve this problem, starting from early fusion based techniques and transformer driven multimodal interaction models to more structured and context aware graph based architectures \cite{zadeh2017tfn,tsai2019mult,ghosal2019dialoguegcn,hu2021mmgcn,shou2025comprehensivesurveymultimodalconversational}.
 Recent advances have demonstrated that the graph based architectures, particularly those inspired by Graph Convolutional Networks (GCNs) \cite{kipf2017gcn}, are highly effective for MERC \cite{ghosal2019dialoguegcn,hu2021mmgcn}. By modeling conversational structure as a graph, where utterances are treated as nodes and contextual relationships as edges, these approaches capture both inter speaker and intra speaker dependencies \cite{ghosal2019dialoguegcn}. As a result, graph based MERC models achieve competitive performance on benchmark datasets and are considered among the most promising approaches for conversational emotion recognition \cite{hu2021mmgcn}.
 
-Despite these advances these graph based approaches still face significant problems.One of them is that the visual modality often remains underutilized in many graph based MERC frameworks \cite{hu2021mmgcn,li2024graphsmile}. Traditional visual encoders, typically based on convolutional neural networks (CNNs) \cite{he2016resnet} or vision transformers (ViTs) \cite{dosovitskiy2021vit}, extract low level geometric, texture based, or patch level representations from raw video frames. While effective for general visual recognition tasks, these representations often fail to capture subtle behavioral cues and body language that are crucial for emotion understanding \cite{li2018self}. Consequently, the visual modality may contribute less than textual or acoustic modalities, which naturally encode higher level semantic information \cite{hazarika2018icon}.
+Despite these advances these graph based approaches still face significant problems. One of them is that the visual modality often remains underutilized in many graph based MERC frameworks \cite{hu2021mmgcn,li2024graphsmile}. Traditional visual encoders, typically based on convolutional neural networks (CNNs) \cite{he2016resnet} or vision transformers (ViTs) \cite{dosovitskiy2021vit}, extract low level geometric, texture based, or patch level representations from raw video frames. While effective for general visual recognition tasks, these representations often fail to capture subtle behavioral cues and body language that are crucial for emotion understanding \cite{li2018self}. Consequently, the visual modality may contribute less than textual or acoustic modalities, which naturally encode higher level semantic information \cite{hazarika2018icon}.
 
 Despite advancements, graph based Multimodal Emotion Recognition in Conversation (MERC) approaches still face significant limitations , one of them being underutilization of a specific modality. Most of the currently existing graph based MERC frameworks are prone to this limitation underutilizing visual modality while giving priority to the textual modality \cite{hu2021mmgcn,li2024graphsmile}.
 
 Traditional visual encoders relied upon in these baselines, such as Convolutional Neural Networks (CNNs) \cite{he2016resnet} or Vision Transformers (ViTs) \cite{dosovitskiy2021vit}, are fundamentally designed to extract abstract spatial features, structural hierarchies, or patch level representations from isolated, static video frames. While adequate for general object recognition, these representations create a semantic gap, failing to explicitly capture the subtle behavioral cues, interaction with the other characters in the scene and dynamic body language necessary for complex emotion understanding \cite{li2018self}. Moreover, in standard MERC pipelines, the temporal evolution of emotion within an utterance is largely disregarded. Because graph networks require a fixed size node representation for structural modeling
 \cite{ghosal2019dialoguegcn, hu2021mmgcn}, frame level visual embeddings are typically aggregated into utterance level representations via statistical pooling operations, as adopted in multimodal benchmarks \cite{zadeh2018multimodal}. This aggregation effectively collapses the intra utterance temporal dimension. As a result, dynamic behavioral shifts (such as a speaker transitioning from a frustrated frown to a resigned smile) are mathematically averaged into a single static and potentially emotionally ambiguous feature vector \cite{tsai2019mult}.
 
-Furthermore, real world conversational videos are prone to noise, including illumination variations, occlusions, and background clutter. This noise severely degrades the quality of pixel level features. Consequently, the visual modality tends to contribute less to emotion understanding compared to textual or acoustic modalities, which inherently encode higher level semantic information.
-
-This modality imbalance leads to weak cross modal alignment in multimodal fusion. Textual features derived from pretrained language models encode high level semantics \cite{devlin2019bert}, and acoustic features capture prosodic patterns associated with affect \cite{schuller2011recognising}. In contrast, low level visual embeddings remain largely appearance based, limiting effective multimodal integration, particularly in graph based architectures where node representations critically influence relational reasoning \cite{ghosal2019dialoguegcn}.
+Furthermore, real world conversational videos are prone to noise, including illumination variations, occlusions, and background clutter. This noise severely degrades the quality of pixel level features. Consequently, the visual modality tends to contribute less to emotion understanding compared to textual or acoustic modalities, which inherently encode higher level semantic information. This modality imbalance leads to weak cross modal alignment in multimodal fusion. Textual features derived from pretrained language models encode high level semantics \cite{devlin2019bert}, and acoustic features capture prosodic patterns associated with affect \cite{schuller2011recognising}. In contrast, low level visual embeddings remain largely appearance based, limiting effective multimodal integration, particularly in graph based architectures where node representations critically influence relational reasoning \cite{ghosal2019dialoguegcn}.
 
 
 
-To address this limitation, we propose rethinking visual feature extraction for graph based MERC by moving from abstract spatial embeddings to contextualized, semantically meaningful visual descriptions. Specifically, we leverage advanced Video Language Models, specifically VidEmo-3B (built upon the Qwen2.5-VL-3B architecture \cite{qwen2_5_vl}), which are highly capable of interpreting dynamic visual content and generating temporally grounded semantic representations. Instead of directly feeding mean-pooled, emotionally ambiguous visual vectors into the graph network, we translate each utterance level video segment into a temporally structured textual narrative. This narrative explicitly tracks the evolution of facial expressions, head movements, and body language from the beginning to the end of the utterance, preserving the critical intra utterance dynamics that traditional pipelines can not retain.
+To address this limitation, we propose rethinking visual feature extraction for graph based MERC by moving from abstract spatial embeddings to contextualized, semantically meaningful visual descriptions. Specifically, we leverage advanced Vision Language Models, specifically VidEmo-3B (built upon the Qwen2.5-VL-3B architecture \cite{qwen2_5_vl}), which are highly capable of interpreting dynamic visual content and generating temporally grounded semantic representations. Instead of directly feeding mean-pooled, emotionally ambiguous visual vectors into the graph network, we translate each utterance level video segment into a temporally structured textual narrative. This narrative explicitly tracks the evolution of facial expressions, head movements, and body language from the beginning to the end of the utterance, preserving the critical intra utterance dynamics that traditional pipelines can not retain.
 
 Through carefully designed prompts, the VLM extracts affect relevant visual information and encodes it into descriptive semantic representations. These generated textual features serve as high level visual summaries that are better aligned with linguistic and acoustic modalities \cite{radford2021clip}. The resulting semantic visual features are then integrated into graph based MERC architectures, replacing traditional low level visual embeddings. By doing so, we reduce visual noise, improve cross modal consistency, and encourage the model to rely on meaningful visual signals rather than appearance based artifacts.
 
 In summary, this work makes the following contributions:
 
-\begin{itemize}
+\begin{enumerate}
   \item We identify and analyze the underutilization of the visual modality in graph based MERC frameworks due to noisy and low level feature representations.
   \item We propose a VLM based semantic visual feature extraction approach that transforms raw video into structured textual descriptions capturing emotion relevant cues.
   \item We integrate these semantic visual features into graph based MERC architectures, promoting stronger cross modal alignment.
-\end{itemize}
+\end{enumerate}
 
 By bridging the gap between visual perception and semantic understanding, our approach offers a new direction for enhancing the role of visual information in multimodal conversational emotion recognition.
 
@@ -170,7 +168,7 @@ These VLM/LLM approaches address two key limitations in traditional MERC: visual
 
 \subsection{Positioning of Our Work}
 
-Our work builds upon the strengths of graph based MERC, particularly GraphSmile~\cite{li2024graphsmile}, while addressing the underutilization of visual information. Instead of using static, low level visual embeddings~\cite{he2016resnet,baltrusaitis2018openface}, we introduce a VLM based semantic visual preprocessing stage~\cite{videmo,qwen2_5_vl} that converts raw video segments into temporally structured textual narratives capturing facial expressions, gaze shifts, and body language evolution within an utterance.
+Our work builds upon the strengths of graph based MERC frameworks , particularly GraphSmile~\cite{li2024graphsmile}, while addressing the underutilization of visual information. Instead of using static, low level visual embeddings~\cite{he2016resnet,baltrusaitis2018openface}, we introduce a VLM based semantic visual preprocessing stage~\cite{videmo,qwen2_5_vl} that converts raw video segments into temporally structured textual narratives capturing facial expressions, gaze shifts, and body language evolution within an utterance.
 
 These semantic visual descriptions are encoded into dense vectors~\cite{devlin2019bert} and integrated into the Graph Structure Fusion (GSF) pipeline~\cite{li2024graphsmile}. This design preserves intra utterance temporal dynamics, improves cross modal alignment, reduces reliance on noisy visual appearance features, and enhances the model's ability to leverage visual cues in relational reasoning across conversation turns. By combining high level semantic visual reasoning from VLMs with structured graph propagation, our approach advances MERC beyond existing graph based and VLM based methods.
 
@@ -227,7 +225,7 @@ In a separate experimental condition on the MELD dataset, BLIP-2~\cite{li2023bli
 
 \smallskip
 \noindent\textbf{Stage 3: Text Encoding of VLM Output.}
-To bridge the symbolic output of the VLM with the continuous feature space expected by the graph network, the free text description is encoded using a pretrained transformer language model. Two encoders are evaluated in separate experimental conditions: BERT~\cite{devlin2019bert} (\texttt{bert-base-uncased}), which truncates inputs to 512 tokens and extracts the \texttt{[CLS]} token embedding; and Longformer~\cite{beltagy2020longformer} (\texttt{allenai/longformer-base-4096}), which processes the full description without truncation. Both produce a 768-dimensional dense vector that serves as the new visual modality feature, $X^v$. Encoding visual behavior in the same semantic space as the transcript fosters superior cross modal alignment within the GSF module~\cite{li2024graphsmile}.
+To bridge the symbolic output of the VLM with the continuous feature space expected by the graph network, the free text description is encoded using a pretrained transformer language model. Two encoders are evaluated in separate experimental conditions: BERT~\cite{devlin2019bert}, which truncates inputs to 512 tokens and extracts the \texttt{[CLS]} token embedding; and Longformer~\cite{beltagy2020longformer} , which processes the full description without truncation. Both produce a 768-dimensional dense vector that serves as the new visual modality feature, $X^v$. Encoding visual behavior in the same semantic space as the transcript fosters superior cross modal alignment within the GSF module~\cite{li2024graphsmile}.
 
 \subsection{Graph Structure Fusion (GSF) Module}
 
@@ -262,7 +260,7 @@ This setup serves two purposes: it lets the network dynamically choose which lay
 \begin{figure}[t]
   \centering
   \includegraphics[width=\linewidth]{NodesGNN.pdf}
-  \caption{The GraphSmile~\cite{li2024graphsmile} architecture: bipartite multimodal dialogue graphs connecting utterance nodes across modality pairs, propagated through the Graph Structure Fusion (GSF) module.}
+  \caption{Multimodal dialogue graph structure used in GraphSmile~\cite{li2024graphsmile}, in which utterance nodes from different modality pairs are connected via bipartite graphs and propagated through the Graph Structure Fusion (GSF) module. Adapted from~\cite{li2024graphsmile}.}
   \label{fig:nodesgnn}
 \end{figure}
 
@@ -342,7 +340,7 @@ where $\mathcal{L}_e$ is the primary emotion classification loss, $\lambda_s$ an
     \hline
     \textbf{Dataset} & \textbf{Dialogues} & \textbf{Utterances} & \textbf{Classes} & \textbf{Train / Val / Test}     \\
     \hline
-    IEMOCAP          & 151                & 7,433               & 6                & 5,810 / \textemdash / 1,623$^*$ \\
+    IEMOCAP          & 151                & 7,433               & 6                & 5,810 / \textemdash / 1,623\\
     MELD             & 1,432              & 13,708              & 7                & 9,989 / 1,108 / 2,611           \\
     \hline
   \end{tabular}
@@ -384,8 +382,8 @@ Vision Language Models (VLMs) are utilized to generate descriptive text for each
 \noindent\textbf{Text-to-Vector Encoding.}
 The generated descriptions are encoded using two models evaluated in separate experimental conditions:
 \begin{itemize}
-  \item \textbf{Longformer}~\cite{beltagy2020longformer} (\texttt{allenai/longformer-base-4096}): inputs are processed without truncation; a 768-dimensional embedding is extracted from the \texttt{[CLS]} token.
-  \item \textbf{BERT}~\cite{devlin2019bert} (\texttt{bert-base-uncased}): inputs are truncated to a maximum of 512 tokens; a 768-dimensional embedding is extracted from the \texttt{[CLS]} token.
+  \item \textbf{Longformer}~\cite{beltagy2020longformer} : inputs are processed without truncation; a 768-dimensional embedding is extracted from the \texttt{[CLS]} token.
+  \item \textbf{BERT}~\cite{devlin2019bert} : inputs are truncated to a maximum of 512 tokens; a 768-dimensional embedding is extracted from the \texttt{[CLS]} token.
 \end{itemize}
 
 \subsection{Implementation Details}
@@ -424,7 +422,6 @@ Accuracy (ACC) and Weighted F1-score (WF1) serve as the primary evaluation metri
 The model follows the multi-task optimization strategy of GraphSmile~\cite{li2024graphsmile}, jointly learning the primary emotion recognition task alongside sentiment and sentiment-shift classification. All structural components of the Graph Structure Fusion (GSF) module and the Sentiment Dynamics Perception (SDP) module are maintained as per the original implementation to ensure a controlled comparison of visual feature effectiveness.
 
 \section{Results and Observations}
-
 
 
 \subsection{Results Comparison}
@@ -516,8 +513,7 @@ This work explores an alternative approach to representing visual information in
 These semantically grounded representations provide a different perspective on incorporating visual signals within conversational reasoning frameworks and demonstrate that visual information can be expressed in a form closer to how emotions are typically interpreted. Our findings suggest that such semantic visual representations can serve as a viable alternative to traditional visual feature pipelines used in graph-based MERC systems.
 
 Future work may extend this idea to the acoustic modality by transforming speech signals into descriptive semantic representations that capture emotionally relevant characteristics of the audio. Additionally, architectures specifically designed to process semantic multimodal representations could further improve how such information is incorporated into conversational emotion recognition systems.
-\section*{Acknowledgements}
-Please insert your acknowledgments here.
+
 
 % ---- Bibliography ----
 %
