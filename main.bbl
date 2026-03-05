@@ -60,6 +60,9 @@ Li, D., Wang, Y., Funakoshi, K., Okumura, M.: {J}oyful: Joint modality fusion an
 \bibitem{li2024graphsmile}
 Li, J., Wang, X., Zeng, Z.: Tracing intricate cues in dialogue: Joint graph structure and sentiment dynamics for multimodal emotion recognition. IEEE Transactions on Pattern Analysis and Machine Intelligence  \textbf{47}(10),  8786--8803 (2025). \doi{10.1109/TPAMI.2025.3581236}
 
+\bibitem{li2023blip2}
+Li, J., Li, D., Savarese, S., Hoi, S.: Blip-2: Bootstrapping language-image pre-training with frozen image encoders and large language models (2023), \url{https://arxiv.org/abs/2301.12597}
+
 \bibitem{li2018self}
 Li, Y., Zeng, J., Shan, S., Chen, X.: Occlusion aware facial expression recognition using cnn with attention mechanism. IEEE Transactions on Image Processing  \textbf{28}(5),  2439--2450 (2019). \doi{10.1109/TIP.2018.2886767}
 

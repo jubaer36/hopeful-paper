@@ -26,6 +26,7 @@
 \usepackage{threeparttable}
 \usepackage{multirow}
 \usepackage{array}
+\usepackage{float}
 
 % The "axessiblity" package can be found at: https://ctan.org/pkg/axessibility?lang=en
 \usepackage[accsupp]{axessibility}  % Improves PDF readability for those with disabilities.
@@ -445,8 +446,9 @@ Accuracy (ACC) and Weighted F1-score (WF1) serve as the primary evaluation metri
 \noindent\textbf{Training and Optimization Strategy.}
 The model follows the multi-task optimization strategy of GraphSmile~\cite{li2024graphsmile}, jointly learning the primary emotion recognition task alongside sentiment and sentiment-shift classification. All structural components of the Graph Structure Fusion (GSF) module and the Sentiment Dynamics Perception (SDP) module are maintained as per the original implementation to ensure a controlled comparison of visual feature effectiveness.
 
-\subsection{Main Result for Emotion Recognition}
-\begin{table}[htbp]
+\section{Results and Observations}
+
+\begin{table}[H]
   \centering
   \caption{\label{tab:main_result_iemocap}Main Results for the MERC Task on the IEMOCAP Dataset.}
   \resizebox{\textwidth}{!}{%
@@ -505,6 +507,28 @@ The model follows the multi-task optimization strategy of GraphSmile~\cite{li202
     The marker $^\dagger$ indicates the results (\%) as replicated by the GraphSmile paper, and the marker $^\ddagger$ indicates the results (\%) replicated by us and no marker indicates results taken from original papers.
   \end{minipage}
 \end{table}
+
+\subsection{Main Results for Emotion Recognition}
+
+Tables~\ref{tab:main_result_iemocap} and~\ref{tab:main_result_meld} summarize the performance of the proposed semantic visual representation integrated with GraphSmile on the IEMOCAP and MELD datasets. The evaluation includes overall accuracy (ACC), weighted F1 score (WF1), and per-class F1 scores for each emotion category.
+
+On the IEMOCAP dataset, GraphSmile with BERT-based encoding of VLM-generated descriptions achieved the highest performance, with a weighted F1 score of 71.65, slightly improving over the baseline GraphSmile (WF1 71.29). Longformer-based encoding also performed comparably (WF1 71.49), but did not surpass BERT. For individual emotions, BERT-based VLM representations improved recognition for Happy (61.49) and Frustrated (67.51) categories.
+
+On the MELD dataset, the improvements were more modest. GraphSmile integrated with BLIP-2~\cite{li2023blip2} and BERT achieved the best performance among the VLM variants, with ACC 67.47 and WF1 66.35. Qwen-VL-3B with BERT also slightly outperformed Longformer-based encoding (ACC 67.32 vs.\ 67.13; WF1 66.12 vs.\ 65.97). Overall, performance remained close to the GraphSmile baseline (ACC 67.66, WF1 66.67). Individual emotion recognition showed minor variations across Neutral, Joy, Sadness, and other categories.
+
+\subsection{Observations}
+
+The results demonstrate that semantic visual representations can effectively replace traditional handcrafted visual descriptors in graph-based MERC frameworks without significant loss in performance. In some cases, modest improvements were observed, particularly on IEMOCAP where the target speaker could be isolated.
+
+The choice of text encoder affects performance depending on the length of VLM-generated descriptions. While Longformer can handle sequences up to 4096 tokens, most descriptions were within the 512-token limit of BERT. Consequently, BERT encoded the majority of samples efficiently without excessive padding, yielding slightly better performance than Longformer.
+
+Dataset characteristics also influence the effectiveness of semantic visual features. IEMOCAP clips have relatively low spatial resolution ($360\times480$ after speaker-focused splitting) and short durations, limiting the visibility of fine-grained facial expressions and the temporal context available for emotional inference. Additionally, VLM outputs occasionally contain hallucinated or repetitive descriptions, introducing noise into the semantic embeddings.
+
+On MELD, multi-party interactions complicate speaker-specific emotion recognition. Multiple characters appearing simultaneously make it difficult for the VLM to isolate the target speaker, often resulting in descriptions that focus on overall scene context rather than the emotional state of the intended individual. Hallucinations and inconsistent outputs, sometimes exacerbated by larger batch sizes during generation, add further noise to the embeddings.
+
+Frame-level analysis with BLIP-2~\cite{li2023blip2}, where three representative frames from each clip (beginning, middle, end) were used, yielded more focused descriptions centered on the speaker's emotional state. This approach reduced redundancy and improved performance slightly compared to full-scene VLM descriptions, suggesting that targeted visual reasoning on key frames can be advantageous, particularly in multi-party settings.
+
+Overall, these observations highlight that semantic visual representations are a viable alternative to handcrafted features in MERC, but their effectiveness is highly dependent on scene structure, speaker isolation, and quality of VLM outputs. Future improvements may be achieved through explicit speaker localization, noise reduction in VLM descriptions, and optimized frame sampling strategies for temporal emotion tracking.
 
 \section{Conclusion}
 The paper ends with a conclusion.
